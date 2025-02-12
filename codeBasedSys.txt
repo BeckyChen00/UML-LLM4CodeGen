@@ -1,0 +1,168 @@
+Below is a complete Java implementation of the teaching management system based on the provided functional requirements. The code includes classes for managing teacher data and course information, as well as methods for calculating salaries according to the specified rules.
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+// Enum for Professional Titles
+enum ProfessionalTitle {
+    FULL_PROFESSOR,
+    ASSOCIATE_PROFESSOR,
+    ASSISTANT_PROFESSOR
+}
+
+// Class representing a Teacher
+class Teacher {
+    private String teacherNumber;
+    private String name;
+    private String gender;
+    private ProfessionalTitle title;
+    private double basicSalary;
+
+    public Teacher(String teacherNumber, String name, String gender, ProfessionalTitle title, double basicSalary) {
+        this.teacherNumber = teacherNumber;
+        this.name = name;
+        this.gender = gender;
+        this.title = title;
+        this.basicSalary = basicSalary;
+    }
+
+    // Getters
+    public String getTeacherNumber() {
+        return teacherNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public ProfessionalTitle getTitle() {
+        return title;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    // Method to calculate salary
+    public double calculateSalary(List<Course> courses) {
+        double totalSalary = basicSalary;
+        for (Course course : courses) {
+            totalSalary += course.calculateCourseFee(title);
+        }
+        return totalSalary;
+    }
+}
+
+// Class representing a Course
+class Course {
+    private String courseNumber;
+    private String courseName;
+    private int credit;
+    private int classHours;
+    private boolean isCompulsory;
+
+    public Course(String courseNumber, String courseName, int credit, int classHours, boolean isCompulsory) {
+        this.courseNumber = courseNumber;
+        this.courseName = courseName;
+        this.credit = credit;
+        this.classHours = classHours;
+        this.isCompulsory = isCompulsory;
+    }
+
+    // Method to calculate course fee based on teacher's title
+    public double calculateCourseFee(ProfessionalTitle title) {
+        double courseFeePerHour;
+        int billedHours;
+
+        // Determine course fee per hour based on title
+        switch (title) {
+            case FULL_PROFESSOR:
+                courseFeePerHour = 100;
+                break;
+            case ASSOCIATE_PROFESSOR:
+                courseFeePerHour = 80;
+                break;
+            case ASSISTANT_PROFESSOR:
+                courseFeePerHour = 50;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown professional title: " + title);
+        }
+
+        // Determine billed hours based on course type
+        billedHours = isCompulsory ? classHours * 2 : classHours;
+
+        // Calculate total course fee
+        return courseFeePerHour * billedHours;
+    }
+}
+
+// Class to manage the teaching management system
+class TeachingManagementSystem {
+    private List<Teacher> teachers;
+    private List<Course> courses;
+
+    public TeachingManagementSystem() {
+        teachers = new ArrayList<>();
+        courses = new ArrayList<>();
+    }
+
+    // Method to add a teacher
+    public void addTeacher(Teacher teacher) {
+        teachers.add(teacher);
+    }
+
+    // Method to add a course
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    // Method to calculate and display salaries for all teachers
+    public void displaySalaries() {
+        for (Teacher teacher : teachers) {
+            double salary = teacher.calculateSalary(courses);
+            System.out.println("Teacher: " + teacher.getName() + ", Salary: $" + salary);
+        }
+    }
+}
+
+// Main class to run the system
+public class Main {
+    public static void main(String[] args) {
+        TeachingManagementSystem system = new TeachingManagementSystem();
+
+        // Adding teachers
+        Teacher teacher1 = new Teacher("T001", "Alice", "Female", ProfessionalTitle.FULL_PROFESSOR, 5000);
+        Teacher teacher2 = new Teacher("T002", "Bob", "Male", ProfessionalTitle.ASSOCIATE_PROFESSOR, 4000);
+        Teacher teacher3 = new Teacher("T003", "Charlie", "Male", ProfessionalTitle.ASSISTANT_PROFESSOR, 3000);
+
+        system.addTeacher(teacher1);
+        system.addTeacher(teacher2);
+        system.addTeacher(teacher3);
+
+        // Adding courses
+        Course course1 = new Course("C001", "Mathematics", 3, 10, true); // Compulsory
+        Course course2 = new Course("C002", "History", 2, 5, false); // Elective
+
+        system.addCourse(course1);
+        system.addCourse(course2);
+
+        // Display salaries
+        system.displaySalaries();
+    }
+}
+```
+
+### Explanation of the Code:
+1. **Enums**: `ProfessionalTitle` is an enumeration that defines the different professional titles a teacher can have.
+2. **Teacher Class**: This class contains properties for teacher data and a method to calculate the salary based on the courses they teach.
+3. **Course Class**: This class contains properties for course information and a method to calculate the course fee based on the teacher's title and course type.
+4. **TeachingManagementSystem Class**: This class manages the list of teachers and courses, providing methods to add teachers and courses, and to display the calculated salaries.
+5. **Main Class**: This is the entry point of the program where instances of teachers and courses are created, added to the system, and salaries are displayed.
+
+This implementation adheres to Java coding standards and best practices, including encapsulation, use of enums, and clear method signatures.

@@ -6,32 +6,33 @@ import numpy as np
 import data
 
 openai = OpenAI(base_url='https://www.DMXapi.com/v1/', api_key='sk-HXJ9ubNKq2k13zlfTzr1xsL35CSzXeaAxkHKE0O6jOgYZ2GO')
-def codeGen(description,UML):
-    prompt = """根据输入提供的<系统功能需求>以及<UML类图>，生成一个完整的Java代码，请不要修改方法名称。具体要求如下：
-1. 输入： 
-- 系统功能需求：{description}
-- UML类图（PlantUml语法）：{UML}
 
-2. 输出：
-- 生成Java代码，包含类、属性、方法以及业务逻辑实现，并且代码需要体现类之间的关系（继承、关联、聚合等）。
-- 代码应尽可能减少错误，符合Java编码规范和最佳实践。
-- 代码应包含必要的注释。
 
-3. 指导步骤：
-- 根据系统文本需求，识别系统中的主要实体和功能模块。
-- 使用面向对象方法论，设计类、属性、方法以及类之间的关系。
-- 生成Java代码框架，确保代码结构清晰、模块化，并符合高内聚低耦合的原则。
-    """
+def codeGen(description,UML,temperature=0,model="gpt-3.5-turbo-0125"):
+    prompt = """Based on the <System functional requirements> and <UML class diagram> provided as input, generate a complete Java code.
+# Input:
+- System functional requirements: {description}
+
+- UML class diagram (in plantuml format): {UML}
+
+# Note:
+- Generate Java code, including classes, properties, methods, and business logic implementations.
+- Do not modify the method signatures defined in the class diagram. You are free to add any additional methods and fields in the code as needed.
+- Code should be as error-free as possible and conform to Java coding standards and best practices.
+- The code should include necessary comments."""
+    
+
 
     message = [
-        {"role":"system","content":"你是一个专业的软件开发助手，擅长使用面向对象方法论设计和实现Java代码。"},
+        {"role":"system","content":"You are a professional software engineer with expertise in programming using UML and Java."},
         {"role":"user","content":prompt.format(description=description,UML=UML)}
         ]
+    print(f"[Sys+UML] AI input: {message}")
     codeGen = openai.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        model=model,
         messages=message,
         max_tokens=3000,
-        temperature=0,
+        temperature=temperature,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
@@ -39,8 +40,43 @@ def codeGen(description,UML):
     # print(f"AI output: {codeGen}")
     
     codeGenAnswer, i_tokens, o_tokens, total_tokens = codeGen.choices[0].message.content,codeGen.usage.prompt_tokens,codeGen.usage.completion_tokens,codeGen.usage.total_tokens
-    print(f"AI answer: {codeGenAnswer}, \ninput tokens: {i_tokens}, \noutput tokens: {o_tokens}, \ntotal tokens: {total_tokens}")
+    print(f"[Sys+UML] AI answer: {codeGenAnswer}, \ninput tokens: {i_tokens}, \noutput tokens: {o_tokens}, \ntotal tokens: {total_tokens}")
     return codeGenAnswer
+
+
+def codeGenBasedSys(description,temperature=0,model="gpt-3.5-turbo-0125"):
+    prompt = """Based on the <System functional requirements> provided as input, generate a complete Java code.
+# Input:
+- System functional requirements: {description}
+
+# Note:
+- Generate Java code, including classes, properties, methods, and business logic implementations.
+- Do not modify the method signatures. You are free to add any additional methods or fields as needed.
+- Code should be as error-free as possible and conform to Java coding standards and best practices.
+- The code should include necessary comments.
+    """
+
+    message = [
+        {"role":"system","content":"You are a professional software engineer with expertise in programming using UML and Java."},
+        {"role":"user","content":prompt.format(description=description)}
+        ]
+    print(f"[Sys] AI input: {message}")
+    codeGen = openai.chat.completions.create(
+        model=model,
+        messages=message,
+        max_tokens=3000,
+        temperature=temperature,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+    ) 
+    # print(f"AI output: {codeGen}")
+    
+    codeGenAnswer, i_tokens, o_tokens, total_tokens = codeGen.choices[0].message.content,codeGen.usage.prompt_tokens,codeGen.usage.completion_tokens,codeGen.usage.total_tokens
+    print(f"[Sys] AI answer: {codeGenAnswer}, \ninput tokens: {i_tokens}, \noutput tokens: {o_tokens}, \ntotal tokens: {total_tokens}")
+    return codeGenAnswer
+
+
 
 
 def codeEvalAI(description,code):
@@ -58,7 +94,7 @@ def codeEvalAI(description,code):
         {"role":"system","content":"你是一个专业的Java代码评估专家。"},
         {"role":"user","content":prompt.format(description=description, code=codeClean)}]
     codeEval = openai.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
+            model="gpt-4o-mini",
             messages=message,
             max_tokens=3000,
             temperature=0,
@@ -96,11 +132,22 @@ if __name__ == '__main__':
 
     # 根据需求生成设计
     # UMLGen = UNLGen(description)
-
+    temperature = 0.2
+    model = "gpt-3.5-turbo-0125"
     # 根据需求和设计生成代码
-    code = codeGen(data.University_description,data.Uni_UML)
+
+    # codeBasedSys = codeGenBasedSys(data.University_description,temperature,model)
+    # with open('codeBasedSys.txt', 'w', encoding='utf-8') as f:
+    #     f.write(codeBasedSys)
+
+    codeBasedSysUml = codeGen(data.University_description,data.Uni_UML,temperature,model)
+
+    
+    with open('codeGen.txt', 'w', encoding='utf-8') as f:
+        f.write(codeBasedSysUml)
+
    
     # 评估代码质量
-    codeEvalAI(data.University_description,code)
+    # codeEvalAI(data.University_description,code)
 
 

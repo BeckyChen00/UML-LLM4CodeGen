@@ -1,0 +1,172 @@
+Here is the complete Java code based on the provided functional requirements and UML class diagram:
+
+```java
+// Enum for Professional Titles
+enum ProfessionalTitle {
+    FULL_PROFESSOR,
+    ASSOCIATE_PROFESSOR,
+    ASSISTANT_PROFESSOR
+}
+
+// Enum for Course Types
+enum CourseType {
+    COMPULSORY,
+    ELECTIVE
+}
+
+// Class representing a Teacher
+class Teacher {
+    private String tid; // Teacher ID
+    private String name; // Teacher Name
+    private boolean sex; // Gender (true for male, false for female)
+    private ProfessionalTitle professionalTitle; // Professional Title
+    private double basicSalary; // Basic Salary
+    private List<Course> taughtCourses; // List of courses taught by the teacher
+
+    // Constructor
+    public Teacher(String tid, String name, boolean sex, ProfessionalTitle professionalTitle, double basicSalary) {
+        this.tid = tid;
+        this.name = name;
+        this.sex = sex;
+        this.professionalTitle = professionalTitle;
+        this.basicSalary = basicSalary;
+        this.taughtCourses = new ArrayList<>();
+    }
+
+    // Method to calculate the salary of the teacher
+    public double calculateSalary() {
+        double totalCourseFee = 0.0;
+
+        // Calculate total course fee based on taught courses
+        for (Course course : taughtCourses) {
+            totalCourseFee += course.getBilledHours() * getCourseFeePerHour();
+        }
+
+        // Total salary calculation
+        return basicSalary + totalCourseFee;
+    }
+
+    // Method to get the course fee per hour based on professional title
+    public double getCourseFeePerHour() {
+        switch (professionalTitle) {
+            case FULL_PROFESSOR:
+                return 100.0;
+            case ASSOCIATE_PROFESSOR:
+                return 80.0;
+            case ASSISTANT_PROFESSOR:
+                return 50.0;
+            default:
+                return 0.0;
+        }
+    }
+
+    // Method to add a course to the teacher's taught courses
+    public void addCourse(Course course) {
+        taughtCourses.add(course);
+    }
+
+    // Getters for teacher properties
+    public String getTid() {
+        return tid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public ProfessionalTitle getProfessionalTitle() {
+        return professionalTitle;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public List<Course> getTaughtCourses() {
+        return taughtCourses;
+    }
+}
+
+// Class representing a Course
+class Course {
+    private String cid; // Course ID
+    private String name; // Course Name
+    private double credit; // Course Credit
+    private double hours; // Class Hours
+    private CourseType type; // Course Type
+
+    // Constructor
+    public Course(String cid, String name, double credit, double hours, CourseType type) {
+        this.cid = cid;
+        this.name = name;
+        this.credit = credit;
+        this.hours = hours;
+        this.type = type;
+    }
+
+    // Method to get billed hours based on course type
+    public double getBilledHours() {
+        switch (type) {
+            case COMPULSORY:
+                return hours * 2; // 2 hours per class hour for compulsory courses
+            case ELECTIVE:
+                return hours; // 1 hour per class hour for elective courses
+            default:
+                return 0.0;
+        }
+    }
+
+    // Getters for course properties
+    public String getCid() {
+        return cid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public double getHours() {
+        return hours;
+    }
+
+    public CourseType getType() {
+        return type;
+    }
+}
+
+// Main class to demonstrate the functionality
+public class TeachingManagementSystem {
+    public static void main(String[] args) {
+        // Create a teacher
+        Teacher teacher = new Teacher("T001", "John Doe", true, ProfessionalTitle.FULL_PROFESSOR, 5000.0);
+
+        // Create courses
+        Course course1 = new Course("C001", "Mathematics", 3.0, 10, CourseType.COMPULSORY);
+        Course course2 = new Course("C002", "Physics", 4.0, 5, CourseType.ELECTIVE);
+
+        // Add courses to the teacher
+        teacher.addCourse(course1);
+        teacher.addCourse(course2);
+
+        // Calculate and display the teacher's salary
+        double salary = teacher.calculateSalary();
+        System.out.println("Teacher's Salary: $" + salary);
+    }
+}
+```
+
+### Explanation:
+1. **Enums**: `ProfessionalTitle` and `CourseType` are defined to represent the professional titles of teachers and the types of courses respectively.
+2. **Teacher Class**: Contains properties for teacher details and methods to calculate salary and course fees. It also manages a list of courses taught by the teacher.
+3. **Course Class**: Contains properties for course details and a method to calculate billed hours based on the course type.
+4. **Main Class**: Demonstrates the functionality by creating a teacher and courses, adding courses to the teacher, and calculating the teacher's salary.
+
+This code is structured, follows Java conventions, and includes comments for clarity.
