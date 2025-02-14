@@ -1,0 +1,24 @@
+Module: Admin 
+The system shall display the hyperlinks and descriptions for the user to perform the desired functions specified in the related UIS. 
+The user shall be able to view the hyperlinks and descriptions listed. 
+The user shall be able to choose a function by clicking the hyperlink. 
+The system shall display the desired operational page for the user after clicking the hyperlink. 
+Action: Create/Add User 
+A user with admin privileges shall be able to Add/Create a new user and associate the user with a specified role(s) in the system. 
+The system shall display an error message if the new user is found in the [system name]. 
+The system shall display an error message if the new user is not active in the Active Directory. 
+The system shall display the xxx tab as the default tab. The user shall be able to create/add a new user manually or from a template. 
+The user record shall inherit all specified role(s) settings in the template when the user record is created from the user template.
+The user shall be able to add additional roles manually while creating/adding a new user from a user template. 
+The system shall save the user info to the database with specified roles associated with divisions for the newly created/added user. 
+The system shall search on the [system name] user display name and user name columns in the user tables to find and verify the user’s existence. 
+The system shall perform a search in the Active Directory to verify the status of the user — Active/Inactive within the company—when the user attempts to create/add a new user in the [system name] system. 
+The system shall generate a standard confirmation message after saving data and warning/caution messages after clicking the cancel or close button. 
+The user must have the flexibility to click any tab to commence the adding process, although the xxx tab shall display as the default tab. 
+As specified in the UIS, all required fields must be marked with a red asterisk alerting the user to fill the required fields. 
+The user shall be able to save data after creating/adding a new user or cancel data to abort the process. 
+The system shall clear up data if the user clicks the Cancel button while creating/adding a new user. 
+The system shall direct the user to the xxx page if the user chooses to click the close button without entering any data. 
+The user must associate at least one role, division, designator code, and lab location when creating/adding a new user. 
+The user must fill in the required fields—User Name and Display Name—in the User Information section when creating/adding a new user. 
+The system shall generate a standard error/warning message after the user attempts to save data without associating one of the following criteria—xxx—and without filling in the required fields in the User Information section.

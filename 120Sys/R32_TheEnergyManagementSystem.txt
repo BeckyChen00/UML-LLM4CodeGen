@@ -1,0 +1,23 @@
+The Energy Management System (THEMAS)
+
+This system is intended to be used by people that maintain the heating and cooling systems in a building. The system should not need intervention from outside users other than the supervisor to maintain the operation of THEMAS. The system should provide warnings to the supervisor about faulty temperatures. The displaying of the current status of the system to the supervisor should not contain excessive information which could confuse the supervisor. The system should provide information in the form of reports to the supervisor so that the system can be run efficiently. 
+
+The THEMAS system is divided into four major sections: Monitor Temperature, Determine Utilization, Initialize system, and System Reports. All four sections have an associated software configuration item; all except the System Reports have an associated hardware configuration item. The hardware requirements are contained in the system specification. The software functions for the system are contained in the following paragraphs.
+
+Monitor Temperature
+The monitor temperature function receives the valid temperature and system parameters. The function then goes through the process of determining temperature status. After this process, either the temperature limit is exceeded, or the temperature change is requested. If the temperature change is requested, the determined heating/cooling mode process is activated and makes a heating/cooling request. Some other processes that help monitor temperature function are validating temperature change thermostat settings, generating an alarm, and system initialization.
+
+Determine Utilization
+The determined utilization function receives the heating/cooling request and utilization parameters. The function then processes the status of all heating/cooling units and sends out either unit unavailable or the heating/cooling unit needed. The function generates a unit unavailable event, which goes into the System Reports function, or it generates a heating/cooling signal to turn on/off the units. The Monitor Temperature and Initialize System functions help determine utilization to do its processes.
+
+Monitor Temperature 
+The monitor temperature function receives the valid temperature and system parameters. The function then goes through the process of determining temperature status. After this process, either the temperature limit is exceeded, or the temperature change is requested. If the temperature change is requested, the determined heating/cooling mode process is activated and makes a heating/cooling request. Some other processes that help monitor temperature functions are validating temperature change thermostat settings, generating alarms, and system initialization.
+
+Initialize System
+The initialize system function receives the initialization data for the THEMAS system. The associated processes are: load heating/cooling unit definitions, turning off all
+heating/cooling units, load thermostat definitions, load utilization parameters, set trigger values, set overtemperature values, and establishing valid temperature ranges. The outgoing
+information that starts the entire THEMAS system is clear all heating/cooling signals, send thermostat definitions, send utilization parameters, send trigger values, send overtemperature
+values, and send valid temperature ranges.
+
+System Reports
+The system reports function receives event data from the THEMAS system. This function is a database that stores all the events in the THEMAS system. This function is mainly for the supervisor of the THEMAS system to maintain an efficient heating and cooling system. The only process that interacts with the system reports function is the generate event data process.

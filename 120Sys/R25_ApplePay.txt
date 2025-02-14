@@ -1,0 +1,27 @@
+APPLE PAY
+
+Purpose
+This study aims to design new software that allows bank customers to add their cards to the Apple Pay wallet. After finishing this project, customers can add their cards via a mobile banking application. 
+
+Scope
+The study will include the "Apple Pay" process on the iOS systems. There will be only one application for the mobile platforms, which is iOS-iPhone. iPad application is out-of-scope.
+
+Requirements
+
+Menu Placement
+The "Apple Pay" process should be under the "Cards" menu. 
+It should be added to the bottom of the page.
+
+Customer
+Users should be able to perform "Apple Pay" transactions via their cards. 
+For performing Apple Pay transactions, first, the user should add their card or cards to the Apple wallet. 
+Users can do this action within the Apple wallet or mobile application. 
+If the user chooses the mobile application, the bank will automatically add their card(s) to the wallet for the selected card(s). 
+
+Software System
+When the user logs in to the banking system with their iPhone, they can go to the Apple Pay menu and add their desired card or cards. 
+Users can select any card. 
+Card types can be debit, credit, virtual or supplementary. 
+The system should check the card status when the user selects a card or card. Users cannot select a card that has a blocked or restricted status. Users can perform the Apple Pay process only if their card status is "available." 
+When the user tries to add an ineligible card (blocked or restricted) system should throw an error, the process should be failed, and the card should not be added to the wallet. 
+If the user completes the Apple Pay process successfully, the system should display a success message, and the user should be able to see the related card on their iPhone wallet.

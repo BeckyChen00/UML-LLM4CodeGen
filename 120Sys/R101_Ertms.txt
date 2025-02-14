@@ -1,0 +1,21 @@
+ETCS shall provide the driver with information to allow him to drive the train safely.
+ETCS shall be able to supervise train and shunting movements.  
+If an RBC performs the supervision, it shall be possible to prevent movements of a traction unit in its area if not authorized by the RBC.  
+ETCS is required to be functional to a maximum train speed of 500 km/h.
+Application levels  
+The following definitions shall apply to the ETCS application levels: 
+Level 0: 
+ETCS active for limited train control function; trackside not fitted with any train control system or equipped with a train control system for which no STM is available onboard. 
+Level 1: 
+Basic track to train information via intermittent transmission media, e.g., balizes. This information can be supported by infill, transmitted via balize, loop, or radio. 
+Level 2: 
+Basic track to train and train to track information via continuous transmission media, i.e., radio. The train detection is provided by trackside.  
+Level 3: 
+Same as level 2 except that train integrity is provided onboard and therefore trackside. Train detection is optional.
+
+Level STM (Specific Transmission Module): 
+Track to train information provided by the national system. Onboard functions are provided by the national system (STM) in cooperation with onboard ETCS.  
+Implementing one or more of the ETCS application levels on a line is possible. (O)  
+Trains equipped for ERTMS/ETCS application level 3 shall be able to run on lines equipped with ERTMS/ETCS application levels 3, 2, 1, and 0. Trains equipped for ERTMS/ETCS application level 2 shall be able to run on lines equipped with ERTMS/ETCS application levels 2, 1, and 0. Trains equipped for ERTMS/ETCS application level 1 shall be able to run on lines equipped with ERTMS/ETCS application levels 1 and 0. 
+The current application level shall be indicated on the DMI.  
+The driver shall acknowledge the level transitions if requested from the trackside. The brake shall be applied if the driver does not acknowledge it after the transition. If the driver acknowledges afterward, the brake can be released.

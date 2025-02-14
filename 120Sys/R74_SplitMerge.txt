@@ -1,0 +1,30 @@
+System Feature - Split 
+Split a pdf document through the GUI Interface. This plugin allows you to set several options that will be used to split the document. 
+Description 
+The user can divide a pdf document into parts, following some options for splitting the document. Then he can save the output pdf files in a directory he wants. 
+Stimulus/Response Sequences 
+The user has to select the Split option from the plugin's tree (or press the "S" key) to display the split panel. 
+The GUI Split panel consists of the following parts: 
+Selection panel: The user selects the document he wants to split from a directory. When the file is imported, some information about the file is displayed (such as page number and pdf version.) The user must enter the password to the appropriate field and reload the pdf if the document is protected. 
+Split options: The user can choose between 7 types of splitting: 
+Burst: the input file will be split into single pages. 
+Split every "n" page: the input file will be split on every "n" page. 
+Split even pages: the input file will be split at every even page. 
+Split odd pages: the input file will be split at every odd page. 
+Split after these pages: the input file will be split at the numbers given. 
+Split at this size: the input file will be split into files of the given size (roughly). 
+Split by bookmark level: the input file will be split at every page linked by the bookmarks of the selected level (this can be very useful if you want to split an e-book into chapters). 
+Destination folder: The user selects the destination folder for the output files (specific or the same as the source). Also, he can select whether he wants the output files to be compressed or not and the pdf version of the generated documents. 
+Output options: Here, the user can define a pattern that will generate filenames for the output files. The available complex prefixes that can be used are: 
+[CURRENTPAGE]: This prefix variable ensures unique output filenames and replaces them with the current page number. The number of digits of the generated prefix can be specified appending any number of "#" at the prefix name inside the square brackets (e.g., the prefix [CURRENTPAGE###] will generate prefixes like '001', '002'...). 
+[TIMESTAMP]: This prefix variable ensures unique output filenames and replaces them with the current date and time. Time has milliseconds precision, and the replaced variable will be something like "20100206_045107232," that is, "YYYYMMDD_HHmmssSSS." 
+[FILENUMBER]: This prefix variable ensures unique output filenames and replaces them with a file number according to the output order. The number of digits of the generated prefix can be specified by appending any number of '#' at the prefix name inside the square brackets (e.g. [FILENUMBER###] will generate prefixes like '001', '002'...). A starting number can be appended at the prefix name inside the square brackets (e.g. [FILENUMBER13] will generate prefixes like '13', '14'...). Finally, it can be combined a started number and the number of digits (e.g. [FILENUMBER###13] will generate prefixes like '013', '014'...). 
+[BASENAME]: This prefix variable is replaced with the original name of the input document. It does not ensure unique output filenames and must be used together with other variables. The system will use the default filename pattern if it is used alone. 
+[BOOKMARK_NAME]: This prefix variable can be used only when splitting by bookmarks level. It ensures unique output filenames (unless two or more bookmarks have the same name) and enables variable substitution. It's replaced with the bookmark name. Some characters of the bookmark name could be stripped if they are not valid characters for a file name. 
+The output filenames will take the default pattern [CURRENTPAGE] _ [BASENAME] if left blank. 
+It can be written anything before or after these prefixes.
+RUN button: After the user sets all these parameters, he presses the RUN button, and the splitting starts. 
+Other Requirements 
+The user can split only one document at a time. 
+The compression of the output files requires pdf version 1.5 or above. 
+The number of digits used for the unique [FILENUMBER] prefix must be ten or less.

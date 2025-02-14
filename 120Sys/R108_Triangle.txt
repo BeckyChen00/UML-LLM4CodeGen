@@ -1,0 +1,64 @@
+The system has a graphical user interface. 
+ 
+Description and Priority 
+The system has an easy-to-use graphical user interface that supports a mouse and a keyboard. 
+
+Use Case 
+The user starts the application
+Description: This is a system initiation process. 
+Precondition: The System has been correctly installed in the computer. 
+Post-condition: The System is running and shows a graphical interface to the user. The user can use the system. 
+Normal Sequence: The user activates the application. The system starts and shows the graphical interface to the user. The user can use the system. 
+
+Exceptions 	
+Condition: There is a problem loading a game or artificial intelligence. 
+Action: The system informs the user about the error. 
+Ending: The program is terminated. 
+
+Functional Requirements 
+GUI: The system uses a graphical user interface to display data to the user 
+GUI.keyboardInput: The system can be used entirely with a keyboard 
+GUI.mouseInput: The system can be used entirely with a mouse 
+
+The player can choose multiple game types
+Description and Priority 
+The system supports multiple games, and the end user can add new games. By default, the system will implement three games. The priorities of the triangulation games are described in the following table: 
+
+Category 			Game Type
+ 
+Constructing (a Triangulation) 
+			Monochromatic complete triangulation
+			Monochromatic triangle 
+			Bichromatic complete triangulation
+			Bichromatic triangle 				
+Transforming (a Triangulation) 
+ 			Monochromatic flipping		 		
+			Monochromatic flipping to triangle 	
+			Bichromatic flipping 				
+			All-green solitaire (monochromatic) 
+			Green wins solitaire 		
+Marking (a Triangulation)
+ 			Triangulation coloring game (monochromatic)
+			Bichromatic coloring game	
+			Four-cycle game (monochromatic)
+			Nimstring game (monochromatic)
+This feature is of high priority.  
+
+Use Case
+The user starts a new game
+Description:  	This use case describes the steps required to start a new game. 
+Precondition:  The System is running and is not busy. 
+Post-condition: A new game, a starting position, and artificial intelligence has been selected in the game menu. 
+Normal Sequence: The user starts a new game with the menu. 
+The system shows a list of games available. 
+The user selects one of these games. 
+The system offers the user the possibility of selecting a starting position. 
+If the user accepts, the UC-003 is executed. Otherwise, a random starting position is selected. 
+The system offers the user the possibility of selecting an artificial intelligence for each player of the game. If the user accepts, the UC-004 is executed. If not, the human player is chosen for the first player, and the random artificial intelligence is selected for the second. 
+The system loads the selected game.  
+Exceptions:
+Condition: There is no game available. 
+Action: The System shows an empty list—no possibility except canceling to run a game. 
+Ending: The use case terminates. 
+Functional Requirements 
+Game.Multiple The system supports multiple games and can load other games from an external source.

@@ -1,6 +1,8 @@
 import java.util.HashSet;
 import java.util.Set;
 
+sssss
+sssss 
 // Member类代表用户
 class Member {
     private String mid; // 用户ID

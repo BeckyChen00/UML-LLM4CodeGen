@@ -1,0 +1,33 @@
+Introduction 
+The network services necessary to meet UIC requirements are detailed below. These services are to be considered a minimum implementation set within each UIC standard network. Railways may implement additional network services as desired.
+Voice services 
+This section describes the generic voice telephony services which are to be supported by the EIRENE network: 
+Point-to-point voice calls. 
+Public emergency voice calls. 
+Broadcast voice calls. 
+Group voice calls. 
+Multi-party voice calls. 
+All voice call services shall be able to operate between any combination of fixed and mobile equipment users. 
+Point-to-point voice calls 
+The system shall support point-to-point voice calls between any two call parties. 
+Such point-to-point calls shall allow both parties to talk simultaneously. 
+Public emergency voice calls 
+The system shall allow a user to make public emergency point-to-point voice calls. 
+Such emergency calls include ‘112’ calls and may not be used for railway emergencies. 
+Broadcast voice calls 
+The system shall support broadcast voice calls. 
+Broadcast voice calls provide one-way voice communications from a single user to multiple users in a predefined local area, all of whom are members of the same call group. 
+The composition of call groups shall be able to be modified within the network. A single user shall be able to be a member of one or more call groups. 
+The local area over broadcast calls shall be implemented and can be modified within the network. 
+It shall only be possible for the user who initiated the call to talk; other users can only listen. 
+Group voice calls 
+The system shall support group voice calls. 
+Group voice calls provide voice communications between several users in a predefined local area, all of whom are members of the same call group. 
+The composition of call groups shall be able to be modified within the network. A single user shall be able to be a member of one or more call groups. 
+The local area over which group calls are implemented shall be able to be modified within the network. 
+It is acceptable that only one mobile user involved in the group call may talk at any time. In this case: 
+It shall be possible for controllers to speak at any time during the call. 
+The system shall provide a mechanism to arbitrate between those users wishing to talk within the group call. 
+Multi-party voice calls 
+The system shall support multi-party voice communications between up to six different parties. 
+Any parties involved in a multi-party voice call shall be able to talk simultaneously.

@@ -1,0 +1,49 @@
+The proposed functional architecture is modeled around centralized deployment to facilitate ease of maintenance and leverage advancement in open standards and web technologies. 
+The 3 C’s (Core-Configuration-Customization) forms the guiding principle for the architecture. The functional architecture of the CCTNS solution is given in the figure below. The functional architecture is composed of 4 major components based on SOA principles. Each of the components contains multiple services as defined by Service Definition. The core services, support layer, and security and access control components can be deployed as standard components with necessary configuration changes. The customization layer can override and add to the core services based on the specific state requirements and can be plugged into the core services. 
+The deployment of the application will be at the state level and configured and customized as per the state-specific extensions. 
+The systems should be designed with the following broad guidelines: 
+System Functionality 
+The system should support a multilingual interface 
+The system should be designed to recover operational data in case equipment or communication network fails. 
+The system should work even in an offline mode with the critical functionality 
+The system should be designed to have satisfactory performance even in Police Stations connected on low-bandwidth 
+The system should be implemented using Service Oriented Architecture (SOA) and have a modular design 
+The system should be developed on Open Standards. 
+The system should be built on a common User Access and Authentication Service to ensure Single-Sign on for the end-user 
+The system should be developed for centralized deployment and maintenance. 
+The system should be developed to be deployed in a 3-tier data center architecture. 
+The system should have an n-tier architecture with the presentation logic separated from the business logic, which is again separated from the data-access logic. 
+The system should be extensible to access the interfaces through PDAs and mobile data terminals. 
+The system should adopt standardized formats and common metadata elements 
+The system should be designed for access through browser-based systems and must impose minimal requirements on the client device 
+The system must support multiple types of communication services for remote access 
+The system should have the capability to support public access to a subset of data and functionality 
+The system should support multi-tier authentication where required 
+The system should support SSL-encrypted connections 
+The system should support secure virtual private network connections 
+The system should use HTTPS as the communication protocol, i.e., HTTP over an encrypted secure socket layer (SSL) 
+The system should run on multiple browsers 
+The system should support selective encryption of the stored data 
+The system should ensure secure transmission of data over the network and utilize SSL and 2-way digital signatures 
+The system should ensure high standards of security and access control through: 
+Prevent cross-site scripting 
+Validate the incoming data/user request 
+Encode the incoming data/user request 
+Prevent SQL Injection 
+Utilize parameterized queries 
+Sanitizetheuser-inputs 
+Validate the data both at the client and server 
+Do not allow hard delete and perform only soft tagging the row for deletion 
+
+The system should ensure high scalability and performance through the: 
+Use of cache for storing frequent data 
+Use of AJAX-based technology to improve user experience. Aggressive page loading is to be considered based on the screen and estimated usage pattern 
+Leverage Asynchronous HTTP socket capabilities of the web server for scalability and performance 
+Host all the static content (documents, images) on the web server 
+The search results should be fetched from the database in batches of 10 or 20 maximum 
+as configured within the application 
+Displayofrecordsonthescreeninbatches/paged manner 
+The search should fetch only the fields that must be displayed to the user. Only when 
+the user clicks on a particular record to view its further details should a query be fired to 
+fetch the additional details for this particular record only 
+A hierarchical cache should be configured and used for caching of results of most 

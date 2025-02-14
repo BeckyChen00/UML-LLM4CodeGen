@@ -1,0 +1,24 @@
+Centralized store for user information 
+The Framework MUST be capable of capturing information from the software tools. The data captured SHOULD be stored in a centralized data store. The Framework MAY decide whether the information should be stored as Entities or Associates.  
+The data capturing and archiving mechanisms MAY resemble the following. 
+Type of Information: Personnel Mechanism: 
+The Address Book is used to create Entities under the category “People” (Category names are user definable. However, a particular set of categories like People, Email, etc. MAY always need to be present). 
+The user SHOULD be able to modify, add, delete or group these Entities by navigating to a virtual folder (e.g.,/People/). 
+Type of Information: Email (Outbound) Mechanism: 
+The email is intercepted before it is dispatched to the SMTP server.  
+An Associate is created to contain the message body. 
+The recipient’s name(s) are used to create (if required) Entities under the “People” category. The Associate is then linked to each Entity. 
+Type of Information: Email (Inbound) Mechanism: 
+The email is fetched from the POP3 server. 
+An Associate is created to contain the message body. 
+The sender’s name is used to create Entities under the category “People.” The Associate is then linked to this Entity. 
+Type of Information: WWW Documents Mechanism: 
+The user SHOULD be able to specify when he is to start a research project, i.e. when the websites he visits subsequently are to be permanently stored. 
+The project name specified by the user spawns a new Entity in the Framework. 
+An associate is created as an archive and is linked to this Entity. 
+Type of Information: Textual Documents 
+Mechanism 
+After editing a document in a word processor, the user invokes a particular GUI supplied by the Framework. 
+The GUI allows him to draw arrows to and from (a symbol representing) the current document to any Entity, creating relationships between the document and the relevant Entities. 
+The user may optionally specify a descriptive name for the document. 
+The document is automatically saved to disk in a manner that reflects the relationships it has with other Entities. The user may, in the future, fetch this document by following the relationship paths he had created.

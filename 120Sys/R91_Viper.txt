@@ -1,0 +1,106 @@
+USE CASE # 1 Manage Requests
+Manage Requests 
+Goal in Context
+On the main requests management page, that coordinator will manage all requests from customer or suppliers.
+Scope & Level
+Company, Summary
+Preconditions
+Must the coordinator login.
+Success End Condition
+The coordinator can manage his request and can add, view, or edit his requests.
+Failed End Condition
+Login in failed.
+There are no suppliers for his requests.
+Primary,
+Secondary Actors
+Coordinator, Supplier, Customer
+Trigger
+
+DESCRIPTION
+Step 
+Action
+The coordinator press "Manage Requests."
+The coordinator uses any function.
+The coordinator will manage all requests function. 
+
+EXTENSIONS
+Step
+Branching Action
+"Error!" message.
+
+SUB-VARIATIONS
+Branching Action
+
+The coordinator may use the phone to requests from suppliers.
+
+RELATED INFORMATION
+Manage Requests 
+Priority:
+Top
+Performance
+Frequency
+Channels to actors
+
+OPEN ISSUES 
+What if the coordinator cannot manage requests?
+What if the coordinator cannot use request functions?
+Due Date
+Release 1.0
+Superordinate's
+Login
+Subordinates
+Add Request, View Requests
+
+USE CASE #2 Add Request
+Add Request
+Goal in Context
+The coordinator can add new requests and send them to his supplier
+Scope & Level
+Company, Summary
+Preconditions
+Must the coordinator login
+Success End Condition
+The coordinator can add a new request.
+The request sent to the supplier
+Failed End Condition
+Login in failed
+There are no suppliers for his requests or send error 
+Primary,
+ Secondary Actors
+Coordinator, Supplier
+Trigger
+When the coordinator needs to add a new request.
+DESCRIPTION
+Step 
+Action
+The coordinator press "Add Request."
+The coordinator fills out the request form.
+The coordinator will send the request to the supplier 
+
+EXTENSIONS
+Step
+Branching Action
+"Error!" message
+
+SUB-VARIATIONS
+Branching Action
+The coordinator may use the phone to requests from suppliers
+
+RELATED INFORMATION
+Add Request
+Priority:
+Top
+Performance
+10 minutes for request, two days until accept
+Frequency
+10/day
+Channels to actors
+not yet determined
+OPEN ISSUES 
+What if the coordinator cannot add new requests?
+Due Date
+Release 1.0
+Superordinate's
+Requests Management
+Subordinates
+None

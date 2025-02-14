@@ -1,0 +1,14 @@
+SECTIONS
+High School Courses 
+This section will show recommended curricula for high school students interested in CS and related careers. This page should provide pointers to curricula recommendations from OUS campuses and other university sources. The ACM has recommended curricula for HS CS students.    >UO is working on this area; no other campus has recommended HS courses 
+ Search for additional information
+At least two kinds of searches are needed, 1) an internal search of the Get Real site and 2) an external search of CS-related sites such as OUS campuses, articles on CS, etc. Google, for example, provides tools for internal and external searches. The Get Real prototype index page 
+~getreal.ous.edu/protoindex.html has samples of various search engines. 
+Professional Organizations  
+A listing with links to ACM, IEEE, and key subgroups, such as SIGGRAPH, to show students the national and international strength of CS organizations. Pointers should lead to student sections of these organizations. 
+RSS feeds of current CS information  
+Selected articles from the chancellor’s office daily communications distribution fed to RSS subscribers on the Get Real site. This feature requires X hours per week of web design resources for editing the URLs to the DSS feed. 
+Ask a Grad or Prof – FAQ  
+Get fast feedback from the Oregon University System on questions in a Q and A format. Answers are posted in an FAQ section for all to read. A Grad or Prof BLOG on CS careers would also work here. 
+Consider a CS Minor  
+Information for students in medicine, law, business, and other professions to provide students visibility of the high value of having a CS minor. The video “pathways in Computer Science” is an excellent example of CS majors in diverse.

@@ -1,0 +1,19 @@
+FOOD ORDER APP
+
+Purpose
+This study aims to design new software that allows users to order food from various restaurants via mobile application.
+
+Scope
+Study should enable users to use this app via mobile platforms. There will be two separate applications for the mobile platforms, which are Android and iOS. They should have the same function and features for the account creation process. The project will also contain the back-end communication system for 3rd party charity organizations. 
+
+Requirements
+
+Users should be able to order via mobile app.
+Users can select the restaurant.
+Users can cancel the order in 10 minutes.
+Users can request a refund if food is incomplete or different than the order.
+
+
+Rules
+When a restaurant is not in the user's area, restaurant should not be shown.
+When a restaurant is too busy with current orders, restaurant can cancel the order.

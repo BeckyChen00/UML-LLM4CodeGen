@@ -1,0 +1,66 @@
+End user functions
+Presence
+Define the typical functions available to the end user in function categories.
+An example layout could be:
+
+Use of Passport to log in to the messenger
+Using an existing Passport account allows the user to log in to the messenger.
+It is not possible to create a new Passport account.
+
+Maintenance of users' status
+The ability to change and maintain the status is visible to the buddies. The application provides a list where the end-user can choose the new status.
+
+See the presence status of your buddies.
+The application will display the status of the end-users buddies. 
+When a buddy changes his status, the application shall update it.
+
+Own Nickname
+The end-user can change the nickname with which the user is visible to the buddies.
+
+Nickname of buddies
+Show the nicknames of the end-users buddies on the buddy list. 
+The application updates the displayed nick in the contact list when a buddy changes the nickname.
+
+Appoint a user-defined nickname
+The application allows assigning a nickname to a specified buddy; this nickname has a preference above the nickname set by the buddy.
+
+Add buddies to your contact list.
+The application provides an option to add a buddy to the buddy list. 
+
+Delete buddies from your contact list
+The application has the option to delete a buddy from the buddy list.
+
+Blocking a buddy
+The application has the option to block certain buddies.
+Messaging
+Incoming message notification
+The application has a visible notification when an incoming message is received.
+
+Read incoming messages
+Show incoming messages on the screen.
+
+Write a message
+Create a message and send it to a buddy.
+
+Emoticons in messages
+Show emoticons in incoming and outgoing messages. 
+Display a list of emoticons to choose from when the user wants to include an emoticon in the message he is writing.
+
+Show (session) history
+Show the history of messages sent and received in the current chat session.
+
+Group conversation
+Chat with multiple buddies together.
+Miscellaneous
+TV program
+The ability to request the TV program/channel the end-users online buddy is watching at the moment.
+
+New mail notification
+Show a notification when there is a new e-mail in the user's Hotmail inbox.
+
+Check your Hotmail account. 
+Display the inbox of the user's Hotmail account
+Show e-mails from the user's Hotmail account on the screen.
+
+Play games
+Play games with online buddies.

@@ -1,0 +1,18 @@
+Persistent data store architectural requirements
+Persistent data store requirements with collocated smart grid and non-smart grid data.
+Use of localized data stores.
+Use of centralized data stores.
+
+Standard model incorporation into enterprise information management.
+Incorporating IEC Common Information Model (CIM) into the EIM.
+Using EIM to enable IEC Common Information Model-based messaging.
+Using EIM to enable IEC Common Information Model-based persistent data store creation.
+Using IEC Common Information Model to create a semantic model supporting NIST.
+
+Enterprise information management lifecycle management:
+The information model shall define common definitions of data concepts.
+The information model shall allow aliases of data concepts.
+How to initiate and maintain semantic enterprise management.
+	Use a reference architecture to create an enterprise information architecture.
+	Model how semantic modeling supports information modeling.
+	Define patterns of introducing business units to smart grid semantic modeling.

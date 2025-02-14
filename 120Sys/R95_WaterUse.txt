@@ -1,0 +1,73 @@
+Requirement Statement
+Track the movement of lapsed quantities in an area, including: 
+Which permits and well obtains the lapsed quantities. 
+Where the lapsed quantities are located. 
+Why are the quantities lapsed (i.e., expired, canceled, retired)? 
+What MFL zone the lapsed quantities are in.
+Use Case
+View Lapsed and Project Quantities Summary 
+View Report 
+View Use of Lapsed Quantities 
+
+Requirement Statement 
+Track the relocation of active water use within the SWUCA. 
+Use Case
+View Net Benefit Summary 
+View Report 
+
+Requirement Statement 
+Track the movement of lapsed quantities in an area, including: 
+Which permits and well obtains the lapsed quantities. 
+Where the lapsed quantities are located. 
+Why are the quantities lapsed (i.e., expired, canceled, retired)? 
+What MFL zone the lapsed quantities are in. 
+Use Case
+View Lapsed and Project Quantities Summary 
+View Report 
+View Use of Lapsed Quantities 
+
+Requirement Statement 
+Report the history of irrigation water conserving credits, including the balance, how much is earned, how much is used, and drought quantities. Know who uses and has accumulated them, and report on an individual basis, by a geographic area, or aggregate the data. 
+Use Case
+View Water Use Permit 
+View Report 
+
+Requirement Statement
+Track and report the history of permitted data, such as user type, irrigated acres, and pumpage (one use would be to know whether expired permits have had quantities reallocated). 
+Use Case
+View Water Use Permit 
+View Withdrawal 
+
+Requirement Statement 
+Track and measure alternative source projects (note: some of these may be included in table 8): 
+Surface water or stormwater projects. 
+Reclaimed water (reuse water). 
+Augmented surface water (reservoirs, harvesting of high flows (floodwaters). 
+ASR (Aquifer storage recovery) 
+Desalination. 
+Conservation (defined as a beneficial reduction of 
+water use results in: 
+Modification of water use practices,
+Reduction of unaccounted-for losses or o installation and maintenance of low-volume water use systems, processes, fixtures, or devices. 
+Use Case
+View Map 
+View Report 
+View Use of 
+Quantities Associated With District Projects 
+
+Requirement Statement
+View the spatial impact of a person's application with other active applications online, so the applicant or evaluator can see who else is available to compete for quantities. Also, include application and permit data online, with scanned documents or access to the database. The historical data should also be available, but viewing restrictions for certain legal documents has to be followed. Be able to query by geographic area or permit number. 
+Use Case
+View Map 
+View Water Use 
+Permit Search 
+View Report 
+
+Requirement Statement
+Create a heat map indicating who was over-pumping, not over-pumping, or using their water credits. 
+Use Case
+View Map 
+Requirement Statement
+Heat map for water quality. Add the District WUPnet sentinel wells on this map - those are the District wells that have existed for the longest time, and we have the best data with them. So if we bring them up in an area, we know we have reliable data. 
+Use Case
+View Map 

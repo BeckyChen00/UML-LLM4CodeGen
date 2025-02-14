@@ -1,0 +1,30 @@
+Functional Requirements
+This section describes the functional requirements for the Grid 3D application. Each functional requirement should have a fit criterion to make it possible to test whether the requirement is implemented as specified in the delivered product.
+The product shall plot the data points in a scientifically correct manner.
+The grid axis should be labeled correctly according to the input from the data file.
+Data points should be colored by the cluster number (contained in the data file)
+The product should be able to handle up to 2000 data points.
+A single click of the mouse over a data point should bring up the name of the data point.
+A double-click of the mouse over the data point should cause the application to display all the data point's details.
+The product should allow multiple points to be clicked so various names can be displayed.
+The product should allow the grid to be oriented by the user. Rotation, zoom, and move functions should be employed.
+Data Requirements
+The Grid 3D application involves the user supplying a data file. This data file contains all the information on the points that are to be plotted.
+The data file should contain the following:
+A name for the data point.
+Three parameters from which the data point is to be plotted.
+A single parameter to designate the color of the point. This parameter is the attribute that is to be used as the comparison.
+A description of the data point.
+Name
+X_Title
+Y_Title
+Z_Title
+Cluster_Title
+Description
+Point_Name
+X_Value
+Y_Value
+Z_Value
+<number>
+<description>
+For the grid to reflect the nature of the user's data, the system should allow the user to specify their own axis. With this in mind, the first row of the data file should contain the column headings. The following table proposes the format for the data file.

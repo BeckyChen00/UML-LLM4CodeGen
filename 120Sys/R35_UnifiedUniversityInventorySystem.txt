@@ -1,0 +1,74 @@
+Unified University Inventory System
+IUFA's purpose is to integrate three faculties databases providing a Web interface that allows users to access and manage the integrated inventory. The IUFA guarantees secure access to the data from outside the university at any time during working hours. The IUFA application allows an unauthorized user to use a web-based interface that will be available at any time.
+
+IUfA involves the following operations: 
+Transferring assets 
+Editing assets 
+Modifying assets 
+Adding inventory assets 
+Creating a request to borrow an asset or reserve a space 
+Returning assets 
+Creating a new space 
+Approving requests 
+Authentication 
+Search 
+Changing permission 
+Output reports
+A user can have one of the following roles: 
+University administrators 
+Faculty administrators 
+Department administrators 
+Inventory administrators
+
+Any administrative level can delegate inventory administrators to work, and the applications assigned permission can vary from one user to another depending on its assigned tasks. 
+
+Inventory administrators can be affected according to their assigned tasks at any administrative or organizational level. 
+Users: students and professors 
+IT team system administrators that maintain the system 
+
+Transferring Assets 
+Within the same department: the database can be updated directly without any request. 
+Inter departments: request must be approved by a DA group member and faculty group member unless it came from a higher level group 
+Inter faculties transfer: request can be made by any authorized user and approved by a faculty group or higher level 
+The university group should approve transfers outside the university. 
+
+Editing Assets 
+Any administrative-level user or inventory user can edit an asset that belongs to its department, the same thing as the faculty user or university user, to make modifications if authorized. 
+
+Modifying assets 
+all fields of an edited asset can be modified except Ids 
+a bulk entry file can be used 
+
+Adding inventory assets 
+The department owns any DA group member or authorized inventory group member asset. 
+Any faculty member can add all related department's inventory 
+Any university group member can add all assets to the inventory 
+A bulk entry can be used to add many assets 
+
+Creating a request to borrow an asset or reserve a location 
+any authorized user can make the request.
+After creation, a request is still pending, waiting to be approved by an administrative-level user according to that authority. 
+
+Returning assets 
+An inventory user should check returned assets and update the inventory. 
+
+Creating a new location 
+IT group members can create a new space and modify the floor structure when they receive an exception request from any administrative level. 
+
+Approving requests 
+Any administration level or authorized inventory group member can display all pending requests waiting for approval from this level and approve those requests. 
+When the request is treated user is notified by email 
+The request is added to the waiting-for-execution list 
+Inventory is updated when the user receives the requested asset 
+
+Authentication 
+Authentication is made by user name and a password for all users 
+administrative level working on administration computer 
+
+Changing permission 
+Any administrative-level user can delegate another user to execute some or all his authorized actions. And this user acquires the role of inventory administrator. 
+
+Output reports 
+Asset report by location 
+Request report 
+User permission user 

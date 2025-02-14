@@ -1,0 +1,25 @@
+Default Behaviours 
+The following features of WARC Tools commands are to be provided by default. All other modules of WARC Tools, such as migration tool, repackaging, reporting, etc., will inherit these capabilities. 
+The tools shall be able to process a set of multiple WARC files at the same time. For this purpose, the tools will allow you to choose/group them by: 
+explicit naming 
+wildcard name matching 
+size limitation 
+number of items 
+The tools shall be able to scale to process large collections using distributed processing and data transport (see FRS 10 and 11) 
+The tools shall offer the best possible performance to correctly process large collections (I/O bound).
+The tools shall be able to run on multiple machines but will not provide functionality for dealing with hardware failures (out of scope) 
+Implementation of the tools shall avoid unnecessary technology dependencies and shall not include the development of partner-specific integration technologies. 
+The tools shall comply with Java development environments, using web services, RESTful APIs, etc. 
+The tools shall provide logging facilities, for example, to follow command progression, i.e., process duration, output levels, etc. 
+The tools shall enhance usability by providing easy-to-adapt shell script wrappers for the major commands. 
+It shall be possible to operate the tools in modes that restrict their effects to selected collection subsets. For example, select by name (see NFR1), random sampling, etc. 
+Migration Application 
+The migration application provides a workflow to support and manage the arc → warc migration process and verification functionality to check and validate by content and metadata (time, URL, etc.). 
+Additionally, the application would provide checks and balances throughout the process to ensure it is verifiable and working properly. This application will support large-scale migration to WARC, in which we expect to migrate millions of ARC files to WARC. Taking real-life requirements from IIPC member institutions into account will be important. 
+The migration application will consist of four components: 
+A workflow/configuration application to set up the migration configuration. A web user interface shall be available to set up the migration. The endpoint is a migration configuration used in a migration job. Configuration shall persist as a configuration file or database. 
+Migration tool to migrate content from a collection of ARC files to WARC files 
+The workflow system shall have a configurable management strategy for migration from ARCs to WARCs. 
+Validation command-line tool to validate content in a collection of WARC files against the original ARC files content. 
+A console to report on the progress of active migration processes (such as the Heritrix console) manage the process, view logs, etc. 
+Non-functional requirements concerning the scale of migration will need to be developed alongside the functional requirements. It should be noted that libwarc and WARC Tools, in general, have been implemented to deal with large-scale operations by ensuring all functionality is performed with minimal memory usage and performed atomically by simple tools in the style of UNIX.

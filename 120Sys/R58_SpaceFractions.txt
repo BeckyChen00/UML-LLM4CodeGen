@@ -1,0 +1,36 @@
+Template for Describing Functional Requirements 
+This section describes the template used to describe each functional component of the "Space Fractions" game specified in section 2.3. Those components are described in subsections 3.2.2 through 3.2.7. 
+Purpose	
+A description of the functional requirement and its reason(s).
+Inputs	
+Which inputs; in what form/format will input arrive; from what sources will input be derived, legal domains of each input element?
+Processing
+Describes the outcome rather than the implementation; includes any validity 
+checks on the data, exact timing of each operation (if needed), and how to handle unexpected or abnormal situations.
+Outputs
+The form, shape, destination, and volume of the output; output timing; the range of 
+parameters in the output; the unit measure of the output; the process by which the output is stored or destroyed; process for handling error messages produced as 
+output.
+
+Introductory Movie 
+Purpose	
+help the user complete the fraction questions. A short movie to set up the storyline of the game and provide information to 
+Inputs	
+If the user clicks a mouse button while in this component, they will skip the movie and proceed to the main menu. No other input is recognized.
+Upon entrance to the movie component, the introductory movie will begin 
+Processing 
+playing. If a mouse click is received, this component will terminate the movie and forward the user to the main menu component. Otherwise, the movie will 
+continue to its completion, and the user will be moved to the main menu.
+Outputs	
+A movie is displayed on the screen.
+
+Main Menu 
+Purpose	
+provides a link to the main game component and the Denominators' web page. A menu that displays a brief section offering help on playing the game, and 
+Inputs
+The user can click on the corresponding button to begin the game or follow the link to the Denominators' web page.
+This component will wait until the user selects a button. At that time, the user 
+Processing 
+will be forwarded to the game sequence component or the Denominators' web page, depending on the button selected.
+Outputs	
+his component will output either the game sequence or the

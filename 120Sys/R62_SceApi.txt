@@ -1,0 +1,19 @@
+Users of the Interface
+A major goal of this specification is to address the needs of three target audiences, each with a distinct interest in their interface use. The target audiences are as follows:
+End-user
+Transactor implementor
+SCE-MI infrastructure implementor
+
+End User
+The end user is interested in quickly and easily establishing a bridge between a software testbench composed of high-level, untimed, algorithmic software models and a hardware DU modeled at the RTL cycle-accurate level of abstraction.
+While end users might be aware of the need for a “gasket” that bridges these two levels of abstraction, they want the creation of these abstraction bridges to be as painless and automated as possible. Ideally, the end users are not required to be familiar with the details of SCE-MI API.
+Instead, on the hardware side, they might wish to rely on the transactor implementor (see next section) to provide predefined transactor models that can directly interface with their DUT. This would remove any requirement for them to be familiar with any of the SCE-MI hardware-side interface macros (see section 4.1 on page 46) except possibly the SceMiClockPort macro, whose interface is easy to understand because all it does is furnish a clock and a reset.
+Similarly, on the software side, the end users can rely on the transactor implementors to furnish them with plug-and-play software models custom tailored for a software modeling environment such as SystemC. Such models would encapsulate the details of interfacing to the SCE-MI software side and might present a fully untimed, easy-to-use interface to the rest of the software testbench.
+
+Transactor Implementor
+The transactor implementor is familiar with the interface presented by the SCE-MI but is not concerned with its implementation.
+The job of the transactor implementor is to provide plug-and-play transactor models on the hardware side and proxy models on the software side that might be used by end users to easily bridge their untimed software models with their RTL-represented DUT. Additionally, the transactor implementor can supply proxy models on the software side that provide untimed “sockets” to the transactors.
+Using the models is like using any other vendor-supplied, stand-alone IP models. The details of bridging not only two different abstraction levels but possibly two different verification platforms (such as SystemC and an emulator) are completely hidden within the implementations of the models. They must be distributed with appropriate object code, netlists, RTL code, configuration files, and all necessary documentation.
+
+SCE-MI Infrastructure Implementor
+The SCE-MI infrastructure implementor is interested in furnishing a working implementation of an SCE-MI that runs on some vendor-supplied verification platform (probably their own). Any distributed product release from the infrastructure implementor will necessarily include both the software and hardware side components of the SCE-MI. For such a release to be a complaint, it must conform to all the requirements outlined in this specification.

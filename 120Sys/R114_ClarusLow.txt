@@ -1,0 +1,15 @@
+Configuration & Administration Service (CAS) 
+The requirements in this section specify the service to configure and administer the system. The CAS supports the Clarus system and program, manages information about data provider redistribution restrictions, controls access for modifying the system state and quality rules, applies manual quality flags, establishes environmental data retrieval schedules, and manages environmental metadata. 
+The Clarus system shall implement quality-checking processes as soon as data become available. 
+The CAS shall be able to configure schedules for executing QChS. 
+The Clarus system shall record the methods applied when deriving quality-checking information. 
+The CAS shall record the quality-checking methods used. 
+The Clarus system shall be able to implement quality-checking rules for each environmental parameter. 
+The CAS shall be able to configure the quality-checking rules for each environmental parameter. 
+The CAS shall enable administrators to manage quality-checking rules. 
+The Clarus system shall be able to implement quality-checking rules for specific environmental situations. The rules for setting quality flags on environmental data elements may depend on other environmental data. For example, stormy conditions may allow more spatial and temporal variability in wind speed observations than under fair weather conditions. 
+The CAS shall be able to configure quality-checking rules for specific environmental situations. 
+The Clarus system shall be able to implement quality-checking rules specific to observation locations. Quality checking rules may vary from region to region. 
+The CAS shall be able to configure quality-checking rules specific to observation locations. 
+The Clarus system shall be able to base its quality-checking process on historical environmental data. 
+The CAS shall be able to configure historical environmental data to be used by quality-checking processes. 

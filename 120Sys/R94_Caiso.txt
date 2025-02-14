@@ -1,0 +1,27 @@
+The following provides general guidance for CAISO Black Start planning: 
+Steps
+Description
+
+The CAISO determines the amount and location of Black Start Generation it requires through contingency studies that are used as the basis of the CAISO’s emergency plans. The studies specify: 
+The initiating disturbance, 
+The magnitude of the Outage, including the extent of the Outage (local area, CAISO Controlled Grid, or WECC), 
+The assumed status of Generation after the initiating disturbance, 
+The status of interconnections, 
+The system Demand level at the time of the disturbance, 
+The interconnection support and assumptions regarding the availability of support from other utilities to help restore Generation and Demand.
+Generator performance, including a percentage of Black Start units (to be determined by the CAISO) that are expected to fail to start, 
+Expected transmission system damage. 
+
+The CAISO annually verifies that the number, size, availability, and location of system Black Start generating units are sufficient to meet WECC restoration plan requirements for the CAISO Balancing Authority Area. 
+
+The CAISO documents the Cranking Paths, including initial switching requirements, between each Black Start generating unit and the units, to be started and provides this documentation for review to WECC upon request. Such documentation may include Cranking Path diagrams. 
+
+The CAISO Black Start planning evaluation process includes the following: 
+Diverse fuel resources for Black Start power for generating units, 
+Available cranking and transmission paths, 
+Communication adequacy, 
+The unit capability of maintaining adequate regulation of voltage and frequency, 
+Generator protection and control systems during the abnormal conditions that will exist during system restoration, 
+Limited energy resources (e.g., hydro, pumped storage hydro, compressed air) are selected sparingly. 
+The planning evaluation process is coordinated, as appropriate, with the Black Start capability plans of transmission owners and neighboring Balancing Authorities. 
+The CAISO annually enters RMR and Interim Black Start Contracts with generators that satisfy the annual planning evaluation process results.

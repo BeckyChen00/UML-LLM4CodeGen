@@ -1,0 +1,37 @@
+This subsection contains the requirements for the e-store. These requirements are organized by the features discussed in the vision document. Features from vision documents are then refined into use case diagrams and sequence diagrams to best capture the system's functional requirements. All these functional requirements can be traced using the tractability matrix. 
+Sell Configured to Ordered Products.
+The system shall display all the configurable products.
+The system shall allow the user to select the product to configure.
+The system shall display all the available components of the product to configure.
+The system shall enable the user to add one or more components to the configuration.
+The system shall notify the user about any conflict in the current configuration.
+The system shall allow the user to update the configuration to resolve conflicts in the current configuration.
+The system shall allow the user to confirm the completion of a current configuration.
+Provide comprehensive product details.
+The system shall display detailed information about the selected products.
+The system shall provide browsing options to see product details.
+Detailed product Categorizations
+The system shall display detailed product categorization to the user.
+Provide a Search facility.
+The system shall enable the user to enter the search text on the screen.
+The system shall enable the user to select multiple options on the screen to search.
+The system shall display all the matching products based on the search
+The system shall display only ten matching results on the current screen.
+The system shall enable the user to navigate between the search results.
+The system shall notify the user when no matching product is found on the search.
+Maintain customer profile.
+The system shall allow the user to create a profile and set his credential.
+The system shall authenticate user credentials to view the profile.
+The system shall allow the user to update the profile information.
+Provide personalized profile
+The system shall display the customer profile's active and completed order history.
+The system shall allow the user to select the order from the order history.
+The system shall display detailed information about the selected order.
+The system shall display the most frequently searched items by the user in the profile.
+The system shall allow users to register for newsletters and surveys in the profile.
+Provide Customer Support.
+The system shall provide online help, FAQ customer support, and sitemap options for customer support.
+The system shall allow the user to select the support type he wants.
+The system shall allow the user to enter the customer and product information for support.
+The system shall display the customer support contact numbers on the screen.
+The system shall allow the user to enter the contact number for support personnel to call.

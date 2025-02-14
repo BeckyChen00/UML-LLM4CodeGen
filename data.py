@@ -1,30 +1,4 @@
-HRIS_description = """Human-Resources Information System(HRIS)
 
-The Human-Resources Information System (HRIS) web-based, it is divided into four parts; they are User Login Management, Employee Information Management, Employee Leaves Management, and Employee Discipline Management.
-
-In the User Login Management, it is divided into ordinary user login, and administrator user login. The ordinary user is the registered user, such as employees and so on. The administrators are responsible for maintaining and updating the entire system and have more rights on the system. This system includes employee information entry, employee information changes, employee information inquiry, and employee information deleted. The Employee Leaves Management includes: leave information input, leave information query and statistics leave information. Employee Discipline Management includes: input information punishment, query information punishment.
-1. User login Management is divided into ordinary user login and administrator login. When ordinary users log on, the system will give him low authority to meet the basic needs of ordinary users. When the user is an administrator, the system will assign a higher authority in order to achieve the system's updates and maintenance by the administrator.
-2. The Employee Information Management is mainly the basic information management for employees. Employees can view the personal information page their own such as (name, address, sex, minority status, etc.,) when they enter system and do not have any right to edit and manage of the information as defined by HR Policies of the organization. They can edit personal information only as defined by HR administrators of the organization and also uploads their personal photographs into the system. 
-3. The Employee leaves Management is the assessment of the daily work of employees. The employee worth an annual leave when he has at least one year of continuous service to be eligible for this type of leave. The employee can request another leave (maternity, satisfactory, without pay, etc.,) as well as a local leave period of seven days for a while if an employee did not complete the year on his appointment and will be in cases necessary only. The employee can send request leave to the administrator after getting employee's to initial approval from the senior management for submission of the application. The administrator can approve or reject the approval.
-4. The Employee Discipline Management is the It encourages harmony and cooperation among employees as well as acts as a morale booster for the employees. In the absence of discipline, there will be chaos, confusion, corruption and disobedience in an organization. If the employee has committed any breach, the senior management will determine the type of offense and the punishment necessary. After the notify system administrator, such as (dismissal, written reprimand, etc.) when the employee gets on three written reprimand the administrator will notify senior management to take appropriate procedures against the employee such as separating the employee or transmission in the same or the outside institution.
-"""
-
-HRIS_UML = """
-Classes:
-User()
-Administrator()
-Employee(string name,string adress,boolean sex,string minorityStatus,string photo,EmployeeRole role,int leaveBalance)
-LeaveRequest(LeaveType leavetype,ApprovalStatus approvalStatus,date startDate,date endDate)
-DisciplineRecord(string offenseType,PunishmentType punishmentType)
-
-Relationships:
-1 LeaveRequest associate 1 Employee
-1 DisciplineRecord associate 1 Employee
-
-Administrator inherit User
-Employee inherit User
-
-"""
 
 Member_description = """
 常见的用户权限管理的表结构设计，基本的关系如下：一个用户可以拥有多个角色，一个角色可能有多个用户；一个角色可以拥有多个权限。要求实现如下查询功能：1）以根据一个用户找到该用户对应的所有角色，以及每一个角色对应的所有权限信息；2）可以根据一个角色找到该角色下的所有权限，以及拥有此角色的全部用户信息；3）可以根据一个权限找到具备有此权限的所有用户信息。
@@ -50,73 +24,13 @@ Privilege(long pid, string title,Privilege(),   setRole(), getRole(), getInfo()
 # sports game management system, # 体育比赛管理系统
 # 电竞比赛管理系统 
 # 直播售卖物品统计系统
-educational_description = """ 
-A simple educational management system that can implement the following functions:
-1) Manage student information, including student ID, name.
-2) Manage course information, including course ID, course name, course credits, and course description.
-3) Manage students' course enroll time and grades. The student can take the same course multiple times.
-4) Query all the unique courses taken by a student.
-5) Calculate a course grade, which is the highest score the student have earned.
-6) Calculate the credits earned by a student. The credit of a unique course is only counted toward the result if the course grade is 60 or above.
-"""
-# 5) Calculate the grade point for each course taken by a student. The grade point is determined as follows:
-#     - Below 60: Grade point = 0
-#     - 60-70 (inclusive): Grade point = 2
-#     - 70-80 (inclusive): Grade point = 3
-#     - Above 80: Grade point = 4
-# 6) Calculate the student's average grade point. The average grade point is calculated as:
-# Average Grade Point= (Grade Point of Course 1 * Credit of Course 1 + Grade Point of Course 2 * Credit of Course 2 + ...) / (Credit of Course 1 + Credit of Course 2 + ...)  
 
-"""
-简易的教务系统，能够实现以下功能：
-1）管理学生基本信息，学生信息包含学生编号、姓名等信息。
-2）管理学生的课程信息，包括课程编号、课程名称、课程学分、课程简介等信息。
-3）管理学生所选的每门课程的选课时间和成绩。同一门课程可以重复选修多次。记录最高成绩为该课程的成绩。
-4）查询学生所修的所有课程。
-5）查询学生所修的某一门课程的成绩。
-4）计算学生已获得的总学分。每门课成绩大于等于60分，学分才能算入总学分。 
-5）计算学生选修的每门课程的绩点。成绩在60分以下、60分-70分（含70分）、70分-80分（含80分）、80分以上，那对应的绩点就是0、2、3、4的标准。
-6）计算学生所获得的平均绩点。平均绩点=（课程1绩点*课程1学分+课程2绩点*课程2学分+...）/（课程1学分+课程2学分+...）。
-"""
-educational_uml = """
-```plantuml
-@startuml
-note:  class diagram
-
-class Student {
-    - string sid
-    - string name
-
-    + double calculateEarnedCredits()
-    + List<Course> queryUniqueCoursesEnrolled()
-    + double calculateCourseGrade(Course course)
-}
-
-class Course {
-    - string cid
-    - string name
-    - double credit
-    - string description
-
-    + double getCredit()
-}
-
-class Enrollment {
-    - double score
-    
-}
-
-Student "1" *-- "0..*" Enrollment : enrollment
-Enrollment "*" --> "1" Course : course
-
-@enduml
-```
-"""
 
 
 System_description = """
 考试管理系统，能够实现以下功能：
-1）管理员创建和安排考试
+1) 创建系统用户角色，包含管理员、学生、老师。角色信息包含用户编号、姓名、联系方式等信息。
+1）管理考试考场信息，包括考场编号、考场名称等信息。
 2）学生参加考试，提交答卷
 3）老师批阅考试，给出成绩
 """
@@ -140,7 +54,7 @@ The teaching management system for college teachers can realize the following fu
 
 """
 
-Uni_UML = """
+University_UML = """
 ```plantuml
     @startuml
         note:  class diagram

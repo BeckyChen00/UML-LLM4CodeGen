@@ -1,0 +1,79 @@
+Practices for Lesson 1: Introduction to Modeling
+Practices for Lesson 1: Overview
+Overview
+In these practices, you will cover the following topics:
+Practice 1-1: Given a business description, identify business objectives, assumptions, critical success factors, key performance indicators (KPIs), and problems
+Practice 1-2: Using interview notes, identify business functions and entities, and attributes
+Practice 1-1: Identify Key Business Information
+Overview
+In this practice, you will use an interview with the CEO of a major law firm to identify key business information that will serve as the beginning of your data modeling analysis.
+Tasks
+Read the interview notes below.
+Identify and write down:
+Business objectives
+Assumptions
+Critical success factors
+Key performance indicator (KPI) problems
+Problems
+Source—Interview with the CEO of Bailey and Associates Law Firm
+“Our mission is to provide our clients the highest quality, world-class legal services and be a key part of our client’s journey to success, supported by our highly qualified and skilled team.
+We are focused on delivering excellent results for our clientele. Our success depends on close coordination between our clients and our attorneys.
+Our firm grew faster than we had imagined, and now there are ‘cases lying all over the place.’ Due in part to the large growth, we have had issues with document and case tracking. We do not want to risk cases being lost due to documents being lost or mishandled. We must stay compliant with regulations. 
+Given our current manual and paper-based processes, we are limited in how many new cases can be handled by our team. We want to be able to leverage our excellent staff to deliver our world-class services to even more clients. Ideally, we’d like to increase case volume by 10% in five years. Currently, the staff uses different means of tracking cases, volume, and billing. Some use spreadsheets, and some use paper and pencil. We must address these bottlenecks by introducing a comprehensive, accurate, fast, cost-effective, and convenient reporting system.
+We need to automate our case and document management systems to meet these goals.
+The systems must be easy for those who need to be computer literate. We want current modern-looking applications that utilize the web and mobile so that our lawyers, legal assistants, and clerical staff can easily access their casework from anywhere.
+Ideally, we would like our clients to be able to track their case progress online as well.
+We also hope that the automation will improve productivity by automating ad hoc processes so that our team uses the same systems and processes, thus improving the cost-effectiveness of our services. We aim to improve our margin by at least 8% over the next three years. By all staff using the same processes, we may be able to predict better our case success percentage, staff retention, and customer satisfaction will not be negatively impacted. 
+Our revenue margin should be at least 20%, and staff retention should be below 5% turnover. The new system must at least meet these measures.
+Current processes are hard to use, so retaining newer, qualified staff is difficult. Automation would reduce the tedious workload on our staff with the expected increase in morale and retention.”
+Solution for Practice 1-1
+Business objectives
+Increase case volume by 10 percent in five years
+Improve margin by at least 8 percent over the next three years
+Assumptions
+Easy-to-use system for those who are not computer literate
+Current modern-looking applications that utilize web and mobile
+Critical success factors
+Close coordination between our clients and our attorneys
+Stay compliant with regulations
+Key performance indicators (KPIs)
+The revenue margin should be at least 20 percent 
+Staff retention should be below 5 percent turnover
+Problems
+Cases being lost due to documents being lost or mishandled
+Practice 1-2: Identify Candidate Entities and Attributes
+Overview
+In this practice, you will identify candidate business functions, entities, and their attributes.
+Tasks
+	•	Read the interview notes below.
+	•	Identify and write down:
+Business functions
+Entities
+Attributes
+Source: Interview with senior partner
+“I’m Alan Cheetham, the senior partner in a large, diversified law firm. My firm, Bailey and Associates, handles various cases, including traffic violations, domestic disputes, civil suits, and homicide cases.
+We assign cases to attorneys to handle the legal proceedings. The attorneys must be able to find their cases and the events associated with them regularly and in a timely fashion.
+Events have special codes like O for Open, T for Trial, and L for Lost, and there must always be an event status for every case. It’s crucial to log the exact date and time when the actions on a case occurred for both billing and activity tracking purposes. Cases can be closed and reopened.
+The information we need to keep about a case includes its description and a complete list of related documents.
+The case is created on behalf of a client the firm represents. Some clients are individuals, and some are organizations.”
+Solution for Practice 1-2
+Function candidates
+Handle case
+Assign attorney
+Search and find the case
+Create case
+Create event
+Find event
+Bill client
+Record activity
+Close case
+Reopen case
+Entity/Attribute Candidates
+Partner, Associate, Attorney, Lawyer, Client, Person
+Name
+Organization, Firm
+Name
+Case
+Type, Description, Documents
+Action, Event
+Code, Date, Time

@@ -1,0 +1,22 @@
+User Interfaces 
+The application will have a task-based screen interface for increased usability and workflow pace. The interface will use accelerator keys heavily to allow limited "keyboard-only" application use. 
+A task pane will be available in all workflow scenarios to allow easy access to online help and next-step options. The navigation options on every screen will be similar to lower or eliminate the application learning curve. 
+Input confirmation and error notification will be consistent throughout the application. 
+Themeing allows consumers to use the application in the context of the ABC Paint website. In contrast, ABC Paint employees may use the new system in the familiar environment of an enterprise LAN. 
+A Pointing device will be required for color selection, for example, when matching colors or using the graphical color-chooser. 
+Hardware Interfaces 
+The application depends on existing hardware for a display device and data entry via a keyboard and Pointing device. The new system does not support legacy monochrome displays. The application provides minimal support for client computers without a Pointing device. 
+Display dependency: The client computer must have a display device capable of display of 16.7 million colors or greater. Colors displayed on the target client's computer will only be accurate when the device is calibrated correctly. 
+Keyboard: The keyboard is used to enter and place Paint name and paint number searches. The keyboard also provides "keyboard-only" application functionality when a Pointing device is unavailable. 
+Pointing device: The Pointing device provides intuitive, fluid control of the application for less sophisticated consumer users and ease of use for the graphical color chooser interface. 
+
+Software Interfaces 
+The ColorKast software will interface with other software to store paint information, collect data, and match and translate paint color values. 
+Interface 1: Connection to the database for information storage for paint number, name, collection, and company. 
+Interface 2: Database connection for translation of color search, matching, and paint number scheme. 
+These connections are implemented on the server. 
+The interface protocol is not specified
+but will meet the requirements of the intended interaction.
+Communications Interfaces 
+This product will require communication via the Hyper Text Transfer Protocol (HTTP) to complete transaction-based services with client computers. As identified in the Assumptions and Dependencies section 2.7, this product requires a web browser. The Web Browser must comply with standards for HTTP version 1.0 or 1.1. HTTP version 1.0 is a well-founded and highly supported protocol. Now considered legacy by some organizations, this is a safe foundation for the product. 
+The product also indirectly requires some network connection to the internet, over which it may communicate in HTTP. This network connection assumes a physical or wireless connection from the client computer to a consumer Internet Service Provider (ISP) or enterprise environment Local Area Network (LAN).

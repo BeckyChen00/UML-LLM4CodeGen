@@ -1,0 +1,24 @@
+This section is subdivided into ten main subsections: Initialize 
+Operational Parameters, Initialize System, Validate Temperature, 
+Monitor Temperature, Determine Utilization, Generate H/C Signal, 
+Generate Alarm Data, Event Data, Change the Thermostat Setting and Generate Reports. Each subsection describes the software requirement for that individual software component of the THEMAS system. 
+ 
+Initialize Operational Parameters 
+The following sections describe the Initialize System component of the THEMAS system. 
+ 
+Load H/C Unit Definitions
+Introduction 
+The THEMAS system shall control the heating and cooling units defined as part of the THEMAS system. The definitions of the individual heating and cooling systems reside in an initialization file. The system shall read this file, and the definitions shall be derived from the initialization data in the file. 
+Inputs 
+Initialization Data 
+Processing 
+The THEMAS system shall use the information in the initialization data file to determine which heating and cooling units are part of the THEMAS system. One heating and cooling unit correspond to one thermostat in each of the four quadrants on each of the three floors of the office building.
+
+
+Load Thermostat Definitions 
+Introduction 
+Each thermostat shall have a unique identifier by which that thermostat is identified in the THEMAS system. This procedure will load these definitions into the THEMAS software. 
+Inputs 
+Initialization Data 
+Processing
+Each quadrant of each floor shall have a thermostat to be used to provide temperature data to the THEMAS system. The initialization file shall contain a unique identifier for each thermostat that the system is to monitor. These identifiers shall be read from the initialization file and loaded into the THEMAS system during the initialization process.

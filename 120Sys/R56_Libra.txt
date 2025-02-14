@@ -1,0 +1,43 @@
+Submit Job
+Introduction
+This functional feature deals with the end-user (can also be used by the administrator) and is facilitated by the interface of the Sun Grid Engine cluster management system. Hence, it is linked to the scheduler but does not interface directly with the scheduler. However, the SGE interface will need to be adapted to include additional submission parameters that a user needs to submit which are not already supported by SGE. This may alternately be done through a command-line interface. 
+Inputs
+User Information – relevant user data such as name and authentication ID must be used to submit a job to the cluster. 
+
+Job Information – about the job that the user wants to submit and already pending jobs to determine whether the cluster can accept more jobs and cater to the particular user's job. The job details are provided in the functional feature Initialize Job.
+
+Cluster Information – Cluster Type and Scheduling mechanism details, Current Load Status, Submission Directions, and Criteria.
+Processing
+The cluster decides whether it is even open for job submissions and whether the user trying to submit a job is a valid user. This decision differs from the Accept/Reject Job feature described later on, which deals with the situation when the cluster is open for job submissions but will decide on whether to accept or reject a job based on job parameters such as the budget provided and the deadline specified.
+Outputs
+Boolean: Whether the cluster is accepting submissions or not.
+Boolean – User verified or not.
+
+View Job Status
+Introduction
+This feature will allow the user or administrator to view details about the job that has been submitted and the progress of the execution of the job.
+Inputs
+User Id and Password – to ensure that only the appropriate user can see the job status
+Processing
+Show the user the available options for the submitted job and information about the progress of the job execution. Process selected options if choices are provided to the user to view different aspects of job information.
+Outputs
+User view of available options about jobs submitted by the user.
+Delete/Change Job
+Introduction
+This feature may be available to both the user and the administrator to cancel a job or, under specific circumstances, change a job parameter. Parameters such as deadline and cost are crucial to job scheduling and would not normally be changeable. However, this may be permitted if the user wishes to specify a different output directory or a delayed deadline. 
+Inputs
+User Id and Password: Ensure that only the appropriate user can delete/change the job.
+Processing
+Remove the job from the queue and update the cluster status. Revise scheduling decisions about resource allocation to pending jobs and submission of new jobs. 
+Outputs
+Updated cluster information and scheduling decision – CPU load, node status, queue length, quanta allocated to pending jobs, revised expected finishing deadline of pending jobs. These outputs are facilitated by the functionality of the Sun Grid Engine cluster management system and are not independently produced by the Libra scheduler.
+
+Initialize Job
+Introduction
+This main functional requirement prepares the scheduler for eventually scheduling and executing a job. The Libra scheduler performs it once a job has been accepted by SGE, with information from the scheduler. 
+Inputs
+The information submitted by the user about the job, as well as the job id assigned by SGE.
+Processing
+Two processes are performed as part of this function: the job details are retrieved, and then these details are set in variables representing the state of the cluster and its queues. The parsed parameters are passed to the scheduling module, where the job may be accepted or rejected. 
+Outputs
+The output comprises the set of variables that represent job information submitted with a job. Hence, the exact job details are output: Job details – Job Id, Job type, Standalone Execution time, Location of executable and input data sets, System Type, Budget, and Deadline.

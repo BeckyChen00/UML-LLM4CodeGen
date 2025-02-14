@@ -1,0 +1,19 @@
+System Features 
+Boot Menu 
+After booting your computer with GParted Live, this is the first screen you see. 
+GParted provides some other modes other than the first default. These include loading to RAM only, safe graphic settings, and failsafe mode. You can also boot your computer's operating system (if any) and run RAM tests using Memtest86+. Selecting the first option advances the application forwards and presents us with the next screen. 
+Select Keymap 
+The keymap is the layout of symbols on your keyboard. Different keymaps are supported; this screen gives info about them. The default option (don't touch the keymap) is the recommended one. 
+Language Selection Menu 
+Selecting the keymap you want brings you to the language selection menu. 
+GParted Desktop 
+On the desktop, you can find all the program's functions. 
+A list of a wide variety of supported languages is displayed. You then enter the number that corresponds to the desired language. After that, you are presented with a video mode preference menu. The default value you type is 0, which loads the GParted Live application. If X‐window graphical environment fails to load, you can type 1 for manual configuration or 2 for going to the command line. 
+From here, you can click on exit to quit, take a screenshot of the desktop or a window, open the terminal, open the main GParted window, find some info about GParted and its packages, or launch the screen resolution application. 
+GParted Main Window 
+From this window, you can perform all the actions supported by GParted. 
+There is a menu bar on the top of the window, with each option (GParted, Edit, View, Device, Partition) corresponding to a set of actions you can perform on a disk. Under that is a bar containing the program's most common functions, which you can perform on the drive (hard disk, USB flash, etc.) selected from the drop-down menu on the far right. Then a graphical representation of the selected drive's partitions appears, together with a more detailed list under that. 
+Refresh Connected Devices 
+From GParted‐>Refresh Devices, you can refresh the system's list of connected devices. This can be useful if, for example, you plug in a USB flash drive after GParted has booted. This function enables the recognition of the drive. 
+Undo & Apply 
+Every time you operate it, it goes into pending mode. Then, you can undo it if you regret your choice, or go ahead and click apply for the changes to happen. This can be done from Edit‐ >Undo Last Operation, Clear All Operations and Apply All Operations. Clear all removes every pending operation from the list. You can also undo and apply from the respective buttons on the main functions bar.

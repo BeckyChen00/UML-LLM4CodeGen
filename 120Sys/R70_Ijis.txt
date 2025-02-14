@@ -1,0 +1,41 @@
+Use Case Specifications – Submit Request for Appointed Counsel
+
+Description
+The purpose of this use case is to describe the activities involved in submitting a Request for Appointed Counsel to the Office of Attorney Appointments.
+Supports Objective(s) 
+
+Enable law enforcement agencies to capture defendant and incident information and supporting paper documents within 48 hours of arrest.  
+
+Enable magistrates to electronically review request(s) for counsel and submit the request(s) for counsel within 24 hours of the indigency hearing.
+Actors
+Defendant
+Detention Facility Officer
+Magistrate 
+Office of Attorney Appointments
+City Clerk
+Notary
+Flow of Events
+Basic Path
+This use case starts after the Defendant has been arrested and transported to a Detention Facility.
+Detention Facility Officer captures Defendant, Incident, and Financial Information.
+Defendant swears to and signs Financial Affidavit.
+Detention Facility Officer witnesses and signs Financial Affidavit. 
+Detention Facility Officer schedules Indigency Hearing. 
+The Magistrate informs Defendant of the right to request the appointment of counsel and asks whether Defendant wants a Court Appointed Attorney.
+Defendant requests the appointment of a Court Appointed Attorney.
+Magistrate reviews Financial Affidavit.
+Magistrate interviews/questions Defendant.
+The Magistrate determines that Defendant is indigent.
+Defendant and Magistrate sign Request for Appointed Counsel. 
+Magistrate submits Request for Appointed Counsel to the Office of Attorney Appointments.
+Alternative Path 1
+Defendant waives the right to Court Appointed Attorney
+This alternative path replaces the basic path beginning at step 6.
+Defendant waives the right to Court Appointed Attorney.
+Defendant signs Waiver of Appointed Counsel.
+Magistrate submits Waiver of Appointed Counsel to the Office of Attorney Appointment.
+Alternative Path 2
+The Magistrate determines Defendant is not indigent
+This alternative path replaces the basic path beginning at step 9.
+The Magistrate determines that Defendant is not indigent.
+Magistrate submits notice of indigency determination to the Office of Attorney Appointments.  

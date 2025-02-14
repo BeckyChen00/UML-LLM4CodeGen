@@ -1,0 +1,31 @@
+IS – Input Services 
+Input Services provide the ability for DUAP:
+To interact with other systems providing data to DUAP.
+The system shall collect probe vehicle data. 
+The ability to collect probe vehicle data is one of the primary purposes of the DUAP project. 
+The DUAP data elements shall include probe vehicle data fields corresponding to the SAE J2735 format as enumerated in APPENDIX C - SAE J2735 Probe Data Elements. 
+Probe Data Elements for probe data elements to be included. 
+The DUAP Input Services shall be able to collect probe vehicle data from the VII Proof of Concept (POC) Probe Data Service (PDS) using the X-031 interface. 
+The ability to collect probe vehicle data is one of the primary purposes of the DUAP project. 
+The DUAP Input Services shall be able to collect probe vehicle data from the Chrysler Fast Feedback (telematics demonstration) fleet using the Chrysler telematics interface. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from Southeast Michigan Snow and Ice Management (SEMSIM) using the SEMSIM interface.
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from the Suburban Mobility Authority for Regional Transportation (SMART) Transit using the SMART Transit interface. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from The Rapid Transit using the “The Rapid Transit” interface. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from Ann Arbor Transit using the Ann Arbor Transit interface.
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from the Detroit Department of Transportation (DDOT) Transit using the DDOT interface. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from the MDOT fleet using the MDOT probe vehicle data interface. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from truck fleets using the truck fleets’ interfaces. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP Input Services shall be able to collect probe vehicle data from the car rental fleets using the car rental fleets’ interfaces. 
+The specific format of the interface is to be determined in the design of the prototype. 
+The DUAP System shall be able to collect weather data. 
+They are inferred to be a high-level requirement since winter operations are one of the critical aspects of the DUAP project. 
+The DUAP Input Services shall be able to collect weather data from the Road Commission for Oakland County (RCOC) Road Weather Information Systems (RWIS) using the RCOC RWIS interface. 
+The specific format of the interface is to be determined in the design of the prototype.

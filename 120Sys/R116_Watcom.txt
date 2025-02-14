@@ -1,0 +1,35 @@
+Key Components of the Open Watcom C Compiler and Linker 
+Certain parts of the Open Watcom source code are especially important for our project. Such parts will be referred as “components” throughout this document, although some of them are logically interrelated source files, and others are subprojects (subdirectories under the Open Watcom source tree). The informal names defined here will be used in the further parts of this document. 
+Each component is described in two sections. First section describes the purpose of the component, and provides the list of core source files. Second section describes the principles of function of the corresponding component. Important functions, data structures, and constants are described as well. 
+
+ORL
+Definition 
+Abbreviation of “Object Reading Library”. Located in $OWROOT/bld/orl. 
+ORL is designed for reading various formats of object files: ELF, OMF, and COFF. We are interested mainly in the ELF stuff ($OWROOT/bld/orl/elf). 
+ELF linking information (e.g. relocation entries) is mapped to abstract ORL linking information. For example, ELF relocation type R_386_32 is mapped to ORL_RELOC_TYPE_WORD_32.  
+Description 
+There are several handle types defined in ORL. Most important are orl_sec_handle and orl_symbol_handle. There are many functions operating with sections and symbols: 
+ORL is used by Open Watcom Linker, mostly in $OWROOT/bld/wl/c/objorl.c. 
+
+WLCore 
+Definition 
+Synthetically selected part of the Open Watcom Linker ($OWROOT/bld/wl), performing the basic linking tasks (e.g. relocations), and interacting to ORL. Main files: obj2supp.c, objcalc.c, objorl.c, objpass1.c, objpass2.c. 
+Description 
+We are interested mainly in ELF linking. Since ORL is used to read ELF object files, there is an interface to ORL implemented in objorl.c. The linker uses other data structures than ORL, so there is another mapping implemented in the mentioned file. Relocations are mapped in the following way: 
+
+Load ELF 
+Definition 
+Part of Open Watcom Linker ($OWROOT/bld/wl), designed for writing executable files in ELF format. Consists of two files: loadelf.c and loadelf2.c. 
+Description 
+Currently, LoadELF is able to create only ELF executable files (shared objects are not supported). Most of the work is performed in loadelf.c. The second file, loadelf2.c, contains only the routines for creating ELF symbol tables. 
+The main function is FiniELFLoadFile(). The following tasks are performed there: 
+Initialize the ELF header, program headers, and section headers. 
+Write groups (i.e. code and data) to the ELF file (program and section headers are changed during this process; i.e. sections: .text, .data, and .bss). 
+Write relocation section (.rela.text). 
+Write DWARF debug information (if needed). 
+Write symbol table (.symtab), hash (.hash), and strings (.strtab). 
+Write section strings (.shstrtab). 
+Write section headers. 
+Write DWARF trailer (if needed). 
+Rewind and write the ELF header and program headers. 
+Task 1 is performed in void SetHeaders( ElfHdr *hdr ). Sections are initialized in void InitSections( ElfHdr *hdr). 

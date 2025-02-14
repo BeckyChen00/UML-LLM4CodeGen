@@ -1,0 +1,81 @@
+User Functionality
+
+Apply for an Account
+End users can apply for an account directly through the web portal. 
+ 
+Users must enter all required fields. 
+The user must enter their NCAR Gatekeeper username.
+ 
+View account details 
+ 
+The user can view their current account details 
+The user must be logged in to the portal 
+Display all the account properties 
+Password will not be displayed 
+ 
+Delete account 
+ 
+The system shall provide a means to request that the user account be deleted from the system. 
+The system shall notify the portal admin(s) about the deleted requests. 
+ 
+Login to system 
+ 
+The system shall require the user to enter their username and password to log in to the system. 
+ 
+The user shall be prompted at the beginning of the session for their credentials; once logged in, they will not be prompted for additional or different credentials. 
+All login actions shall be protected by using secure data channels 
+The system shall lock the account after three login attempts. This will require portal admin action to unlock the account.  
+Admin users will be authenticated against the portal database. 
+Users will be authenticated against the NCAR Gatekeeper system. 
+
+Administrative Functions 
+Approve Accounts 
+ 
+Portal Admin(s) will receive an e-mail notification when new accounts are ready for review. 
+Display a list of all accounts pending review 
+Approve specific account 
+Approve account 
+Add message 
+Reject account 
+Add message 
+Assign Template Submission Privileges 
+ 
+The system shall allow portal administrators the ability to control template submission rights. 
+
+List Accounts 
+The portal admin shall be able to list the user accounts in the system. 
+List all user accounts 
+List accounts pending approval 
+List all account deletion requests 
+List all locked accounts 
+ 
+Delete Accounts 
+ 
+Delete a specific user account 
+Their operation will not be reversible 
+Data removal 
+Templates 
+All user-submitted templates will NOT be deleted from the disk 
+Shared Objects 
+All shared objects that have NOT been referenced by dependent projects will be deleted. 
+All other objects/projects 
+It will be deleted entirely from the system. 
+ 
+Lock/Unlock accounts. 
+The admin can lock accounts. 
+The user will be notified via e-mail. 
+Further logins will not be permitted until unlocked 
+Currently executing jobs will continue to run until the job ends or is terminated by the portal admin 
+The admin can unlock accounts 
+Once unlocked, the user can log in to the system and resume use. 
+ 
+Job Management 
+ 
+The portal admin will have a display of all running jobs sorted by user 
+The status of each job and tile will be visible to the portal admin 
+The portal admin shall be able to terminate any user’s running jobs. 
+ 
+Assign User Roles 
+ 
+The system shall assign all user accounts to the scientist role by default. 
+The system shall allow the portal admin to change a user’s role in the system. 

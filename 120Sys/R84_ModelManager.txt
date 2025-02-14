@@ -1,0 +1,52 @@
+Set up and submit a model job 
+This feature allows users to set up and schedule a model job using MM's Job-Setup module. Suppose the user is logged on to the system and has made the following choices "Submit a new job" -> "Set up a new model job." S/he is then presented with two more options: "Weather FDDA" and "Climo." 
+Use Case "WeatherFDDA": Setting up a real-time or offline FDDA job. 
+This feature aims to automate the setup of new real-time and offline FDDA jobs. This use case describes the setup of GMOD jobs, re-runs, and case studies. At this point, RTFDDA ensemble jobs will be submitted to the MM as 'by hand' jobs or a job configuration file. The MM will provide a default GMOD job configuration, which can be changed by the user (TBD: Define the defaults for a GMOD job). It is important to note that the model manager will accept and run "custom" GMOD jobs. These jobs are also set up through the Setup module but do not use the default GMOD configuration. For a "custom" GMOD job, e.g., the user may choose to supply their input data, own pre-processors, or a customized version of an MM5 executable. 
+MM's Job-Setup module will allow the user to substitute the default configuration. Still, it is the user's responsibility to ensure that these scripts, executables, etc. reside on the cluster or clusters on which the job will be running. Submitting a "custom" GMOD job through the Job-Setup module will allow the user to save the job's configuration with the MM. 
+Primary actor: Meteorologist, software engineer Goal: Set up and run a real-time and offline GMOD job 
+Action Sequence: 
+The user chooses to "Set up a Weather FDDA Job." 
+The user may select a cluster where the job should run on. 
+The user decides what model should be used: MM5 or WRF. 
+The user defines a JOBID. 
+The user determines domains (TBD): 
+Creates own domains (Note: This may only apply to MM5 jobs. From earlier 
+discussions: creating domain files for WRF takes a long time.) or 
+chooses between several predefined domains or 
+submits own TERRAIN files 
+The user defines when a job will be run; and what cycle to run. If the cycle time is past, the user is prompted to specify whether the job is a "case study" or "re-run." 
+The user supplies job-specific information, such as cycle intervals, forecast length, and additional applicable information. 
+The user can specify whether to write restart files and the frequency of how often they are to be written (TBD: Is this a correct statement, and does frequency only apply to WRF?). 
+The user can choose between predefined sigma-level configurations or supply their sigma-level configuration. 
+The user has the option to specify the number of nodes to use. 
+Users can choose to receive an email notification upon start, end, and termination of the job. 
+The user chooses between standard or custom IC/BC data sources: 
+standard: ET A, A VNFTP (GFS), GFS004 
+or 
+custom: provide data source (e.g., host:Full_Path_to_Dir) 
+or 
+The user must specify the data source for offline jobs, i.e., location (MetVault or a directory) and period. Important note for re-runs: if the input data is obtained from the MetVault, then MetVault returns the available data and uses it in that cycle. 
+TBD: Determine standard IC/BC data source and standard pre-processors. 
+Depending on the choice above, the user can provide a custom IC/BC pre-processor or choose the standard: 
+standard processing or 
+provide own pre-processing script 
+The user is given the option to run additional pre-processors for the IC/BC data, such as LDAS, or supply their custom pre-processor or skip this option. 
+The user chooses between standard and custom obs data sources and processing: 
+Standard: WMO, SAMS, MADIS, GTS, RAWS, okmeso, SatWinds, ACARS, etc. 
+and 
+provide custom obs source1 and custom obs processor1 
+provide custom obs source2 and custom obs processor2 
+etc. 
+or 
+The user must specify the data source for offline jobs, i.e., location (MetVault or 
+a directory) and period. Important note for re-runs: if the input data is obtained from the MetVault, then MetVault returns the available data and uses it in that cycle. 
+TBD: Define all standard observational data sources and identify their processing scripts. 
+Depending on the choice of the model, different options are given to the user: 
+MM5: This job's domain size and the number of nodes were determined earlier. Based on both choices, the user is presented with different MM5 executables. These executables have been compiled in advance. The MM will be able to retrieve the compiled info about the executables, e.g., domain size, number of nodes, number of sigma levels, etc. These few executables are standard (TBD: determine what 'standard MM5 executable' means). Or the user can also supply their executable, e.g., its location on the cluster. 
+WRF: User defines model options (TBD: determine possible model options) 15. The user chooses whether or not to run the Final Analysis; this may only apply to re-runs and case studies. 
+The user chooses whether or not to run Prelim. Analysis; this may only apply to re-runs and case studies. 
+The user chooses whether or not to run additional processing on the model output. (TBD: What exactly are the options for additional processing? Bias Correction?) 
+The user can choose to save the model output in MetVault. If 'yes,' the user must specify what output file will be sent to the MetVault. 
+The user is given the option to save and submit the job now. With no post-processing, submitting now would run IC/BC-data and obs processing and the model. 
+The user chooses whether or not to run post-processing. If 'yes,' then s/he will go through the action sequence in 3.4. (TBD: How customizable should post-processing be? In GCAT, e.g., the user can specify locations for pseudo-soundings, cross sections, pseudo-obs, etc. Do MM users at RAL need that level of post-processing customization? Do MM users at the ranges need that level of post-processing customization, or would a set of pre-configured post-processing options be sufficient?) 
+The user can save the above job configuration. Job configurations can be saved to a file. 22. User submits the job.

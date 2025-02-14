@@ -1,0 +1,26 @@
+Requirements for the pre-VCD mapping tool 
+The following requirements can be derived for stage 1: 
+Create a standard representation of European criteria of qualitative selection and exclusion 
+A major precondition for the enforcement of stage 1 is the definition of a standard representation of European criteria for qualitative selection and exclusion. These criteria should be derived directly from Articles 45-50 of the Directive 2004/18/EC to ensure employment in Pan-European public procurement procedures. The right granularity and consistency of criteria will be essential to ensure legitimacy and to retrieve adequate mapping results. Thus the criteria may have to be iteratively re-defined according to the results of specific mappings. 
+A standard representation of common qualitative selection and exclusion criteria MUST be defined according to Articles 45-50 of Directive 2004/18/EC. 
+PEPPOL Deliverable D2.1: page 26 of 127 Functional and non-functional requirements specification for the VCD, including critical synthesis, comparison, and assessment of national vs. pan-European needs 
+The right granularity and consistency of criteria MUST be found through testing and iterative re-definition to ensure legitimacy and retrieve adequate mapping results. 
+Input will come from Articles 45-50 of Directive 2004/18/EC
+The appearance of European criteria within the Call for tenders (Notification) 
+Superset of evidence: The formal representation will become necessary as a reference data set for the mapping operations showing the relationship between all attestations. 
+The subset of evidence: The current function (mapping) input comes from specific “Calls for Tenders,” representing tender-specific requirements.  
+Correspondence between national criteria for qualitative selection and exclusion and European criteria of qualitative selection and exclusion 
+National requirements of qualitative selection and exclusion for qualitative selection and exclusion must adequately represent the national legal conditions. They must be formulated to be mapped to common European criteria for qualitative selection and exclusion mentioned by Articles 45-50. 
+National qualitative selection and exclusion requirements MUST correspond to the EC criteria in Articles 45-50.  
+National criteria for qualitative selection and exclusion SHOULD have the right granularity and should be consistent among themselves. 
+Input for the current function is taken from the National Public Procurement Acts. 
+Define a mapping template, perform mapping and ensure the legitimacy 
+As a first step, all member states do have to establish a mapping of the criteria defined in the relevant EU directive 2004/18/EC to the national attestations giving evidence to these criteria. To ensure a degree of comparability and reliability among the results, the mapping should be based on a common template. For the overall activity, it will be essential to have the appropriate legal support to ensure the legitimacy of mappings. 
+A template that ensures comparable and reliable mappings between qualitative selection and exclusion criteria and national attestations MUST be defined. 
+The members of this work package MUST perform the mapping between national attestations and European criteria of qualitative selection and exclusion. 
+The resulting template has to be computable by machines and readable by humans allowing the assembly of VCD packages through manual and automated operations. 
+Ensure legitimacy and trust of mapping 
+To achieve trust and an agreement on the mutual recognition of qualification documents as demanded in the directive, all artifacts and mapping results related to the mapping of evidence must be approved from a legal point of view. Compliances to national and European conditions must be ensured, particularly for the definition of a standard representation of common criteria of qualitative selection and exclusion, the definition of a mapping template, and the mapping between national attestations and the common criteria for qualitative selection and exclusion. 
+The legitimacy of the standard representation of common qualitative selection and exclusion criteria MUST be ensured. 
+The legitimacy of the standard mapping template MUST be ensured. 
+The legitimacy of mapping between national attestations and the common qualitative selection and exclusion criteria MUST be ensured. 

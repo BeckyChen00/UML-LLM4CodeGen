@@ -1,0 +1,20 @@
+This section describes the functional requirements. A DH Use Case Model in the Appendix provides an overview of the system functionality and shows the relationships between the DigitalHome System entities. 
+General Requirements 
+The DigitalHome System shall allow a web-ready computer, cell phone, or PDA to control a home's temperature, humidity, lights, security, and the state of small appliances. 
+The communication center of the DH system shall be a DH home web server, through which a user shall be able to monitor and control home devices and systems. 
+Each DigitalHome shall contain a master control device (the DH Gateway Device) that connects to the home's broadband Internet connection and uses wireless communication to send and receive communication between the DigitalHome system and the home devices and systems. 
+The DigitalHome shall be equipped with various environmental controllers and sensors (temperature controller sensors: thermostats, humidity controller sensors: humidistats, contact sensors, security sound, light alarms, and power switches). 
+Using wireless communication, sensor values can be read and saved in the home database. 
+Controller values can be sent to controllers to change the DH environment. 
+Thermostat Requirements
+ The DigitalHome programmable thermostat shall allow a user to monitor and control a home's temperature from any location using a web-ready computer, cell phone, or PDA. 
+A DH user shall be able to read the temperature at a thermostat. 
+A DH user shall be able to set the thermostat temperatures to between 60 °F and 80 °F, inclusive, at one-degree increments. 
+Up to eight thermostats shall be placed in rooms throughout the home. 
+The thermostats may be controlled individually or collectively so that temperature can be controlled at different levels in different home spaces. 
+A single thermostat shall be placed in an enclosed space (e.g., a room in the house) to control the air temperature. 
+For each thermostat, up to twenty-four one-hour settings per day for every day of the week can be scheduled. 
+If a thermostat device allows a user to make a manual temperature setting, the setting shall remain in effect until the end of the planned or default period. At this time, the planned or default setting will be used for the next period. 
+A thermostat unit shall communicate, through wireless signals, with the master control unit. 
+The system shall support Fahrenheit and Celsius temperature values. 
+The system shall be compatible with centralized HVAC (Heating, Ventilation, and Air Conditioning) systems: gas, oil, electricity, solar, or a combination of two or more. The system shall adhere to the American Society of Heating, Refrigerating, and Air-Conditioning Engineers [ASHRAE 2010]. 

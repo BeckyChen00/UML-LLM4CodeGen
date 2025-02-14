@@ -1,0 +1,36 @@
+Presentation of the board
+The board is a rectangular zone where the user can move some blocks. Let x be the mesure unit. The height of the board game is x; its width is x: x can't be less than 0 pixels and greater than 00 pixels. The blocks are separated by a marge of 0. x.
+There are four square blocks with a side of x.
+Four rectangular blocks have the following dimensions: a height of x and a width of x.
+One block has the dimensions: a height of x and a width of x.
+There is one square block with a side of x.
+The board is black, and the blocks are yellow.
+Block selection
+Input
+Left­clicked down on a block.
+Processing
+The game state becomes "Block replacement."
+Output None.
+
+Block deselection
+Input
+Left­clicked up on a selected block.
+Processing
+The game state becomes "Block selection."
+Output None.
+
+Block movement
+Input
+Mouse movement during the "Block movement" state. 
+Processing
+The selected block follows the mouse movement without overlapping the other blocks and exits the game zone. The selected block can' move near other blocks at least 0.0x from the other blocks.
+Output None.
+
+Undo Action
+Description
+The user can cancel a movement. 
+Input Menu selection.
+Processing
+The game displays the block positions at the places where they were before the last movement. This action is considered a movement. The "undo" action is unavailable if there is no previous movement.
+Output
+New game board display.

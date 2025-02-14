@@ -1,0 +1,18 @@
+General GUI Porting Approach 
+The Watcom GUI library depends on the Watcom Programming Interface (WPI) and Memory Tracker (TrMem) libraries. WPI is explicitly designed to port Windows functionality to OS/2 Presentation Manager (not the other way around). Both Windows and OS/2 APIs have similar and compatible designs to a large extent. GTK API is identical to Windows and OS/2 API, so extending the WPI library with GTK support would be ineffective. However, considering that the Watcom GUI library actively uses WPI calls, it seems reasonable to port most of the WPI functions in the library. 
+Since the GUI library relies on OS/2 PM and Windows API, it uses predefined types that exist only in these environments, such as HWND and HBRUSH. It will be additional work for the programmer to add appropriate type definitions in a particular file. For instance, HWND should be defined as GtkWidget*, and HBRUSH should be defined as GdkStyle*.  
+As long as in Windows and OS/2 environments, user interface controls are placed according to the specified coordinates; we must replicate this in GTK using the following widget hierarchy:   Window – Vertical Box – Scrolled Window – View Port – Fixed.
+Target System Requirements 
+GTK is broadly adopted among the major Linux distribution vendors, including RedHat, SuSE, TurboLinux. So, in general, case deployment of the ported library should not be a problem. If the target distribution does not support GTK or uses incompatible or older versions of the toolkit, the library can be linked statically; the drawback of this approach will be the increased size of the library. 
+The target system will have to satisfy several requirements when the library is shipped in source files and then compiled. Namely, it must have a C compiler and an X Window System, including the following libraries:  
+Pkg-config (only for compilation) 
+GNU make (only for compilation) 
+JPEG, PNG, and TIFF image libraries
+FreeType 
+fontconfig 
+GNU libiconv library 
+GNU gettext 
+GLib 
+Pango 
+ATK 
+GTK+

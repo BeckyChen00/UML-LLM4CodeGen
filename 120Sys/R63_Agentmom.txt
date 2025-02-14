@@ -1,0 +1,20 @@
+Use cases 
+Notify join/leave multicast group 
+The message is encrypted, or the message is not encrypted. 	 
+An agent sends notify to join/leave a multicast group. 
+The message is decrypted only if The message is encrypted. 
+For example, Agent_B and Agent_D belong to the same group, and then Agent_B wants to leave the group, and Agent_A wants to join the group. In this situation, when reorganization occurs, Agent_A, who is previously not part of the group, may send a notification message to join the group, and Agent_B, who is previously part of the group, may send a notification message to leave the group. For instance, Agent_B suffers a failure in one of its capabilities and does not want to receive any further messages from the group. Agent_A, who may be able to substitute Agent_B, is needed to be part of the group. This involves sending notifications of joining and leaving the group. 
+ 
+Send/Receive Unicast 
+The message is encrypted, or the message is not encrypted. 
+An agent sends a unicast message to another agent. 
+Another agent receives the message. 
+The message is decrypted only if the message is encrypted. 
+In this situation, Agent_A wants to communicate with Agent_B. This direct communication can happen between any two agents within the organization. 
+ 
+Send/Receive Multicast 
+The message is encrypted, or the message is not encrypted. 
+An agent sends a multicast message to the group (multicast address). 
+Other agents in the group receive the message. 
+The message is decrypted only if the message is encrypted. 
+In this situation, Agent_A wants to send a message to everyone within the group, assuming that Agent_A, Agent_B, and Agent_C subscribe to the same multicast address. This involves multicast communication since other agents who do not belong to the group cannot receive this message. For instance, an agent may want to inform everyone in the group when the assigned tasks are completed. This is more effective than unicast communication since only one copy is sent. Also, bidding/market-based protocols fit well with this kind of communication. An agent may request a bid from other agents for doing some tasks. 

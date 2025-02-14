@@ -1,0 +1,117 @@
+
+The front end for the monitoring of the issuance of ISINs must cater to the following functionality:
+BCP Requirements
+A screen that Clearing & Settlement may input manual ISINs on BCP
+Manual Updates
+A screen where issuers' codes may be updated. Refer to my previous e-mail to STRATE.
+
+Rejections JSE to STRATE
+A screen that reflects the rejections from the JSE to STRATE for the previous day. This must include the following:
+Content error or Format error (MT 598-901 or MT 598-902)
+If it is a rejection of an ISIN request, ISIN cancellation, or ISIN de-registration
+TRN reference of STRATE message
+Message type (MT 598-150NEWM/ MT 598-150DISS/MT 598-150CANC)
+Error code and details
+At the time of rejection (real-time), an e-mail must also be sent to Clearing & Settlement advising them of the rejection with the above details.
+
+Rejections STRATE to JSE
+A screen that reflects the rejections from STRATE to the JSE for the previous day. This must include the following:
+Content error or Format error (MT 598-901 or MT 598-902)
+If it is a rejection of an ISIN confirmation, ISIN cancellation confirmation, or ISIN de-registration confirmation
+TRN reference of JSE message
+Message type (MT 598-150NEWM/ MT 598-150DISS/MT 598-150CANC)
+Error code and details
+At the time of rejection (real-time), an e-mail must also be sent to Clearing & Settlement advising them of the rejection with the above details.
+
+View and print issued/de-issued/matured ISINs. 
+A screen where we can look up per ISIN.i.e.put in the ISIN, will give the details around the ISIN. This must include the following:
+ISIN Active/Cancelled/De-registered
+Date issued
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Coupon payment frequency
+Coupon payment date
+Instrument category
+Maturity date
+Coupon rate
+
+A screen where ISINs issued for the previous day may be viewed and printed. This must include the following:
+Date issued
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Coupon payment frequency
+Coupon payment date
+Instrument category
+Maturity date
+Coupon rate
+
+A screen where ISINs canceled for the previous day may be viewed and printed. This must include the following:
+Date canceled
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Instrument category
+Maturity date
+
+A screen where ISINs de-registered for the previous day may be viewed and printed. This must include the following:
+Date de-registered
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Instrument category
+Maturity date
+ 
+A screen where all active ISINs can be viewed and printed. This must include the following:
+Date issued
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Coupon payment frequency
+Coupon payment date
+Instrument category
+Maturity date
+Coupon rate
+
+This screen must also be parameter-driven so that we may request information:
+Per issuer
+Per instrument category
+Per issue date
+Per maturity date
+Per instrument category
+
+A screen where all canceled ISINs can be viewed and printed. This will be for the last 12 months due to archiving. This must include the following:
+Date canceled
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Instrument category
+Maturity date
+
+This screen must also be parameter-driven so that we may request information:
+Per issuer
+Per instrument category
+Per canceled date
+Per maturity date
+Per instrument category
+
+A screen where all de-registered ISINs can be viewed and printed. This will be for the last 12 months due to archiving. This must include the following:
+Date de-registered
+Issue or issuers participant code if this cannot be catered for. See my point 2 above and my e-mail to STRATE.
+ISIN number issued
+Identification of securities. This would be the short code X20
+Quantity issued
+Instrument category
+Maturity date
+This screen must also be parameter-driven so that we may request information:
+Per issuer
+Per instrument category
+Per de-registration date
+Per instrument category

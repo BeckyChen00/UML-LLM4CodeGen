@@ -1,0 +1,68 @@
+CTO Travel System
+
+Project Business Objective
+This project aims to implement the online travel booking engine Corporate Travel Online.   
+
+Scope
+The primary scope of this project is to implement the Corporate Travel Online booking engine. This implementation will allow all frequent domestic business travel, hotel, and car reservations to be booked by the business traveler online twenty-four hours a day, seven days a week.  
+
+The high-level Business Requirements are as follows:
+CTO shall be implemented at FFIC as the standard business travel booking tool.
+All FFIC business travelers shall use CTO to book their routine travel arrangements.
+Complicated itineraries and International travel will continue to be booked through the traditional agency configuration.
+The product works with FFIC's standard browser.
+It must be easy to use.
+Must be available 24/7.
+Must be able to accommodate FFIC's travel policies and contracts.
+The system must be available via the web.
+
+Purpose:
+Automate the tracking of travel reservations: hotel, car rentals, and airline travel. 
+The project's first phase will only track reservations – it will not make the reservations. The user will enter the reservation information, and the system will hold this for retrieval, printing, and maintenance. Phase two will interact with an online service to present choices for reservations and make the reservations with the vendors.
+
+Basic Usages:
+Users create itineraries to hold car, hotel, and airline travel reservations. The CTO should store these reservations and aid in the retrieval. An itinerary equates to a single "trip" – from the start to the return.
+
+An itinerary is composed of reservations. A reservation is for lodging, car rentals, and airline flights. 
+Each itinerary has a title, owner, start and end date, and purpose. 
+
+The system must handle the following:
+Create, retrieve, update and delete itineraries.
+Create, retrieve, update, and delete hotel reservations (locations, arrival date and time, departure date and time, price, confirmation number, method of payment, and room preferences)
+Create, retrieve, update, and delete car reservations (pickup and drop off date and time, pickup and drop off locations, fee, method of payment, confirmation number, list of people allowed to drive vehicle, insurance waived, type of vehicle).
+Create, retrieve, update, and delete airline flights (departure date, time and location, arrival date, time and location, cost, reservation number, seat number, and airline).
+The system must be flexible to handle new types as needed.
+The system must be able to retrieve, display, and print all or a portion of the itinerary.
+System retrieval must support Summary and detail display.
+The system should allow the addition of vendors and easy selection when making reservations and creating trips.
+Note: See the user screen prototypes for further information on what needs to be captured about the different types (car, hotel, air) reservations.
+
+Events:
+
+The customer creates a new itinerary (title, start, end dates)
+Customer logs on.
+Customer logs off.
+The customer changes itinerary details.
+The customer adds a lodging reservation.
+Customer Deletes Itinerary.
+Customer Changes lodging reservation.
+The customer Deletes the lodging reservation.
+
+The customer adds car reservations.
+Customer changes car reservation.
+The customer deletes the car reservation.
+
+The customer creates Transport Trip Leg.
+Customer updates Transport Trip Leg.
+Customer deletes Transport Trip Leg.
+
+Customer adds vendor.
+Customer updates vendor.
+Customer deletes vendor.
+
+Customer adds location.
+Customer deletes location.
+Customer changes location.
+
+Customer retrieves itinerary.
+The customer retrieves itinerary details.

@@ -1,0 +1,18 @@
+System Perspective 
+This document section will explain the system's functionalities, its subsystems, and how it's integrated and working together. During the system study, it was understood that twenty thousand vouchers would be sold in the first pilot period. Still, the VMU system has the provision to upgrade to meet the additional market and project needs. 
+ 
+Outline of the entire system 
+The VMU will create the vouchers and sell them to clients through distributors.  
+The distributor will submit the sales details back to the VMU. 
+Each voucher should have two portions with three tear-off voucher slips each for the Client and Partner.  
+The client and/or the partner will choose the service provider and will get treatment.  
+The first visit is called a Consultation, and if the patient is not cured, then they can go for the first follow-up and second follow-up,  
+If the patient is not cured, then the doctor will refer the patient to some other Hospital; the hospital may be another VSP or any other.  
+Each visit detail (including Diagnosis, Lab Test, and Drugs) of the patient is called a claim, 
+The VSP will submit the claim to the VMIU field office to enter those into the database,  
+The field office will validate the claim form manually and through the system,  
+If any mandatory information is missed or any false information exists, then the field office will reject the claim back to VSP, and the system will keep those claims in a quarantine area. 
+The quarantined forms will be sent back to the VSP for verification; if the VSP returns the claim with satisfactory details, the claims will be entered into the system in the following month's batch. 
+Based on the payment terms agreed by VSP, the field office will generate BiMonth or Monthly financial and medical reports and send them to the MSIU Admin team to arrange the payments for the VSP.  
+To understand the satisfaction of the client, the MSIU Admin team will get client feedback from some of the clients and send those documents to the field office to enter those into the database.  
+As mentioned above, the entire system is subdivided into six modules, and again each module is subdivided into different subsystems.

@@ -1,0 +1,30 @@
+This section describes the fundamental actions to accept inputs and produce outputs. It includes explanations of validity checks on inputs, [vendor must complete the validity check information] sequences of operations, and responses to abnormal situations. 
+Graphical User Interface (GUI) 
+The system shall have a Graphical User Interface (GUI) that allows the operator to view the system status, issue commands to change the device status, configure the system, export log data, and generate reports. 
+ 
+Input Entities (from list of entities and attributes in 4 Logical Database Requirements): All entities. 
+
+Output Entities: All entities. 
+The RLCS software shall have a login screen for the GUI. 
+The login screen shall request a username and corresponding password. 
+The login screen shall activate command control for the user if the user requests it and has authorization.  
+Command control shall be from only specified workstations.  
+If another user enables command control, and the logging-in user is of higher security, the logging-in user shall be requested to accept or deny command control. 
+The other user is notified if another user is logged in with command control, and the new user takes command control. 
+Time Stamp, User, and Workstation ID Window 
+The GUI shall indicate the current date and time, user name, and workstation location. The GUI shall also show other users currently logged in the other units within the RLCS network. 
+Control/Monitor Command Entry Screen 
+The GUI shall provide an option that allows the system user to issue commands that monitor and control the opening and closing events. 
+Based on the user's security level, the control option shall provide the user with the appropriate level of control. 
+The control option shall allow the user to set the operational status of failed devices. 
+The  RLCS software shall display information about active overrides: Which are busy and which devices have no currently active 'rules protection' against erroneous opening/closing. 
+The GUI shall provide a display of the I-15 Reversible Lane Control System facility geographic area, including a layout of the mainline I-15 and SR-163 freeway area in the same geographic area as the I-15 Reversible Lane. Screen information includes: 
+Facility status (e.g., 'Open' or 'Closed.') 
+The current direction of traffic flow. 
+Customer eligibility (e.g. 'RLCS and FasTrak Only', 'All Traffic') 
+Current facility boundaries extend one mile in either direction. 
+For alarm status, the GUI shall also issue an audible alarm, and the icon shall be different from the okay status for that device. The visual alarm shall include a change of color for the affected device.   
+There shall be an option to turn off the audible alarm permanently or temporarily for a given period.  
+The alarm icon shall automatically change to the normal status icon when the alarm condition is removed. Alarm conditions shall be configurable on the screen. 
+When a device status has been overridden, it shall appear with a different color from the normal and alarm status colors on the screen. 
+Status information shall continue to display when no user is logged on to the workstation and will be updated every 2 seconds.

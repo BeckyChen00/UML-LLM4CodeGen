@@ -1,0 +1,17 @@
+ICP Services
+FTSS shall provide an API call to allow the ICP application to determine which channel it resides in.
+FTSS shall provide an API call to allow applications to send a status message to FDIR running on the FCP.
+FTSS shall provide "immediate" message-passing services as "pipes." "Pipes" provide fast data throughput between virtual groups or within a virtual group when minimal data latency is necessary.
+FTSS shall route messages to the proper virtual group(s) and socket.
+If there is insufficient space to enqueue a message for transmission, FTSS shall [8] return an error to the corresponding task. Sockets are non-blocking and place the burden of polling on the application task.
+FTSS shall [9] provide the following error handling information as feedback to the "pipe" API calls:
+notification of invalid or out-of-range application-specified parameters on all operations,
+pipe "open" of the endpoint (SENDER/RECEIVER ) by a non-assigned virtual group,
+notification upon receiving a message that the previous message was overwritten,
+connection/transmission error,
+FTSS cannot create/open pipe, and
+notification that a received message was truncated to the buffer size provided.
+FTSS shall only allow a single task residing on each specified virtual group to "open" the respective end of the pipe.
+The presence or absence of a NEFU ICP shall not impact the FTSS software (i.e., the FTSS ICP load will not be different).
+The FTSS shall provide an API call to retrieve the current minor frame number sent from the FCP over the VME interface. Note that the NEFU ICP will not have this information since it does not have an FCP processor.
+The FTSS shall provide an API call to retrieve the current MET value sent from the FCP over the VME interface. Note that the NEFU ICP will not have this information since it does not have an FCP processor.

@@ -1,0 +1,48 @@
+The Clarus system shall collect, quality control, and disseminate environmental data. "Environmental data" includes all NTCIP 1204 data (summarized in Table 1).
+The Clarus system shall be able to access in-situ environmental observations from data collectors. Access to data may be conditional based on data-sharing agreements to be reached with individual data collector organizations.
+The Clarus system shall be able to access remotely sensed environmental observations from data collectors.
+The Clarus system shall calculate derived environmental data from observations.
+The Clarus system shall be able to receive roadway weather measurements derived from VII data.
+The Clarus system shall allow access to new surface transportation-related observed environmental data. Access can only be provided when new data sources are established and available.
+The Clarus system shall accept environmental data derived from images. "Images" would include CCTV and still images.
+Clarus system shall accept surface condition data derived from surface images. "Surface condition data" may include, for example, "dry", "wet", "icy", "snow-covered", or "flooded".
+The Clarus system shall accept atmospheric condition data derived from atmospheric images.
+The Clarus system shall accept weather hazard reports containing the hazard type, location, and timeframe.
+The Clarus system shall acquire and disseminate National Weather Service (NWS) watches, warnings, and advisories.
+The Clarus system shall be able to retrieve environmental data directly from environmental sensor stations. The system may have to have its own "collector" component (as shown in Figures 1 and 2) to implement this requirement.
+The Clarus system shall minimize the time for data acquisition.
+The Clarus system shall process data as they are received.
+The Clarus system shall collect pavement-related observations. "Pavement-related" observations could include precipitation accumulation, flooding, or treatments.
+The Clarus system shall accept environmental data from railway systems or in situ ESS along tracks.
+The Clarus system shall accept environmental data from railroad vehicles.
+The Clarus system shall accept environmental data from (roadway) vehicles.
+The Clarus system shall accept environmental data from maintenance and construction vehicles.
+The Clarus system shall accept environmental data from service patrol vehicles.
+The Clarus system shall accept environmental data from transit vehicles. "Transit vehicles" include watercraft (ferries) and buses.
+The Clarus system shall accept environmental data from emergency vehicles.
+The Clarus system shall be able to receive weather data from weather service providers.
+The Clarus system shall implement continuous quality control processes.
+The Clarus system shall provide environmental data quality flags.
+The Clarus system shall provide notification of data quality conditions to data collectors. A "data collector" could be a State DOT maintenance engineer or traffic manager.
+The Clarus system shall detect out-of-range values.
+The Clarus system shall not modify original observations.
+The Clarus system shall apply appropriate quality checks based on the completeness of received sensor station metadata.
+The Clarus system shall allow human intervention to override automatically applied quality assessment.
+The Clarus system shall record the methods applied when deriving quality control information.
+The Clarus system shall be able to implement quality control rules for each environmental parameter.
+The Clarus system shall be able to implement quality control rules for specific environmental situations. The rules for setting quality flags on environmental data elements may depend on other environmental data. For example, stormy conditions may allow more spatial and temporal variability in wind speed observations than under fair weather conditions.
+The Clarus system shall be able to implement quality control rules specific to observation locations. Quality control rules may vary from region to region.
+The Clarus system shall be able to base its quality control process on values from multiple observations. Observations could be distributed in space or time.
+The Clarus system shall be able to base its quality control process on historical environmental data.
+The Clarus system shall be able to use multiple algorithms for its quality control process. Various methods or comparisons may be needed for a given observation.
+The Clarus system shall be able to detect data submission errors.
+The Clarus system shall be able to provide sensor equipment data in response to a request. Subject to data sharing agreements.
+The Clarus system shall minimize the time for data dissemination.
+The Clarus system shall be able to disseminate data based on spatial queries. Defining this as "spatial" allows coverage of custom regions.
+The Clarus system shall maintain a dynamic data library for at least seven days.
+The Clarus program shall alert users to system modifications.
+The Clarus system shall not require approval to request environmental data.
+The Clarus system shall enable system administrators to manage security groups.
+The Clarus system shall be able to restrict environmental data publication based on the source. Use MADIS as a template.
+The Clarus system shall record statistics about its operation.
+The Clarus system shall log data transactions.

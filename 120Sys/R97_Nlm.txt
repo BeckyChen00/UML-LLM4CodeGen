@@ -1,0 +1,30 @@
+Ingest provides the services and functions to accept Submission Information Packages (SIPs) from producers (or from internal elements under Administration control) and prepare the contents for storage and management within the archive. Ingest functions include:
+Receiving SIPs.
+Performing quality assurance on SIPs.
+Generating an Archival Information Package (AIP) complies with the archive's data formatting and document standards.
+Extracting Descriptive Information from the AIPs for inclusion in the archive database.
+Coordinating updates to Archival Storage and Data Management.
+For the NLM Digital Repository, the process of Ingestion is composed of several different functions involved with processing selected material to be added to the repository. The actual workflow for this section will vary, depending on how and when materials are selected and acquired. In general, the Ingest process will include the following phases:
+Material Selection and Format Preparation.
+Selecting content.
+Working with content producers and donors to establish acceptable formats and transmission processes.
+Negotiation of submission agreements.
+Review of licensing and registration process.
+Material Submission and Review.
+Authentication of materials.
+Content inventory and virus checking of submitted material.
+Reviewing submitted materials for acceptance/approval.
+Reviewing materials for correct file formats.
+Ingest of Material.
+Archival Information Package Generation.
+Metadata Generation.
+Coordination of Updates.
+The repository will have multiple ingest streams, including:
+e-journals and e-books
+harvested Web sites and files
+unpublished manuscript material
+videos
+images
+sound material
+digitized items from NLM's existing collections
+The library may develop other ingest streams in the future. All material stored in the repository will be entered via the Ingest function. The function must support the bulk ingest of material as well as ingest of individual objects. The submitted materials must undergo several quality assurance review processes and potential file conversion in preparation for being stored in the repository.

@@ -1,0 +1,108 @@
+Practices for Lesson 2: Create the Entity-Relationship Model
+Practices for Lesson 2: Overview
+Overview
+In these practices, you will:
+Create the initial ER model
+Refine the model and resolve M: M relationships, identify and model subtypes and arcs, and identify UIDs
+Practice 2-1: Create the Initial ER Model
+Overview
+In this practice, you will create the initial ER model, discover and document entities, add attributes, and add relationships.
+Tasks
+Read the interview notes below.
+Identify and write down the following:
+Entities and their attributes
+Relationships between the entities
+In this practice, you are creating the initial ER model. Do not try to resolve M: M relationships or add subtypes, UIDs, or any other design patterns. You will do this incrementally in the following practices.
+Source: Interview with Alan Piper (AP), Legal Assistant 
+Analyst: Do you run into any challenges with international addresses, given the wide variation in address formats?
+AP: Actually, that is a constant source of confusion and pain. We have had several situations where the client still needs to receive correspondence due to an incorrect address format. 
+Analyst: Can you give me some examples of this?
+AP: Yes, one happened recently. Sometimes, addresses start with a house name or number, but some overseas clients put the city or town first. Imagine the confusion of sending something to Paris, which we thought was the city but was, in fact, the house name! 
+The other issue is that overseas zip codes or postal codes, as they are sometimes called, are not always numeric—they can be a combination of numbers and letters.
+Analyst: Tell me about the process when you take on a new client. What information do you initially record about that person?
+AP: Remember, it's not always an individual; it could be an organization.
+Analyst: When it's an organization, do you always need to know the contact?
+AP: Yes, and sometimes there is more than one. For each client or representative of an organization, I need to write down their full name and how they prefer their honorific: Mr., Ms., Mrs., Dr., etc. And, of course, their email address, phone number, and postal address, and sometimes we have a primary mailing address that could be different from the billing address. 
+Analyst: Could you have a situation where multiple people have the same address?
+AP: This does happen, for example, when we contact different employees in the same office. 
+Analyst: What are your other responsibilities, apart from creating cases?
+AP: As the case progresses, I need to record all the individuals and organizations participating in the activities and their specific roles.
+Analyst: Can an individual or organization participate in multiple actions or events in different cases?
+AP: Yes. Not only that, but some may play different roles within the same case. For example, the same party can be the defendant and witness in the same case.
+Analyst: So, what are these different roles a party can play?
+AP: Plaintiff, witness, defendant, judge, an expert in some field, or an attorney.
+Analyst: Can your firm's attorneys or judges be considered parties to the case?
+AP: Absolutely. And I must record the information about their involvement as well. 
+Analyst: Please tell me about events that occur. What information do you record?
+AP: All attorneys and legal assistants record their activities, which include the date and time when an activity occurred, a short description and duration, and in the case of witnesses, defendants, and judges, a list of who was involved. We also need to indicate if this event is billable or not.
+Analyst: Is there anything else you record for cases?
+AP: Yes, we need to know which documents were used in a case.
+Hints
+Identify candidate entities and attributes.
+Identify candidate relationships.
+Draw a draft diagram.
+Validate your diagram by applying reading rules for entities, attributes, and relationships.
+Make corrections to your diagram as required.
+Solution for Practice 2-1
+
+Practice 2-2: Verify and Improve the ER Model
+Overview
+In this practice, you will discover and document unique identifiers, resolve many-to-many relationships, and identify potential supertype subtypes or arc cases.
+Tasks
+Referring to the Practice 2-1 solution, write down what additional questions you would ask the legal assistants' team to deepen your understanding of their business and resolve model issues.
+
+Solution for Practice 2-2
+Solution for Step 1
+Notes
+This solution contains follow-up questions from the analyst, as well as answers provided by a member of the legal assistants' team.
+The text of this solution is the basis for the next practice step.
+Source: Follow-up interview with Alan Piper's team of legal assistants
+Analyst: Is there any difference in mailing and billing addresses?
+AP's team: No, apart from the fact that a certain address is preferred to be used by a person or organization as the billing address.
+Analyst: Is there any difference between recording an address for a person or organization?
+AP's team: Yes, organizations frequently use PO boxes. People can use PO boxes but rarely do so.
+Analyst: Can the same party be an organization and a person in a case?
+AP's team: No. 
+Analyst: You have mentioned "party" numerous times. How is that different from a person or organization involved in a case? 
+AP's team: A party to a case describes the involvement of a person or organization that plays a specific role in the case.
+Analyst: Is there any specific information about the party itself that you record?
+AP's team: Yes, the person or organization, the type of role they are playing, and the case they are party to.
+Analyst: Is it true that each event can only involve one case and that a specific party always causes the event?
+AP's team: Yes. For example, assigning a witness to a case or a judge presiding over a case is always related to the specific case and party.
+Analyst: Can different events occur in the same case at the same time?
+AP's team: Yes, if different parties create them. 
+Analyst: What specific information do you record about documents?
+AP's team: For each document, we need to know its specific format (for example, PDF, Word, Excel, etc.). But most importantly, it needs to be linked to the case.
+Analyst: You mentioned you need to track documents used in cases. Can a document be used in more than one case? Or use more than once in a given case?
+AP's team: Yes and yes.
+Analyst: Is the document related to the event in any way?
+AP's team: It might be, but it is definitely related to the case.
+Analyst: How do you identify which case the document is related to?
+AP's team: We file the document under the related case title, such as "Marx vs. Chaplin."
+Analyst: When a document is related to an event, what extra information do you record about that compared to a document linked to a case?
+AP's team: No extra information, really, just the fact that the document may have been produced or used (for example, a document from a witness deposition). We do, however, always record document location and its title.
+
+Given these additional questions and responses, update the model to reflect your new understanding. 
+
+Hints
+Questions and answers in the interview should help establish unique identifiers, resolve many-to-many relationships, and identify potential supertype subtypes or arc cases.
+The next several pages contain solutions for this practice. These solutions are presented as a series of steps:
+Write down key pieces of information from the interview.
+Add newly discovered or modify existing attributes.
+Resolve many-to-many relationships.
+Add supertype-subtypes.
+Add unique identifiers.
+Read and validate the newly refined model.
+Solution for Step 2. a: Document Key Pieces of Information from the Interview
+Solution for Step 2.b: Add Newly Discovered or Modify Existing Attributes
+
+Note: Attribute duration is considered derivable from the difference between the start and the end times.
+
+Solution for Step 2. c: Resolve M: M Relationships and Identify Arcs
+Solution for Step 2.d: Model Subtypes and Supertypes 
+
+Note: Country information appears to be common for any contact, regardless of a specific subtype. A country is not modeled as just an attribute within the supertype because it has its own attributes and, thus, should be modeled as a distinct entity.
+
+Solution for Step 2.e: Add Unique Identifiers 
+
+Note: The parties' participation in events is reflected via the Involvement intersection entity that emerged due to a many-to-many relationship resolution between the party and the Event entities. However, as a result, a direct relationship between Party and Event is no longer present. This wouldn't have been a problem if not because the event needs this relationship link to the party to act as part of its Unique Identifier. Each event is identified by a Party that has created this Event, the Case, and the Start Time.

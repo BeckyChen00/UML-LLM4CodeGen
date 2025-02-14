@@ -1,0 +1,45 @@
+Information and data flow. 
+Monitor and Control System: The BE shall acknowledge receipt of all data from M&C. 
+Correlator System: The BE shall notify M&C of any detected interruptions of data delivery from the Correlator. 
+e2e – The BE shall verify the successful delivery of output to the e2e. 
+Internal Data: The BE shall guarantee the safe delivery of all internal messages. 
+Lag Frames: The BE shall be able to handle lag frames of less than 128 values.  
+Lag Sets: The BE shall be able to handle lag sets up to a maximum size of 262,144 values. 
+
+Process Descriptions 
+Data Receive – The BE shall receive incoming data packets from the Correlator to the Backend network interface. This network is a part of the BE System. 
+Verify Receive: The BE shall verify the successful receipt of incoming data from the Correlator. This includes checking for received errors and determining that all expected data was obtained, accumulating error statistics and comparisons against tolerances, and reporting all out-of-tolerance conditions. 
+Input Data Management: The BE shall store input data records in a memory buffer and track buffer locations of all input data until data processing is complete. Report any buffer overflow conditions. 
+Processing Management – The BE shall respond to incoming correlator mode changes, user-optional processing sequence and parameter changes, and other external inputs that affect the data processing pipeline. Update internal parameter tables and synchronize the data processing pipeline with new operational conditions.  
+Time Series Assembly: The BE shall assemble the received input data into continuous time series (lag sets). 
+Data Integrity Verification: The BE shall ensure that time series data is correctly ordered and contains valid data values along its entire extent. 
+Compare against tolerances and report all out-of-tolerance conditions. 
+Data Invalid: The BE shall replace all invalid data with zero values. 
+Data Invalid Count – The BE shall keep track of data invalids. 
+Normalization – The BE shall be able to apply normalizations based on reported data invalid counts. 
+Coarse Quantization Correction: The BE shall be able to apply corrections based on state count and quantizer power measurement data. This is the VanVleck correction. 
+Time Stamp Adjustment – The BE shall be able to make time stamp adjustments as required by the observational mode and correlator output parameters. This may arise when recirculation is used. 
+Windowing: The BE shall be able to perform windowing operations before and after Fourier Transform. This will be needed for narrow-band RFI mitigation. Post-Fourier Transform windowing will be applied as a convolution. 
+Time Domain Processing – The BE shall be able to apply user-selected time-domain processes. These processes should be constructed to be chainable (output of any time domain process can be piped to input of any other, including a replica of self and Fourier Transform) and repeatable in the chain. No Optional time domain processes have as yet been proposed. 
+Fourier Transform Processing: The BE shall be able to perform Fourier Transform the lag set time series. A power-of-two complex-to-complex Fast Fourier Transform will be used to retain all output positive and negative frequencies. This process must be able to accept as input the output of any time domain processes. 
+Frequency Domain Processing – The BE shall be able to apply user-selected frequency domain processes. These processes should be constructed to be chainable (output of Fourier Transform and any frequency domain process can be piped to input of any frequency domain process including a replica of self) and repeatable in the chain. No frequency domain processes have as yet been proposed. 
+Integration: The BE shall be able to sum the frequency domain and spectral results. The amount (time duration) of summation will be controlled by an observational mode parameter obtained via M&C. The BE shall keep track of the number of samples/dumps integrated into each spectral channel. The summation will occur after all optional frequency domain processing or, if none, after the Fourier Transform. Integration for extended periods will throttle the Correlator's output to a rate manageable by the E2E. 
+Output Formatting – The BE shall combine the finished spectra with meta- and auxiliary data to form suitably formatted output data sets. AIPS++ 
+Measurement Sets are the expected entities. 
+Output Data Management: The BE shall store formatted output data records in a memory buffer with backup disk buffering. Store data ready for transmission to the e2e System until a successful transfer has occurred. 
+Report any errors and buffer overflow conditions that occur. 
+Data Send – The BE shall send output data to the e2e System. 
+Send Verify: The BE shall verify that all sent data was successfully received. Report all errors. 
+Monitor I/O Performance: The BE shall monitor data transfer rates from the Correlator to the e2e. Accumulate data transfer statistics and compare against tolerances. Report all out-of-tolerance conditions. 
+Monitor Compute Performance: The BE shall monitor the overall data processing rate. Compare against tolerances and report all out-of-tolerance conditions. 
+Monitor Compute Errors: The BE shall trap, flag, and repair inf's, NaN's, underflows, overflows, and other computation errors. Accumulate computation error statistics and compare against tolerances. Report all out-of-tolerance conditions. 
+Monitor Processes: The BE shall periodically or upon request check PIDs and ensure that all started tasks are alive and running. Report missing, stopped, defunct, and other damaged processes. 
+Monitor Processors – The BE shall periodically or upon request check Backend physical processors and ensure that all needed processors are alive and responding. Report all crashed, stopped, or unresponsive processors. 
+Monitor Networks: The BE shall periodically or upon request check all Backend internal networks and ensure that all communication connections are intact and functioning. Report all non-functioning components. 
+Start Process: The BE shall be able to initiate a processing task on any Backend processor. 
+Stop Process: The BE shall be able to signal a kill for any Backend process. 
+Alter Priority: The BE shall be able to alter the priority of any BE tasks. 
+Reboot Processor – The BE shall be able to initiate a reboot of any Backend physical processor. 
+Reboot network – The BE shall be able to initiate a reboot of any internal network. 
+Offload: The BE shall be able to redistribute internal workload among its processors. This may involve a change of destination IP address(es) for the Correlator network. 
+General – BE processes shall not violate archive data requirements. All processes shall be reversible; the unconverted raw input always being recoverable from the output. 

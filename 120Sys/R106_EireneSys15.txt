@@ -1,0 +1,23 @@
+Introduction 
+EIRENE mobiles are specified to conform to a common minimum standard of performance. It is the responsibility of national railways to design their EIRENE networks to provide the required level of service to EIRENE-compliant mobiles. 
+This section draws together specifications and information related to planning an EIRENE network and guides target performance levels. Additional information on communication requirements for the ERTMS/ETCS application is provided in [ERTMS COMMS]. 
+Coverage  
+For network planning, coverage level is defined as the field strength at the antenna on the roof of a train (nominally a height of 4m above the track). An isotropic antenna with a gain of 0dBi is assumed. The criterion will be met with a certain probability in the coverage area. (The target coverage power level depends on the statistical fluctuations caused by the actual propagation conditions.) 
+The following minimum values shall apply: 
+Coverage probability of 95% based on a coverage level of 38.5 dBµV/m (-98 dBm) for voice and non-safety critical data. 
+Coverage probability of 95% based on a coverage level of 41.5 dBµV/m (-95 dBm) on lines with ETCS levels 2/3 for speeds lower than or equal to 220km/h. 
+The following minimum values are recommended: 
+Coverage probability of 95% based on a coverage level of 44.5 dBµV/m (-92 dBm) on lines with ETCS levels 2/3 for speeds above 280km/h; 
+Coverage probability of 95% based on a coverage level between 41.5 dBµV/m and 44.5 dBµV/m (-95 dBm and –92 dBm) on lines with ETCS levels 2/3 for speeds above 220km/h and lower than or equal to 280km/h. 
+The EIRENE mobile installation shall be designed to operate in a network meeting the criteria.
+Note 1:  The specified coverage probability means that with a probability value of at least 95% in each location interval (length: 100m), the measured coverage level shall be greater than or equal to the figures stated above. The coverage levels specified above consider a maximum loss of 3 dB between the antenna and receiver and an additional margin of 3 dB for other factors, such as aging. 
+Note 2: The values for ETCS level 2/3 concerning coverage and speed limitations are to be validated and, if necessary, reviewed after the first operational implementation of ETCS. 
+Page 
+Handover and cell selection 
+The handover success rate should be at least 99.5% over train routes under design load conditions (as given in [EN 301 515, Index [30]]).
+Optimizing the handover process for such trains is considered necessary to avoid significant cell overlaps to accommodate high-speed train operations. Suitable algorithms will be tested and refined as essential during the trial process. 
+The proposed events for measurement of the start and stop of the handover execution at the mobile are: 
+receipt of ‘handover command’; 
+receipt of ‘UA’ after ‘physical info’ on the new channel. 
+There is a quality-of-service requirement for handover executions (e.g., a break of 10s would be unacceptable to the user). 300ms represents our current best estimate of the QoS figure, although this will need to be confirmed through user trials. 
+Another option is to reduce the handover break period, namely using the synchronous handover capability to reduce the break period to about 150ms. Synchronous handover requires the system to synchronize BTS transmissions in different cells. Each authority can decide whether it wishes to use synchronized BTSs.

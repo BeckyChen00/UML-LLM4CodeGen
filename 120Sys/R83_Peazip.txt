@@ -1,0 +1,17 @@
+System Feature 1 
+Browsing areas and objects of the computer system. 
+PeaZip's users can browse and gain access, in various ways, to every area (e.g., storing units, desktop, users documents, etc.) of the computer system on which PeaZip runs, as well as to included objects (archives and files). 
+Stimulus/Response Sequences 
+In the application's initial window (which will also be mentioned as the file manager interface), there is a " File " button. Pressing this particular button opens a submenu with choices that have to do with browsing and access to areas and objects of the computer systems.
+More specifically: By choosing "Filesystem," users can get access to an object from an object list of objects that are organized according to a functional hierarchy. By selecting "Bookmarks," users can get access to an object from a list of objects that they have rated as favorites. By choosing "Recent archives," users can get access to an object from a list of objects that have been recently browsed in PeaZip. Finally, through "Open path" and "Open archive," users can get direct access to a path of an object or a file/archive. 
+Moreover, browsing and access to the computer system's objects are provided by the navigation bar of the file manager interface, with navigation buttons (back, forward, up) and a refresh button. 
+This feature allows users to search and gain access to objects they would like to manage. 
+Installation of no other application is required for PeaZip to manage this function. The only functional requirement is: 
+System Feature 2 
+A variety of ways of selection is displayed in file manager interface objects. 
+Description and Priority 
+Users can manage to select the displayed file manager interface objects(files and archives). 
+Stimulus/Response Sequences 
+The application's initial window (file manager interface) has a button writing "Edit" on it. Pressing this particular button opens a submenu with choices that involve altering ways of selecting files displayed currently at the file manager interface.
+More specifically: "Select all" selects all objects currently displayed at the file manager interface. "Invert selection" allows inverted selection of objects (this means that all non-selected before the beginning of the function objects are selected, and all selected before the start of the function objects are deselected). "All objects..." set of commands allows selection from the objects displayed on the file manager interface according to extension, attributes, size, and date. Finally, "Sort by selection status" sorts all objects on the file manager interface according to whether they are selected. 
+With this feature, users can flexibly alternate the way of selecting currently displayed objects on the file manager interface. This feature is handy for object selection for mass management, especially when the number of currently displayed objects on the file manager interface is large (thus, manual selection object-by-object could lead to errors). 

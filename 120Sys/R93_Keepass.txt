@@ -1,0 +1,48 @@
+System features are organized by use cases and functional hierarchy so that the system's primary functions will be understandable. 
+New Database 
+This feature provides the ability to create a new database.
+Description 
+It is the first thing a user must do to begin using KeePass. Its primary function is determining the master password that will unlock the database. 
+Stimulus/Response Sequences Data Flow 
+Basic Data Flow 
+The user opens KeePass and selects New->Database.
+User writes his private Master Password and selects Key File.
+User selects OK.
+Master Password confirmation: the user retypes Master Password 5. The main database window opens 
+Alternative Data Flows 
+Alternative Data Flow 1 
+User selects Help.
+The help file opens.
+Alternative Data Flow 2 
+User selects Cancel.
+Exit from KeePass.
+Alternative Data Flow 3
+The user does not determine a Master Password.
+A message has appeared which prompts him to enter a password or key file.
+Functional Requirements 
+KeePass must be downloaded and installed.
+Master Password has no limits in length. A whole sentence can be used with more than 100 characters. 
+Open Database 
+This feature allows the user to open an existing database. 
+Description 
+When choosing to open a database, a user is transferred to his documents, where he navigates to find the database he wants. When the database is seen, the master password is desired so that the database will be unlocked. Once this is done, the user is free to access his data. 
+Stimulus/Response Sequences Data Flow 
+Basic Data Flow 
+The user opens KeePass and selects Open->Database.
+The user navigates through his folders.
+The user selects a database.
+User types Master Password 
+The main database window opens. 
+Alternative Data Flows 
+Alternative Data Flow 1
+The user selects a type of folder non-suitable for the database.
+The message "file not found" appears.
+The user selects another folder.
+Alternative Data Flow 2
+The master Password is wrong. 
+A message "invalid/wrong key" appears 4c. User types another master key.
+Alternative Data Flow 3
+User chooses to cancel. 
+Exit from KeePass.
+Functional Requirements 
+The folder selected must be of the type the database can read, and that is "name" .kdb

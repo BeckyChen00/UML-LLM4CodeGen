@@ -1,0 +1,38 @@
+Database Management System 
+The standardized data structure will facilitate database development, storage, and maintenance; metadata development, storage, and maintenance; and support database functionality, including tabular and spatial data queries, evaluation, visualization, and transfer (downloading) to off-site locations. 
+Description and Priority 
+The database management system should be stable and secure, have high performance (speed and efficiency/effectiveness), and be easy to maintain. This component is central to the effort and is thus the highest priority. 
+Use Case Scenarios 
+The team will elicit user requirements from a cross-section of user class members and describe the expected uses and functionality of the system accurately and completely. For elicit requirements, the user class members will be asked via conferencing, interviews, and email to provide a detailed description of the user actions and system responses that will take place during the execution of the use case under normal, expected conditions. The summation of responses will lead to an accurate and complete inventory of user requirements.  
+Functional Requirements 
+DATABASE 
+Database design 
+Establish a database in support of CEAP that will house the collective data assembled or generated during research activities. The database will support a variety of data types and formats, including but not limited to: spatial data - vector, raster, imagery, and tabular; tabular data – static and time-series; spreadsheets; documents; reports; photographs; and URL links. 
+Modeling support 
+The use of agricultural models (SWAT, AnnAGNPS) is a core element of the CEAP effort. Several modeling-related database topics will need to be addressed: 
+Maintenance and reporting of uncertainty or error in measured data, Spatial components of GIS data, 
+And modeling output. Uncertainty reporting may occur on an individual sample basis, method or procedural basis, or an entire database. 
+Models will require specific input data and generate output data during the calibration and validation phases, sensitivity analyses, and exploratory scenarios. The current scope of the STEWARDS system is to provide measured data for input to the model and comparison to output. 
+
+DATA ACCESS 
+View the entire universe of watersheds from the top-level screen for selection Design tools to navigate the individual watershed sites and their data. 
+View watershed descriptive data 
+Summary descriptions of research watersheds, stations, and instruments helpful in describing the research activities should be accessible. This information would not be considered ‘formal’ metadata. 
+ Browse, query, and download individual sampling station data and metadata 
+Provide access to the data via browsing of sites, stations, and instruments; allow for simple queries to individual datasets; provide a metadata search tool to query dataset parameters, and allow for downloading of datasets (full or partial). 
+Visualize time-series data 
+Users may wish to examine time-series data, e.g., stream discharge data, over a user-specified time frame to select only those data desired for download. Charting tools in association with the query engine are desirable. 
+Generate tabular reports of selected data 
+Provide access to CEAP-related reports, tables, and project documents. 
+Visualize, query, and download spatial data 
+Agricultural research data are inherently spatial. STEWARDS will provide web-based geographic information tools to allow site-specific data to be viewed within their spatial context. These tools will provide browse and query functionality and support links to download spatial data and their associated tabular data. 
+Browse, visualize, and download agricultural modeling data and results. Much of the initial effort in CEAP will focus on using agricultural models (e.g., SWAT, AnnAGNPS) in the CEAP watersheds. Users can examine the data used in the modeling effort, visualize the results in their spatial context, and download the model input data and results. 
+ METADATA 
+Maintain metadata database 
+Develop and maintain a metadata database that provides browse and query access to formal descriptions of the database elements. Provide tools for database contributors to create and upload metadata compatible with the STEWARDS metadata database. 
+Browse and query watershed metadata by theme or location 
+Develop search tools that query watershed, station, and instrument metadata across the STEWARDS database. Metadata query tools will support queries by location, theme, and keyword. 
+SYSTEM SUPPORT 
+Administrative metrics – user access lists, data download estimates 
+User feedback and user support tools.
+Conform to the USDA website style guide.

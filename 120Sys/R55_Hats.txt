@@ -1,0 +1,37 @@
+Use Case: Parse  
+Use Case Summary:  The user requests the parsing of a transformation language program or a target file. The file to be parsed and the parser file inputs to HATS-SML. HATS-SML generates an SDT. The output is saved in the application. 
+Actors:  User, HATS-SML, Host OS Used by:  Execute Transformation Preconditions:  
+An application has been selected (Refer to Use Case 3). 
+The transformation language program and core domain files have been created (Refer to Use Case 5).
+Scenario 1:     
+The user selects the option to parse a transformation language program from the currently open application (ALT 1). 
+The user selects a transformation language program file (.tlp) to parse (Refer to Use Case 4) (ALT 2). 
+The HATS-GUI compares the time stamps on the lexical specification and grammar files to the time stamp on the application’s parser file. The parser file is the youngest of the three files (ALT 3, ALT 6). 
+The HATS-GUI sends a message to the Host OS to start either the ParseTarget or the ParseProgram program and sends the names of the target file or program file, the output file, and the parser file to the Host OS. 
+HATS-SML parses the input file (ALT 7) and writes the output to the output file. 
+End of use case. 
+ 
+ALT 1: The user selects the option to parse a target file instead of a transformation language program. 
+A1-2A: The user selects a target file to parse (Refer to Use Case 4) (ALT 2). 
+A1-2B: Use case continues with step 3. 
+ 
+ALT 2: A file is already selected. 
+A2-2A: Step 2 is skipped.  
+A2-2B: Use case continues with step 3. 
+ 
+ALT 3: No parser file exists.  
+A3-3A: The HATS-GUI sends a message to the Host OS to start the MakeParser program and sends the lexical specification, grammar file names, and the parser file name.  
+A3-3B The Host OS starts the MakeParser program. 
+A3-3C: MakeParser writes the output parser file (ALT 5). 
+A3-3D: Use case continues with step 4. 
+ 
+ALT 5: Error on the creation of parser file.  
+A5-3A: HATS-SML encounters an error creating the parser file. The HATS-GUI writes the error message to the error window. 
+A5-3B: End of use case. 
+ 
+ALT 6: The parser file is not the youngest.  
+A6-3A: Use case continues with step A3-3A. 
+ 
+ALT 7: Parser error 
+A7-5A: HATS-SML encounters an error parsing the input file. The HATS-GUI writes the error message to the error window. 
+A7-5B: End of use case. 

@@ -1,0 +1,31 @@
+System features can illustrate the major services and functional requirements for the product. Use cases organize this section for major system features. The following provides a necessary description for each use case in the system. Each use case description includes information on the associated actors, triggering conditions, preconditions, postconditions, response sequences, exceptions, and functional requirements (assumptions). Being a major important section of the SRS, this section is expected to go through iterative improvement to make the most logical sense for the intended product. 
+Service Registration 
+This feature is associated with registering each CDN's resource and service information to its SR. The use case for this feature is shown in Figure 2. 
+Actors 
+WS: Publishes its resource and service information to the SR. SR: Registers available local resources at the CDN provider and updates them. Mediator: Collects up-to-date resource information from SR. 
+Trigger 
+Service registration is triggered when either one of the following occurs:
+Resources are available as a provider starts operating.
+Previously registered resource information needs to be updated.
+Available local resource information is required in the event of traffic surges.
+Local and delegated external resource information must be encapsulated in an SR instance included in an established peering arrangement. 
+Preconditions 
+Available local resources of a CDN provider are detected along with their service information such as CPU, storage, upload and download rate, etc. These resources could be provisioned and reserved to satisfy SLAs. 
+Postconditions 
+Resources are registered in the service registry and updated regularly. 
+Software Requirements Specification for Page 9 Internetworking of CDNs through Peering 
+Stimulus/Response Sequences 
+Each CDN Web server publishes resource and service information. 
+Its service information is registered in the SR with a new resource ID if it is a new resource. Resource ID counter is incremented. 
+Else, resource information in SR is updated regularly. 
+In the face of traffic surges, information on available local resources, along with their IDs, is supplied to the Mediator. 
+Local and delegated external resource information is encapsulated in the SR 
+instance in the established peering arrangement. 
+Exceptions 
+If a resource fails, its service information is removed from SR, and the resource ID counter is decremented. 
+Functional Requirements 
+The format for service information description is defined
+The interaction protocol between Web Server-SR and SR-mediator is defined. 
+Resource provisioning, delegation, and reservation policies are in place. 
+There is an established norm that any resource failure will be reported 
+The interaction protocol between Web Server-SR and SR-mediator is defined. 

@@ -4,30 +4,34 @@ import re
 import nltk.translate.bleu_score as bleu
 import numpy as np
 import data
+description = data.description
+uml = data.uml
 
 openai = OpenAI(base_url='https://www.DMXapi.com/v1/', api_key='sk-HXJ9ubNKq2k13zlfTzr1xsL35CSzXeaAxkHKE0O6jOgYZ2GO')
-
-
-def codeGen(description,UML,temperature=0,model="gpt-3.5-turbo-0125"):
-    prompt = """Based on the <System functional requirements> and <UML class diagram> provided as input, generate a complete Java code.
+# sk-apbldvpwfpikpvqryyvtxfpsmgkhtrsvwdzyyqmvwbbroafh
+# 定义全局变量
+base_prompt = """Based on the <System functional requirements> and <UML class diagram> provided as input, generate a complete Java code.
 # Input:
 - System functional requirements: {description}
-
+"""
+uml_prompt = """
 - UML class diagram (in plantuml format): {UML}
-
+"""
+note = """
 # Note:
 - Generate Java code, including classes, properties, methods, and business logic implementations.
 - Do not modify the method signatures defined in the class diagram. You are free to add any additional methods and fields in the code as needed.
 - Code should be as error-free as possible and conform to Java coding standards and best practices.
 - The code should include necessary comments."""
+
+def codeBasedSysUml(description,UML,temperature=0,model="gpt-3.5-turbo-0125")->str:
+    prompt = base_prompt + uml_prompt + note
     
-
-
     message = [
         {"role":"system","content":"You are a professional software engineer with expertise in programming using UML and Java."},
         {"role":"user","content":prompt.format(description=description,UML=UML)}
         ]
-    print(f"[Sys+UML] AI input: {message}")
+    # print(f"[Sys+UML] AI input: {message}")
     codeGen = openai.chat.completions.create(
         model=model,
         messages=message,
@@ -44,23 +48,14 @@ def codeGen(description,UML,temperature=0,model="gpt-3.5-turbo-0125"):
     return codeGenAnswer
 
 
-def codeGenBasedSys(description,temperature=0,model="gpt-3.5-turbo-0125"):
-    prompt = """Based on the <System functional requirements> provided as input, generate a complete Java code.
-# Input:
-- System functional requirements: {description}
-
-# Note:
-- Generate Java code, including classes, properties, methods, and business logic implementations.
-- Do not modify the method signatures. You are free to add any additional methods or fields as needed.
-- Code should be as error-free as possible and conform to Java coding standards and best practices.
-- The code should include necessary comments.
-    """
+def codeGenBasedSys(description,temperature=0,model="gpt-3.5-turbo-0125")->str:
+    prompt = base_prompt + note
 
     message = [
         {"role":"system","content":"You are a professional software engineer with expertise in programming using UML and Java."},
         {"role":"user","content":prompt.format(description=description)}
         ]
-    print(f"[Sys] AI input: {message}")
+    # print(f"[Sys] AI input: {message}")
     codeGen = openai.chat.completions.create(
         model=model,
         messages=message,
@@ -70,7 +65,6 @@ def codeGenBasedSys(description,temperature=0,model="gpt-3.5-turbo-0125"):
         frequency_penalty=0,
         presence_penalty=0,
     ) 
-    # print(f"AI output: {codeGen}")
     
     codeGenAnswer, i_tokens, o_tokens, total_tokens = codeGen.choices[0].message.content,codeGen.usage.prompt_tokens,codeGen.usage.completion_tokens,codeGen.usage.total_tokens
     print(f"[Sys] AI answer: {codeGenAnswer}, \ninput tokens: {i_tokens}, \noutput tokens: {o_tokens}, \ntotal tokens: {total_tokens}")
@@ -132,19 +126,29 @@ if __name__ == '__main__':
 
     # 根据需求生成设计
     # UMLGen = UNLGen(description)
-    temperature = 0.2
-    model = "gpt-3.5-turbo-0125"
+    temperature = 0
+    model_list = ["gpt-3.5-turbo-0125","gpt-4o-mini", "gpt"]
+
     # 根据需求和设计生成代码
-
-    # codeBasedSys = codeGenBasedSys(data.University_description,temperature,model)
-    # with open('codeBasedSys.txt', 'w', encoding='utf-8') as f:
-    #     f.write(codeBasedSys)
-
-    codeBasedSysUml = codeGen(data.University_description,data.Uni_UML,temperature,model)
-
-    
     with open('codeGen.txt', 'w', encoding='utf-8') as f:
-        f.write(codeBasedSysUml)
+        f.write("")
+    with open('codeBasedSys.txt', 'w', encoding='utf-8') as f:
+        f.write("")
+
+    # for model in model_list:
+    for i in range(2):
+        codeGen = codeBasedSysUml(description,uml,temperature)
+        with open('codeGen.txt', 'a', encoding='utf-8') as f:
+            f.write(f"Run {i+1} - codeGen:\n")
+            f.write(codeGen)
+            f.write(f"\n{'-'*50}\n")
+
+        codeBasedSys = codeGenBasedSys(description,temperature)
+        with open('codeBasedSys.txt', 'a', encoding='utf-8') as f:
+            f.write(f"Run {i+1} - codeBasedSys:\n")
+            f.write(codeBasedSys)
+            f.write(f"\n{'-'*50}\n")
+
 
    
     # 评估代码质量

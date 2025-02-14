@@ -1,0 +1,17 @@
+SYSTEM FUNCTIONS AND BEHAVIORS 
+Case Investigation 
+Electronic questionnaires must be developed and validated.  Investigators will design them to collect common data elements (e.g., patient demographics, test results, exposure contacts), agent-specific data elements (e.g., specific laboratory tests), and other customized data elements. 
+Electronic questionnaires should provide the capability to accept digital signatures. 
+Systems supporting OM must provide the ability to control the configuration of and revisions to investigation-specific questionnaires. 
+Systems supporting OM must provide the ability to publish investigation-specific questionnaires and implementation guides. 
+Case investigation should be supported by reusable questionnaire libraries that use common terminology (where available) to maximize the efficiency of data exchange. 
+Systems supporting OM should provide a manual or automatic means of updating the status of case records as the case definition changes.  
+Systems supporting OM should track the changes made to the status of case records due to changes in the case definition. 
+Linking 
+Linkages allow investigators to create meaningful analyses, characterize events, and identify at-risk populations.   
+Systems supporting OM must support dynamically defined associations between entities to determine relationships.  For example, person-to-person (e.g., family relationship, exposure relationship), person-to-place (e.g., household, commonplace), animal-to-person, object-to-place, and person-to-travel.  
+Entity-to-epi data links must match the entity to their symptoms, survey questions, specimens/samples collected, laboratory results, and prophylaxis and treatment data. 
+Each new case must be able to link an assigned Entity ID to an Event ID within the scope of the investigation. 
+Systems supporting OM require the ability to capture information about possible cases and potential contacts from the identification process through the treatment and follow-up process, as supported by linkages among entities, events, and actions.  
+Laboratory results must be linked to corresponding specimens/samples including multiple results from one specimen/sample) and subjects when the participating laboratory returns the results.  These linkages must unambiguously associate multiple laboratory results to case and contact identifiers. 
+If the specimen/sample was created from another specimen/sample (e.g., aliquots and new specimen types made from a source sample), laboratory results for the child specimens/samples must be linked to the corresponding parent specimen/sample.

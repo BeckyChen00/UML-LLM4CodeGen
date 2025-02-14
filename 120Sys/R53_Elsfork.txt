@@ -1,0 +1,53 @@
+The system's essential functions can be grouped into two main categories: Operational or control functions and System management functions. 
+A third group is Process automation functions, which involve functions that operate with process data directly without the involvement of an operator. However, this group is not within the scope of this specification and is not further treated. 
+Operational functions 
+The operational functions are needed for the normal daily operation of the wind power plant. In these functions, an HMI, either local or remote, is included. The operational functions are used to present process or system information to an operator or to provide him the control, e.g., by commands. The operational functions include the following: 
+
+Access security management 
+Access to operational functions has to be controlled by a set of rules. Access control allows the ability to restrict an authenticated client to a pre-determined set of services and objects. 
+Supervision (Wind power plant operation and Network operation) 
+Local or remote monitoring of the status and changes of states (indications) for operational devices. 
+
+Control 
+The control function allows an operator or an automatic function to operate equipment like switchgear or transformer, protection, etc. Control is subject to miscellaneous filters that check for no damage if the control is issued. 
+Parameter changes (parameter set switching, subset of setting, or single parameter) In addition to single parameters, an application may have several possible pre-defined parameter sets (but only one active set). 
+
+Alarm management 
+The alarm is generated when data of the system takes a value that shall be specially considered by the operator, i.e., there is a need for attracting attention to some abnormal state. Alarm management functions allow an operator to visualize, acknowledge and clear alarms. 
+
+Event and Log management 
+Functions for continuously scanning devices for alarms, operator control actions, and state changes and recording the events chronologically with date and time information. 
+
+Data retrieval of configuration data and settings 
+Functions for a follow-up of parameter settings should include services to retrieve all parameters (names, values, and units for all setpoints) or to retrieve only those that differ from the default values. 
+
+Disturbance/fault record retrieval 
+Data retrieval for display and bulk data storage of fault data. 
+System management functions 
+System management functions include both functions for system support and system configuration and maintenance. System support functions are used to manage the system (e.g., Network management, Time synchronization, and Self-checking of communication equipment). The functions support the total system and have no direct impact on the process. System configuration or maintenance functions are used to set up or evolve (maintain) the system. The system configuration and maintenance functions include setting and changing configuration data and retrieving configuration information from the system. The most important examples of System Management functions are: 
+System Support 
+
+Network management 
+Functions needed to configure and maintain the communication network. The basic task is the identification of communication objects/devices. 
+
+Time synchronization 
+Synchronization of devices within a communication system. 
+Self-checking  
+The self-check detects whether an object or device is fully operational, partially operational, or not. 
+
+System Configuration and Maintenance 
+Software management 
+Software management includes version control, download, activation, and software retrieval. 
+Configuration management 
+The function is used to download, activate and retrieve configuration data 
+Operative mode control 
+Allows an authorized operator to start and stop functions or objects within the system, including manual activation or reset of subsystems. 
+
+Setting (parameter set) 
+The setting function allows an operator to read and change one or more parameters affecting the behavior of the object/device. 
+
+Test mode 
+Possibility to check a function but avoid impact on the process (blocking process outputs).  
+
+System security management 
+Function to allow control and supervision of the system's security against unauthorized access or loss of activity. 

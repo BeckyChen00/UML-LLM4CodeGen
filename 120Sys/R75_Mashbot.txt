@@ -1,0 +1,34 @@
+User Accounts 
+User Account Types and Permissions The system categorizes users based on roles and privileges. Within these roles, the system also categorizes users based on their roles within individual products. These are referred to as user account roles. 
+Mashbot Campaigns supports the following account roles: Contributor, Approver, and Publisher.
+A user may possess more than one role.
+Roles reflect actions that a user can perform.
+Roles can be assigned to a user account for individual products.
+Contributors may create new content, import existing content into the system, edit, and delete it. They may also submit these actions for approval.
+Approvers can approve actions performed by contributors.
+Publishers may schedule or immediately initiate actions by contributors and those approved by approvers.
+User Account Creation: New user accounts can be created.
+The system may contain any number of user accounts.
+Certain pieces of information are required to create new accounts.
+The following information is required for any new user account: 
+Username 
+Password 
+Name 
+Email Address 
+Group Membership   
+User Account Type   
+User Account Modification The system allows users to modify their accounts once created.   
+The system requires a user to log in before modifications can be made.  
+Password
+Email Address
+Name
+User Account Deactivation The system allows user accounts to be deactivated.
+The system denies users who have been deactivated from accessing the system.
+An account can only be deactivated and not deleted if it has any history.
+If an account has no history, it can be deleted from the system.   
+A disabled account can be undisabled.
+It is possible to disable all accounts except for the System Administrator account.
+Username and Passwords
+The system gives users the ability to reset their passwords.
+Individual passwords can be reset. 
+The system only allows users to change their passwords.

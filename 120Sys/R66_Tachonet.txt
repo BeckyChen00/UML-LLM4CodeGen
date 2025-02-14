@@ -1,0 +1,19 @@
+The system must allow a member of the network to send requests to a particular or all the other members about the possible delivery of a driver's smart card to a similar person. 
+The system must allow a network member to send a bulk request on all or a large part of its driver's driver's smart card holders to a particular or all network members. 
+The system must allow a member to do statistics on messages issued and received from/to his system. 
+The system must automatically reply to the request's sender through a standard interface to the Member'sMember's systems. 
+The system must track the workflow between senders and related replies. 
+By the rules on delays for each transaction, the system must be able to automatically transmit alert messages to senders/repliers/administrators when f.i. a constraint on delay for reply is not fulfilled. 
+The system must allow the administrator to extract use statistics, standard delay of reply by member/period, and percentage of an unsuccessful transaction. 
+The system must provide the management of user rights and permissions. 
+The system must be able to define and manage messages already in the driver's smart card holder, like pre-delivery checks, stolen/lost cards, renewals, exchanges, and duplicates. 
+The system must be able to include new members in the network through simple administrative tasks. 
+
+The system must be highly automatic to relieve the users of as many repetitive and tedious tasks as possible. 
+The system must provide full security (including non-repudiation) at the application level and an encryption policy compatible with the necessary level of security in such a situation. 
+The system must guarantee that none of the network's members, including the administrator, is technically able to reconstruct a consolidated European database through the use of the messages exchanged. 
+The system must be such that none of the Member States of the network, including the administrator, reconstruct a consolidated European database. 
+The system must allow a Member State (through its Card Issuing Authority) to ask for the status of the card (lost or stolen) to the corresponding Card Issuing Authority of the Member State that has issued the card. 
+The system must allow a Member State (through its Card Issuing Authority) to send card status modification requests (lost, stolen) to the corresponding Card Issuing Authority of the Member State that has issued the card. 
+The system must allow enforcement authorities (through its Card Issuing Authority) to ask for the driver's card status. Based on either card number + issuing Member State code or driver's surname, first name, date of birth, and giving Member State code to the corresponding Card Issuing Authority of the Member State has issued the card. 
+The system must allow enforcement authorities (through its Card Issuing Authority) to ask for workshop card status (based on workshop card number + issuing Member State code) to the corresponding Card Issuing Authority of the Member State that has issued the card.

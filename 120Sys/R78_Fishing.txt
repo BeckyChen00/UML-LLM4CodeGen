@@ -1,0 +1,19 @@
+The ELSS must capture all data necessary for recording the fishing activities undertaken by a UK fishing vessel. The ELSS must output the data as an XML file for transmission to the UK fisheries administrations’ ERS system. Before transmission from the fishing vessel, the ELSS data must be validated against the UK XML/XSD. The ELSS data must be transmitted at the required times below in Section 2.5.1. 
+Each ELSS data transmission will be acknowledged by a return message from the UK fisheries administration’s ERS system. 
+Data Capture Functions 
+Data Operations 
+There are four main Data Operations required to be processed by the ELSS. These Operation Types are: 
+Data operation to capture and deliver formatted ELSS data for transmission by a vessel’s communications system(s) to the UK fisheries administrations’ ERS system (DA T) 
+Delete operation to capture and deliver a formatted deletion request for transmission by a vessel’s communications system(s) to the UK fisheries administrations’ ERS system to delete previously sent data (DEL) 
+Correction operation to capture and deliver a formatted correction request for transmission by a vessel’s communications system(s) to the UK fisheries administrations’ ERS system to correct previously sent data (COR) 
+Receipt of acknowledgment operation to match acknowledgment with the original message and provide a record/report of acknowledged and un-acknowledged transmissions 
+See below for detail on header data for transmissions from each operation
+Data Definitions 
+Data definitions for each report type required to be transmitted from the ELSS of a UK fishing vessel are found in the annex to this specification. The data definitions and associated lists of valid codes are incorporated in the UK XML/XSD definitions. These are available to all ELSS suppliers from the UK FMC. 
+The definitions also capture data items required for submitting ELSS data to meet 3rd country requirements, e.g., Norway’s requirements that include haul-by-haul reporting. 
+The ELSS may also provide the means for recording additional data, but this must not interfere with the data capture and submission functions as set out below. 
+Capture Functions 
+The ELSS must provide data capture screens for the entry of the logbook, transshipment, and landing declaration data that must be transmitted to the UK fisheries Administration’s ERS system. 
+The ELSS must use English (UK) localizations for all UK Electronic Logbook features. 
+All dates and times must be UTC. 
+The Electronic Logbook Data may be populated from other existing onboard electronic systems. E.g., a GPS for inserting the date, time, and location of transmission or inserting the same items at the time of capture, onboard weighing systems, and existing onboard database(s) to avoid duplication of data entry. 

@@ -1,0 +1,11 @@
+This document is for high-level requirements which apply to all modules. These requirements may be removed from this document and appear in a higher-level requirements document for CU2or at the DPC level. If this section is empty, mention the higher documents - they should be in the applicable document list. 
+CU2 will be responsible for the design and development of GOG that will provide a Catalogue, Main Database (MDB), and final data. (in the sense of statistically equivalent to the last mission data) data without the use of GASS telemetry, GIBIS, or the main ESAC database 
+GOG will be fully integrated into the Gaia Simulator project. That is, it will use as other the other simulators, the Gaia Simu library, and the Gaia Tools library. 
+GOG has two main options for source generation: Universe Model from GaiaSimu or an Object Input Catalogue. 
+GOG must consider noise effects. For noise generation, those effects should be user-selectable (they can be added or not, and users should give the values). We classify noises into two groups: 
+1. Instrumental noises: noises that come from the observation process, such as onboard detection and tracking or observation dead-time 
+2. reduction noise: noise added to the data when removing instrumental noise  GOG must give the same result for identical input configuration parameters  GOG must provide a way to be run from a command line or a shell script. 
+GOG should be able to run in a cluster or grid environment 
+GOG is built as a standalone java application that can be invoked from a command line and deployed as a jar file.  GOG is designed to run in a single-thread mode on grid environments. 
+GOG runs on LINUX, UNIX, and MAC computers (minimum).GOG results are platform independent 
+GOG will have to generate data from a considerable amount of Astro-sources whose number could be a significant part of the expected final catalog (20%).  GOG must be able to process one complete source processing on 2 CPU seconds.

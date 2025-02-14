@@ -1,0 +1,14 @@
+MotorMouth Dental Clinic 
+
+The clinic schedules patients, provide services for them, and bills them for those services. 
+
+New patients fill out a form listing their name, address, telephone numbers, allergies, and state of mind before scheduling their first appointment.  Existing patients are normally scheduled for their next appointment as they depart from their current appointment.  When the office staff forgets to do this, a desk worker has to call the patient to set up a date.  Schedules are entered into a central appointment book; patient records (including contact information) are kept in paper files. 
+
+Appointments are for one of three procedures:  dental hygiene, cavities and fillings, and oral surgery (including root canals and tooth extractions).  For each procedure, the patient needs to be prepared, and supplies must be collected (e.g., probes, drill bits, cement, resins, etc.).  Preparing a hygienist's appointment could be as simple as seating the patient in a dental chair and putting a bib around their neck.  For oral surgery, anesthesia of various strengths is administered before the operation.  Only for oral surgery procedures is it necessary to ask the patient to wait for up to twenty minutes before performing a post-operative check. 
+
+Billing is always done by the month, and bills are always sent by mail to patients' contact addresses.  Checks are received by mail.  HMO-funded patients are asked to make a copayment when they leave the office.  Each patient also generates a reimbursement request to an insurance company.  Insurance companies and HMOs send their checks by mail three months after receiving a reimbursement request. 
+
+The clinic maintains a supplies inventory file that a worker fills out once a week by physically inspecting each of the three procedures rooms.  Supplies and tools are stored in a standard layout in each room. 
+
+Note:
+Use your knowledge as a dental patient to add any information you feel necessary to this description, but please state any assumptions you make.  Some aspects of clinic operations have been simplified for this example. 

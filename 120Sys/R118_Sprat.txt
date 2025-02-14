@@ -1,0 +1,36 @@
+User Access Module 
+This section defines the three access levels, specifically outlining permissions and restrictions. 
+ 
+Functional Requirements 
+Requirement Definition: The system shall support an administrator level. 
+Requirement Specification: The administrator will have the following privileges: 
+Ability to create user groups such as NCSU TPP.org, GT TPP.org 
+Ability to create project managers, analysts, and guests 
+Ability to reset user passwords when needed 
+Ability to disable access for old project managers, analysts, and guests. Removing old users implies removing their ability to access the system while preserving the information they entered. 
+
+Requirement Definition: The system shall support a project manager level. 
+Requirement Specification: The project manager will have the following privileges: 
+Ability to insert a new privacy policy into the repository 
+Ability to delete a privacy policy from the repository 
+Ability to create/add a new domain of privacy policies (e.g., Healthcare, financial, e-commerce, a federal agency, etc.) 
+Ability to assign analysts to user groups created by the administrator 
+Ability to assign user groups and individual analysts to projects 
+The project manager sets restrictions on access to certain kinds of information for guests 
+Ability to export data from a project to an XML file so multiple project managers can use that data 
+Ability to save the current version of the repository so that we can do an evolution analysis 
+
+Requirement Definition: The system shall support an analyst level. 
+Requirement Specification: An analyst will have the following privileges:  
+Ability to select a privacy policy assigned to them by the project manager. 
+Ability to add, delete and update goals 
+Ability to add, delete and update scenarios  
+Ability to view the details of any goal or a scenario in the repository, such as ID, description, source, keyword, taxonomy, actor, occurrence, relevant policy, etc. 
+Ability to update personal profile such as name, ID, contact information, user groups, and passwords 
+Ability to add, delete and update requirements 
+Ability to add, delete and update access control policies such as subject, object, and action. 
+Ability to view access control policies  
+
+Requirement Definition: The system shall support a guest level. 
+Requirement Specification:  The guest will have the following privileges:  
+Ability to view kinds of information in the repository with restrictions set by the project manager. For instance, if a guest is given access permission to a particular privacy policy, they will not be able to view goal and scenario occurrences related to other privacy policies in the repository. 

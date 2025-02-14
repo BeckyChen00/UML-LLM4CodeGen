@@ -1,0 +1,36 @@
+Category: Management Tools: General
+Name: streamlined staff login
+Description: The system supports (but does not require) streamlined staff login methods; for example, a staff member swipes a card to log into a terminal or logs into a terminal using their login and password.
+Source: Reports Working Group (RWG)
+
+Name: report templates
+Description: System administrators can create reliable report templates that are available to staff and can be run as is or modified to the staff person's particular needs. Changes in the templates could be done without comprising the results. The administrator can limit the filters and display fields that can be altered to certify a dependable output. For example, front-line staff could set the call number range for a wedding report or add or remove designated display fields from a pick list but couldn't alter the template to display deleted items.
+Source: RWG
+
+Name: reports permissions
+Description: The system provides distinct, fine-grained permission levels limiting who can create and clone reports. All permissions should be easy to administer. System administrators can create shared folders to allow or disallow staff to run specific reports and ad hoc reports on specific data sets.
+Source: RWG
+
+Name: query tool
+Description: The system provides a user-friendly interface for designing queries against all record types. Staff can select fields to query; select values from a picklist of possible values; select regular expressions from the drop-down menu, and use a full range of Boolean operators. Administrators control staff access to tables and fields.
+Source: RWG
+
+Name: board reports
+Description: The system provides pre-defined reports for consumption by library boards or other consumers. There will be reports providing basic statistics like those required by the Georgia Annual Report and Application for State Aid and activity reports that indicate traffic and volume of use that display statistics on check-outs, check-ins, holds placed, and holes filled. It should be possible to cross-tabulate per terminal, per branch, per library system, per hour, per patron age range, per patron type, and patron location.
+Source: RWG
+
+Name: transaction data archive
+Description: Transactions are archived in a form that protects patron privacy as defined by State Law while providing useful demographic statistics.
+Source: RWG
+
+Name: periodic reports, examples
+Description: Examples of periodic reports: bibliographic records with holds; items that have not been checked out in X days; item-level holds; items with invalid item type; in-transit items with outstanding hold; items that have been in transit for more than X days; items that are the last copy in the system; items with a long call number; missing items; bibliographic records with no item records; patrons with an invalid home library.
+Source: RWG
+
+Name: Query selections
+Description: The system provides the query selections along with the results.
+Source: RWG
+
+Name: Reports queuing
+Description: Ability to see where your report is in the queue of reports waiting to run.
+Source: RWG

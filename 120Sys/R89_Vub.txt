@@ -1,0 +1,49 @@
+Log in to the system from the internet. 
+Summary: accessing the system from outside the VUB network
+Actors: everyone who wants to make use of the system
+Preconditions: the actor needs a computer with internet access
+Description: the actor gets a screen where they will be able to log in.
+Exceptions: user must be registered and have a username and password Result: the actor can log in 
+Log in to the system via the VUB network. 
+Summary: accessing the system while using the VUB-Network. 
+Actors: everyone who wants to make use of the system 
+Preconditions: be on a computer that is connected to the VUB network 
+Description: the actor gets a screen where he will be able to log in or where they can start a search immediately 
+Exceptions: none 
+Result: the actor can log in or can perform a search 
+Register for an account 
+Summary: requesting access to the system (become a Member) 
+Actors: everyone who wants to make use of the system 
+Preconditions: the actor needs a computer with internet access or is connected to the VUB network 
+Description: 
+The actor selects the Register function 
+the actor chooses a username and password and fills in personal data: name, login name, email address, university, and department 
+the system checks if the username already exists 
+the actor confirms 
+Exceptions: none 
+Result: an email is sent to the Administrator 
+Log off 
+Summary: Log off the system
+Actors: Members, Publishers, Moderators, and Administrators
+Preconditions: the user is logged in to the system
+Description: the actor selects the Logout function
+Exceptions: none
+Result: the actor is directed to the system start page, where they can log in. 
+Change password 
+Summary: A user who has forgotten their password can request a new one. 
+Actors: VUB-network users, Members, Publishers, Moderators, and Administrators 
+Preconditions: the user must have registered before and had a valid username on the system. 
+Description: 
+The actor chooses to change the password.
+The actor confirms the actor fills in his username and enters a new password.
+Exceptions: no valid username on the system 
+Result: an email is sent to the Administrator
+Search for publications 
+Summary: searching for publications in the system 
+Actors: VUB-network users and Members, Publishers, Moderators, and Administrators 
+Preconditions: the actor needs to be logged in to the system or is connected to the VUB network 
+Description:
+The actor selects the Search Publication function. 
+The actor fills in the search criteria: keyword, author, period of publication, and more advanced search criteria such as keyword(s) and reference, etc. 
+Exceptions: none 
+Result: a list of publications fulfilling the search criteria. 

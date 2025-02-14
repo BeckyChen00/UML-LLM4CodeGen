@@ -1,0 +1,21 @@
+BROWSE DATA  
+View Bridge Data 
+The user shall be able to view the data stored in the Physical Inventory tables through the Pontis graphical user interface (GUI). 
+The user shall be able to switch between predefined structure lists. 
+The user shall be able to select structures by structure ID, district, county, administrative area (geographic group), ownership, custodianship, functional class, NHS status, on/off the system, inspector, bridge group, inspection due dates, and all or some environment and elements.  The query shall be restricted depending on the user's privilege. 
+The user shall be able to find structures based on the structure ID, structure name, feature intersected, facility carried, route number, LRS Inventory Route, KM/mileposts, structure types, design types, and materials by searching the notes fields.  The query shall be restricted depending on the user's privilege. 
+The user shall be able to enter the "WHERE" clause SQL query in the Find and the Filter window and run a query against the bridges in the database.  The application will verify the query and report SQL errors to the user for correction.  This capability shall be an application privilege.  
+Bridge-level security of the user shall be applied automatically. 
+The user shall be able to select a structure by directly typing in the structure ID in GUI, with the display scrolling to that structure.  Bridge-level security of the user shall be applied automatically. 
+The system shall display the data in the appropriate unit of measurement as configured for the application.  This display will be a permanent modal setting for the application.  This setting shall be configurable.
+The user shall be able to select bridges on a supported map display and generate a bridge list for use within Pontis, for example, to perform a simulation analysis or to generate an inspection roster. 
+View Project Data 
+The user shall be able to view the data stored in the Project Planning tables through the GUI. 
+The user shall be able to switch between predefined project lists. 
+The user shall be able to filter and select projects by structure ID, project ID, program, action type, project status, review status, treatment, program year, and project end date.  
+The user shall be able to find projects by project ID, project name, project status, structure ID, and program.   
+The user shall be able to filter and select work candidates by structure ID, project ID, program, action type, project status, review status, treatment, program year, and project end date.  
+The user shall be able to enter a WHERE clause SQL query in the Find and the Filter window and run a query against the projects in the database.  The application will verify the query and report errors to the user for correction.  This capability shall be an application privilege.  
+Bridge-level security of the user shall be applied automatically. 
+The user shall be able to select a project by directly typing in the project ID in the GUI, with the display scrolling to that structure.  Bridge or project-level security of the user shall be applied automatically. 
+The user shall be able to select projects (work) on a supported map display and generate a project/bridge list for use within Pontis, for example, to display the results of a simulation analysis or to generate a STIP display.

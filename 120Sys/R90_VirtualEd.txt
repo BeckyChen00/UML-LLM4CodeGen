@@ -1,0 +1,36 @@
+System Features
+Description and Priority
+Instant Messaging allows students and professors to interact and talk in real-time. Instead of leaving each other messages on boards and going to chat rooms where screens are not refreshed in less than 60 sec, students will be able to see who is online and talk to them immediately. If a professor is marked online, students can ask questions and receive answers from the professor almost instantaneously. This feature is of High Priority, and students will be able to benefit from this feature because it will give them the feeling of an actual classroom, something that most students complain lacks when taking an online class.  
+Stimulus/Response Sequences
+User action: Log in to Virtual-Edu
+Response: The user is logged in, and all available features in the system are shown in the menu
+
+User action: Click on the messaging software tool – Instant-Edu
+Response: New pop-up window shows up with a list of contacts. Online users are marked green and offline users are marked red.
+
+User action: Double-click on the name of an online user
+Response: New window pops up where real-time conversion can be initiated between parties.
+
+User action: Click on the smiley button in the window
+Response: A list is shown containing all available emotions to be used in conversation
+
+User action: Click on the plus button in the window
+Response: A list shows up that contains all other available online users that can be invited to join the conversation
+
+User action: Double-click on a name in that window
+Response: The new user joined the conversation, and it’s now a conference between multiple people
+
+User action: Click on the file button in the window
+Response: A new window pops up where the user will be able to browse and look for a file in his system that he wants to send to the other party
+
+User action: Select the file
+Response: The selected file is marked blue
+
+User action: Click on the send file button.
+Response: The file begins transmitting to the other party
+Functional Requirements
+Users are limited to Windows XP, Vista, or Mac- OS
+Users are limited to Internet Explorer, Mozilla Firefox, and Safari internet browsers.
+Users must have pop-up windows enabled on their systems
+Users must enable java scripts on their systems to be able to install Instant-Edu messaging software
+Users must have antivirus software installed so they can scan the incoming files from other users of the system

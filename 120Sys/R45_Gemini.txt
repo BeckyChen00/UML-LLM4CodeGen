@@ -1,0 +1,18 @@
+Data flow
+Data from detectors must be stored in the most effective method permitted by available technology. Astronomical data is often detector readout limited so that disk access and data transfer times are not significant. The maximum acceptable readout time for detector data is very dependent on detector type and size as well as the intended application:
+For focusing and related activities, the maximum acceptable detector readout time is about 0.1 sec, though only a portion of the detector may be read during that time.
+For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes.
+
+Concurrent data access and display. Since the Gemini system supports operation monitoring, there must be the capability of providing multiple, simultaneous access to data. Data transfer between the virtual telescope system and attached workstations imposes significant transfer requirements on the LAN. The LAN must support a transfer rate of 20-40 Mbits/second.
+
+Data acquisition format. Data is normally acquired as uncompressed but may be compressed using a loss-less compression technique for transmission from the Gemini system or across the system LAN. The goal of compression is to minimize bandwidth impact on the LAN and WAN and to save space on removable media.
+Only the preprocessed data is stored for data that requires preprocessing, such as infrared detector data.
+
+Storage of data. Data from all instruments and detectors is stored as compressed data using a standard format. There is the first storage level within IOCs to secure data in the event of link failures.
+The second level of storage is on the Gemini system data disk(s), possibly also on removable media. Quick-look data quality assessment is done using this level.
+  
+Archiving of data is automatically done while in observing and maintenance level operation to the Gemini Archive subsystem. Shipping of data to a central archive follows later.
+
+Data transmission format. Data is transmitted between Gemini and home Institutes using a FITS format and contains all header information provided with the data.
+
+System-wide data capacity. The system's data capacity is limited by transfer methods and technology, as well as archiving capacity on site. The system data capacity can retain seven days of data produced by the largest instrument.

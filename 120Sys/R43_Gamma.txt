@@ -1,0 +1,32 @@
+Customer Accounts 
+Description And Priority 
+Customers can create accounts to store their profiles, contact information, purchase history, and confirm orders. This is a high-priority system feature. Security methods will ensure that customer accounts remain confidential and resistant to tampering. 
+Stimulus/Response Sequences 
+The web browser initiates the request to the Web Server via HTTPS .
+The web Server parses the request.
+Web Server submits the request to the Service.
+Service picks up the request.
+Service runs task.
+Service returns results.
+Web Server checks for completion.
+Web Server returns results to Web Browser.
+Web Browser displays results.
+
+Functional Requirements 
+Customers can create accounts to store customer profiles, configure contact information, view their purchase history, and confirm orders. Customers can register, log in, and log out of their accounts. Furthermore, Customer profiles will also include payment information, such as the ability to store credit card information and address information. 
+Inventory Management 
+Description And Priority 
+Inventory management will allow for the placement of products into multi-tiered categories. This is a medium-priority system feature. 
+Stimulus/Response Sequences.
+The web browser initiates the request to the Web Server via HTTPS.
+The web Server parses the request.
+Web Server submits the request to the Service.
+Service picks up the request.
+Service runs task.
+Service returns results.
+Web Server checks for completion.
+Web Server returns results to Web Browser.
+Web Browser displays results.
+
+Functional Requirements 
+Products will be stored in multi-tiered categories; a category can contain subcategories or products. The inventory management will allow administrators to update the categories, the products placed in categories, and the specific product details. 

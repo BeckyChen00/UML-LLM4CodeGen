@@ -1,0 +1,44 @@
+Table 1 lists the interface requirements for supporting the roadway network data transmission.
+The Center shall provide the following information for each roadway network it maintains.
+Network identifier
+Network name
+Number of links in the network
+Number of nodes in the network
+List of link data
+List of node data
+The Center shall provide the following link information:
+Link identifier
+Link name
+Road number
+Link type
+Link type description
+Start node (see below for node information)
+End node (see below for node information)
+Direction
+Length
+Capacity
+Speed limit
+Speed limit truck
+Number of lanes
+The Center shall provide the following node information:
+Node identifier
+Node name
+Node jurisdiction
+Owner
+Latitude/longitude
+Type of node (i.e., intersection or bridge)
+Node type description
+Number of links
+
+Table 2 lists the interface requirements for supporting the traffic conditions data transmission.
+For each link defined within the Center:
+Network identifier
+Link identifier
+Data type
+Data type description
+Delay
+Travel time
+Volume
+Speed
+Density
+Occupancy

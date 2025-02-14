@@ -1,0 +1,21 @@
+Multiple File Transfer 
+The system must be able to capture and manage files where appropriate. 
+One of the fundamental tasks of the system is to allow actors to upload and manage files on certain pages of the system. These might include assignment submissions, forums, wiki, and announcement pages. An actor in the role of course administrator should be able to optionally upload multiple files where they find such a feature would be helpful—such as on a dedicated project page. 
+For this requirement, the page refers to any distinct upload point (e.g., an assignment, a wiki page, a forum post, etc.). 
+The system must allow multiple file uploads to be configured per page. 
+Actors in the capacity of course administrator or professor should be able to enable multiple file uploads on a page of their choosing. For collaborative projects, it becomes essential for actors to be able to upload more than one file to a given page, especially in the case of an assignment submission where the assignment might include multiple parts. Such a construct should be offered to the actor during a page’s creation and editing stages. 
+Audio Recording 
+The system must capture and organize voice clips that can be used where appropriate. 
+One of the shortcomings of the current courseware system is that the foreign language department cannot capture and track voice clips—recorded by students—for oral homework throughout a student’s education. 
+The system must allow actors to organize their voice clips into a portfolio. 
+Equal and finite drive space must be allotted to each actor in the role of professor or administrator to allow for storing voice clips recorded and submitted by all actors in the roles of students. Actors in the role of professor or system administrator should be allowed to partition this space for actors in the roles of students. It can be done one of two ways: 
+1) The actor can be allowed to preview the voice clip before it is archived and determine whether or not they would like that clip to be archived.
+2) A newly created voice clip can be automatically archived. The first option would allow the actor to throw out an audio clip deemed unsuitable or inappropriate for an assignment without having to take it out of an archive of voice clips. The actor should have the option to have the voice clip archived after a preview has taken place. The second option would automatically archive a voice clip once submitted but require that the actor interacts with the archived file. Thus, if the actor chooses to delete the file, it must be deleted from the archive of voice clips. 
+Maintaining an archive of voice clips makes it possible to compare clips to determine whether an actor is improving their language skills over multiple courses. The actor should be able to optionally attach one of their archived items to any page where uploads are permitted. 
+The term archive used above may also be referred to as a portfolio. 
+The system must allow actors to download their voice clips in a flexible format. 
+Voice clips should be optionally downloadable in a format such as MPEG Audio (mp3) format since it is widely supported across different web browsers and operating systems. Voice clips should be downloadable for archival purposes or to present them to other actors. 
+The system must store audio clips in a format conducive to speech. 
+Voice clips should be stored in a format optimized for speech since this feature is meant to catalog voice recordings. Recordings should only be converted to MPEG Audio (mp3) format when downloaded; a separate viewer should be provided in a cross-platform language for listening to clips in Moodle. 
+The system must allow actors to delete recorded clips. 
+Since voice clips should be stored in a portfolio for each actor in the course management system, they should be able to examine their portfolio to select and delete clips if they choose to. This allows them to manage archived voice clips and to create a cohesive portfolio that actors in the role of professor can use to judge improvement over time.

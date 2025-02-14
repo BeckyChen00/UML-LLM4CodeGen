@@ -1,0 +1,20 @@
+This section states the requirements related to the MultiMahjong system's functionality. Each requirement has been prioritized according to the levels set out in the Introduction (see Section 1). Requirements that relate to what is displayed on the user's screen are defined in Section 6.
+Note that the MultiMahjongServer will not be required for single-player games, and the player need not be connected to a TCP/IP network. Although many requirements mention that the MultiMahjongClient will send certain information to the MultiMahjongServer, in the single-player game, this is different. In a single-player game, the MultiMahjongClient will intercept and process this information internally. The reference to the MultiMahjongServer is made to reduce duplicate requirements.
+The MultiMahjong Server
+
+
+The MultiMahjongServer will be designed to reside on a central computer (server) that is connected to a TCP/IP network and has a unique IP address. 
+The MultiMahjongServer will allow connections from MultiMahjongClients and communicate with them using IP.
+The MultiMahjongServer will serve as a node for MultiMahjongClients. That is, it can relay data received from one MultiMahjongClient to other MultiMahjongClients that request it.
+
+
+The MultiMahjongServer will automate the game initialization functions (as opposed to the MultiMahjongClient doing them), such as randomizing tile order, randomizing seating position, and storing the "Game Info" database.
+The MultiMahjongServer will contain a High Scores list with the names and scores of the top MultiMahjong players.
+
+
+The MultiMahjongServer will allow players on MultiMahjongClient programs to chat with each other in real-time.
+The MultiMahjongServer will allow players on MultiMahjongClient programs to modify their names and icons during gameplay (as opposed to only at the beginning). 
+The MultiMahjongServer will support an architecture whereby all Computer Opponents (CO) required will reside on it instead of on the MultiMahjongClient programs.
+The MultiMahjongServer will have a graphical user interface with which the server administrator can get log information and change game settings.
+The MultiMahjongServer can save preferences to a file and read from that file at start-up.
+Note that all requirements hereafter are concerned with the MultiMahjongClient program.
