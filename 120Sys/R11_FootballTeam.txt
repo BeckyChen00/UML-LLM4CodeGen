@@ -1,1 +1,83 @@
 Turgutlu football team has more than one football player. A soccer player can be transferred to the football team. A football player can be sold to another football team. The system can perform the first eleven and spare team listing operations. Football players have team, name, age, and number information. Each football player has a different duty and plays football according to their position. Positions are forward, midfield, and defense. There are strikers in the forward, and they play to score goals. There is a goalkeeper in the defense, and he plays to clear the ball. There are midfielders in the midfield, distributing the ball around the pitch. On the system, when the striker scores goals, the system announces his number and name. When the goalkeeper saves the goal, the system announces his number and name.
+
+图古特鲁足球管理系统
+1）管理运动员：包括球队、姓名、年龄和号码。允许将足球运动员调入或调出足球队。支持将足球运动员卖给其他足球队的操作。
+2）配置足球队：
+添加/删除阵容。阵容中的球员一定是球队中的球员。
+添加/删除球员。删除球员，并且从阵容中删除。（不给 ‘并且从阵容中删除’条件是否给出正确结果 ）
+首发阵容（前11个球员）和替补队的入队操作。根据球员的位置（前锋、中场、防守）分配职责。
+多名前锋运动员的目的是进球。一名守门员在防守，踢解围球。中场有中场球员，在球场上分配球。
+首发球员：分配球员的上场位置。
+不能既是首发球员又是替补球员。
+
+
+@startuml
+
+class FootballPlayer {
+  - team: Team
+  - name: String
+  - age: Integer
+  - number: Integer
+  - position: Position
+  - goalsScored: Integer
+  
+  + transferTo(team: Team): void
+  + sellTo(team: Team): void
+  + recordGoal(goal: Goal): void
+}
+
+class Team {
+  - name: String
+  - players: List<FootballPlayer>
+  - startingLineup: List<FootballPlayer>
+  - substitutes: List<FootballPlayer>
+  
+  + addPlayer(player: FootballPlayer): void
+  + removePlayer(player: FootballPlayer): void
+  + configureLineup(): void
+}
+
+class Match {
+  - date: Date
+  - startTime: Time
+  - endTime: Time
+  - homeTeam: Team
+  - awayTeam: Team
+  - result: String
+  - location: String
+  
+  + recordEvent(event: MatchEvent): void
+}
+
+class MatchEvent {
+  - time: Time
+  - player: FootballPlayer
+  - type: EventType
+  
+  + reportEvent(): void
+}
+
+enum Position {
+  FORWARD
+  MIDFIELD
+  DEFENSE
+}
+
+enum EventType {
+  GOAL
+  SAVE
+  YELLOW_CARD
+  RED_CARD
+  SUBSTITUTION
+}
+
+FootballPlayer "1" -- "*" Team : "belongsTo"
+Team "1" -- "*" Match : "participatesIn"
+Match "1" -- "*" MatchEvent : "includes"
+
+@enduml
+
+
+ 
+
+

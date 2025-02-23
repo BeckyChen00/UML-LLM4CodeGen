@@ -13,3 +13,50 @@ A store can stock multiple copies (the physical cassette cartridge) of the same 
 SchlockBuster maintains a record of each of its customers. A unique customer ID identifies each customer. Additional information maintained about each customer is the customer's name and the customer's phone number. Each customer is associated with the store where they enrolled as members to receive their SchlockBuster Video card. A customer can rent a video from any store. This relationship allows Schlockbuster to credit a portion of each rental amount to the home store of the member, regardless of where the video is rented.
 
 SchlockBuster maintains a record of each rental transaction. A rental ID number identifies each rental transaction. Each rental transaction is associated with one and only one customer. Each rental transaction is associated with (rented from) one and only one store. Each rental transaction also captures the rental date and total rental amount. Each rental transaction is associated with one or more rental transaction detail lines. Each rental transaction detail line captures the id of the cartridge being rented, the due date of the cartridge being rented, and the actual return date.
+
+
+SchlockBuster video是一家录像带出租连锁店。一个唯一的storeID标识每个商店。关于每个商店的附加信息是商店地址和电话号码。SchlockBuster有很多员工。员工ID标识每个员工。关于员工的其他信息是员工的姓名、地址和电话号码。每个员工至少有一个电话号码，而且可能有多个电话号码。每个员工的电话号码按电话类型分类，如办公室电话号码、家庭电话号码、寻呼机号码等。一个员工可以有多个电话号码，但每种电话号码类型只能有一个。
+
+每个员工都被分类为一种类型：“经理”、“出纳”或“库存”。像“经理”、“收银员”或“库存员”这样的员工类型可以对许多员工进行分类。商店可以雇用许多雇员。雇员必须受雇于且只能受雇于一家商店。
+
+
+SchlockBuster可以从许多视频分销商那里获得许多视频标题（《勇敢的心》、《狮子王》、《水世界》等）。SchlockBuster通过标题ID维护一个标题列表。每个标题的附加信息包括标题的名称、运行时间（如120分钟）和评级（G、PG、R）。
+
+
+SchlockBuster根据分销商ID维护分销商列表。有关分销商的其他信息包括分销商的名称和电话号码。视频标题可从一个且只有一个分销商。
+
+发行商可以提供许多视频标题。
+
+每一个SchlockBuster商店都可以出售许多商品。
+许多商店都有自己的名字。
+并非所有的商店都有商品名。
+换句话说，商店可以有许多相同的标题，有些可以有其他商店没有的标题。
+SchlockBuster还根据商店的情况，向用户收取租金。
+这意味着每个商店可以为每个游戏设置租金。
+
+
+商店可以存放同一标题的多份拷贝（物理卡带）。
+换句话说，store 101可以维持5个“碟中谍”。
+每个弹匣都有一个弹匣ID号。
+还为每个弹匣维护弹匣利用率计数。
+使用计数表示租用卡带的次数。
+弹壳状态对每个弹壳进行分类。
+墨盒状态的范围是“可用”、“租用”和“损坏”。
+一种状态类型可以应用于许多墨盒。
+
+
+SchlockBuster保存着每个客户的记录。
+唯一的客户ID标识每个客户。
+维护的每个客户的附加信息是客户的姓名和客户的电话号码。
+每个顾客都与他们注册成为会员的商店相关联，以获得他们的SchlockBuster视频卡。
+顾客可以从任何商店租用录像带。
+这种关系允许Schlockbuster将每次租赁金额的一部分记入会员的家庭商店，无论视频是在哪里租的。
+
+
+SchlockBuster保存着每笔租赁交易的记录。
+每个租赁交易都有一个租赁ID号。
+每个租赁交易都与一个且只有一个客户相关联。
+每个租赁交易都与（从）一个且仅一个商店相关联。
+每笔租赁交易还捕获了租赁日期和总租赁金额。
+每个租赁交易都与一个或多个租赁交易细节线相关联。
+每个租赁交易细节行都捕获了被租赁的磁带的id、被租赁的磁带的到期日和实际的归还日期。

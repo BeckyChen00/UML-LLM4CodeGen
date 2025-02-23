@@ -1,0 +1,75 @@
+# Sichuan University 2016-2017, BeWell App
+# Purpose 
+# This document outlines the usage and implementation of the Bewell app. 
+# Scope
+# The Bewell app is mainly for those who plan to lose or gain weight and require a planned medium. 
+
+# Requirement
+# The application will be able to record exercises, repetitions, and the diet followed. The app will have a calendar layout where the user can click on a specific day to find all the events and diets scheduled for the day. Further, the activities will be monitored and recorded for the same date.
+
+# The application can suggest videos and diets and schedule them on the calendar. The app will take the inputs from the user and suggest videos, diets, and schedules for the user. A database of the videos (can be from youtube) is created. The videos will be mapped based on user inputs, like what part of the body the user is focussed on. For a low-data device case, thumbnails from the video at regular intervals can be mapped instead of the videos. Further, diet is also planned similarly.
+
+# The application will track the user's running activity and convert them into calories burnt. Running speed, calories burnt, the track ran, etc., will be monitored and recorded for the day in the calendar. The app will take the device's GPS location and track the user's running activity. This will work only with the user's internet, and the location is "ON." This helps in calculating the calories burnt by the user. For calculation, the time taken by the user and the distance traveled by the user will be considered.
+
+# The application will track the user's running activity and convert them into calories burnt. Running speed, calories burnt, the track ran, etc., will be monitored and recorded 
+# for the day in the calendar. The app will take the device's GPS location and track the user's running activity. This will work only with the user's internet, and the location is "ON." This helps in calculating the calories burnt by the user. For calculation, the time taken by the user and the distance traveled by the user will be considered.
+
+# The application will be able to work offline/in low-data mode. Since network availability is not available in many scenarios, the app will be working during offline and low data mode. For a low data mode, pictures from the videos at regular intervals will be provided instead of videos. Thus the information is conveyed with very less data consumption. Further, the app will store the data during offline mode and upload the same to the server whenever the device goes online.
+
+# 四川大学2016-2017，BeWell App
+# 目的
+# 本文档概述了Bewell应用程序的使用和实现。
+
+# 范围
+# Bewell应用程序主要是为那些计划减肥或增重，需要计划好的介质的人设计的。
+
+
+# 要求
+# 该应用程序将能够记录锻炼、重复和随之而来的饮食。该应用程序将有一个日历布局，用户可以点击特定的一天，以找到当天的所有活动和饮食计划。此外，这些活动将在同一天进行监测和记录。
+
+
+# 该应用程序可以推荐视频和饮食，并将它们安排在日历上。
+# 该应用程序将接收用户的输入，并为用户推荐视频、饮食和日程安排。
+# 创建一个视频数据库（可以来自youtube）。
+# 视频将根据用户的输入进行映射，比如用户关注的身体部位。
+# 对于低数据量的设备，可以按固定时间间隔映射视频的缩略图，而不是视频。
+# 此外，饮食计划也类似。
+
+
+# 该应用程序将跟踪用户的跑步活动，并将它们转换为消耗的卡路里。
+# 跑步速度，燃烧的卡路里，跑步的轨道等，将被监测和记录在日历中的一天。
+# 该应用程序将获取设备的GPS位置，并跟踪用户的运行活动。
+# 这只适用于用户的互联网，并且位置是“ON”。
+# 这有助于计算用户消耗的卡路里。
+# 在计算时，将考虑用户所花费的时间和用户所行驶的距离。
+
+descriptionList = [
+"""系统需求：
+1）管理用户信息（姓名、性别）。
+2）系统管理用户的跑步活动（速度、消耗的卡路里和距离）。
+3）系统记录用户的饮食，包括食物名称，重量(kg)。
+4）系统能够查询某种食物的单位重量（0.1kg）的卡路里。可以调用 calculate
+5）系统能够计算用户每日摄入的卡路里 = 摄入的卡路里 - 跑步消耗的卡路里。摄入的卡路里 = 每日摄入的食物重量 * 食物单位重量的卡路里。"""
+,
+"""The system requirements are as follows:"""
+]
+
+umlList = [
+"""
+```plantuml
+@startuml
+
+
+@enduml
+"""
+]
+
+
+
+
+
+
+
+
+
+

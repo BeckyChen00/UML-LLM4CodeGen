@@ -30,3 +30,37 @@ Web Browser displays results.
 
 Functional Requirements 
 Products will be stored in multi-tiered categories; a category can contain subcategories or products. The inventory management will allow administrators to update the categories, the products placed in categories, and the specific product details. 
+
+
+客户账户
+描述和优先级
+客户可以创建账户来存储他们的个人资料、联系信息、购买历史和确认订单。这是一个高优先级的系统特性。安全措施将确保客户账户保持机密性，防止被篡改。
+刺激/响应序列
+web浏览器通过HTTPS向web服务器发起请求。
+web服务器解析请求。
+Web服务器向服务提交请求。
+服务接收请求。
+Service运行task。
+服务返回结果。
+Web服务器检查是否完成。
+Web服务器将结果返回给Web浏览器。
+Web浏览器显示结果。
+
+功能需求
+客户可以创建账户来存储客户配置文件、配置联系信息、查看他们的购买历史和确认订单。客户可以注册、登录和注销他们的帐户。此外，客户档案还将包括支付信息，如存储信用卡信息和地址信息的能力。
+库存管理
+描述和优先级
+库存管理将允许将产品放置到多层类别中。这是一个中等优先级的系统特性。
+刺激/响应序列。
+web浏览器通过HTTPS向web服务器发起请求。
+web服务器解析请求。
+Web服务器向服务提交请求。
+服务接收请求。
+Service运行task。
+服务返回结果。
+Web服务器检查是否完成。
+Web服务器将结果返回给Web浏览器。
+Web浏览器显示结果。
+
+功能需求
+产品将多层分类存储；一个类别可以包含子类别或产品。库存管理将允许管理员更新类别、放置在类别中的产品和特定的产品详细信息。

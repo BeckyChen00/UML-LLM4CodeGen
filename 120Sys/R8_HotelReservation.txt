@@ -9,3 +9,15 @@ $75 in the spring,
 And $ 50 in the autumn. The room takes up to 4 people. The price is calculated according to the number of people entering the room.
 While calculating the price for Large Deluxe rooms, the number of people is not considered. It is $ 400 daily in the summer, $ 300 in the spring, and $ 250 in the autumn. There can be a maximum of 7 people in this room.
 The user must be registered for the first time to the system. She must enter for pre-payment, 'H' for payment with a wire transfer, and 'S' for a standard reservation. A 15% discount will be applied on the price calculated when pre-paid reservation is selected. When payment using a wire transfer is selected, if the number of guests exceeds three persons, 50% of 1 guest's fee and 75% of 1 guest's fee will be deducted from the calculated amount. In standard reservations, customers make payments at the end of the accommodation. If all the rooms are reserved before, the user will be asked to make a choice again. If the user wishes to make another reservation transaction, the loop must start, and all transactions must be repeated.
+
+预订的总价取决于每年的时间和房间类型。旅馆里有三种类型的房间。其中奇数型标准间100间，偶数型大型豪华房6间。剩下的房间都是豪华的。
+标准间价格：
+夏季60美元，
+春季40美元，
+秋季季节每人每晚25美元。这个房间最多可容纳4人。价格是根据进入房间的人数计算的。
+豪华房价格：
+夏天每人每晚90美元，
+75美元在春天
+秋天的时候50美元。这个房间最多可容纳4人。价格是根据进入房间的人数计算的。
+在计算大型豪华房间的价格时，没有考虑人数。夏天每天400美元，春天300美元，秋天250美元。这个房间最多可以容纳7个人。
+用户必须首次注册到系统。她必须填写“预付”，“H”表示电汇付款，“S”表示标准预订。当选择预付预订时，价格将会有15%的折扣。选择电汇付款时，如果客人人数超过3人，将扣除1人费用的50%和1人费用的75%。在标准预订中，客人在住宿结束时付款。如果之前预订了所有的房间，用户会被要求重新选择。如果用户希望创建另一个预留事务，则必须启动循环，并且必须重复所有事务。

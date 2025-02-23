@@ -12,3 +12,18 @@ The clinic maintains a supplies inventory file that a worker fills out once a we
 
 Note:
 Use your knowledge as a dental patient to add any information you feel necessary to this description, but please state any assumptions you make.  Some aspects of clinic operations have been simplified for this example. 
+
+
+
+摩特茅斯牙科诊所
+
+诊所安排病人，为他们提供服务，并为这些服务收费。
+
+新患者在安排第一次预约之前，需要填写一份表格，列出他们的姓名、地址、电话号码、过敏情况和精神状态。现有的病人在离开当前的预约时，通常会安排下次预约。当办公室工作人员忘记做这件事时，办公室工作人员不得不打电话给病人约个时间。日程被输入到一个中央预约簿中；患者记录（包括联系信息）保存在纸质文件中。
+
+预约是为了三种手术中的一种：口腔卫生、蛀牙和补牙，以及口腔手术（包括根管和拔牙）。对于每一个手术，患者都需要做好准备，并收集所需用品（如探针、钻头、水泥、树脂等）。为牙科医生的预约做准备就像让病人坐在牙科椅上，在他们的脖子上套上围兜一样简单。对于口腔手术，手术前要进行各种强度的麻醉。只有在进行口腔手术时，才有必要要求患者等待20分钟后再进行术后检查。
+
+账单总是按月结算，账单总是通过邮件发送到患者的联系地址。支票是通过邮寄收到的。由卫生保健组织资助的病人被要求在离开办公室时支付共同费用。每个病人还会向保险公司提交一份报销申请。保险公司和医疗卫生组织在收到报销申请三个月后将支票邮寄。
+
+该诊所维护着一份用品库存文件，由一名工作人员通过对三个手术室中的每一个进行身体检查每周填写一次。每个房间的用品和工具都按标准摆放。
+

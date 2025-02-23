@@ -16,3 +16,106 @@ A legal move consists of a player moving their token, the number of moves determ
  
 Winning the Game 
 A player wins the game by announcing their murder hypothesis, consisting of a planet, a perpetrator, and a murder weapon at any time during their turn, and having the server determine that the hypothesis is correct. The solution is then broadcast to all players. If an announced hypothesis is incorrect, the player loses the game and cannot pose hypotheses any longer or make moves on the board but must continue refuting the hypotheses of other players. When the correct hypothesis is announced, all players are informed of the circumstances of the murder.
+
+
+Galaxy Sleuth Game
+
+Purpose
+The goal of the class project is to implement an Internet-based, who-done-it-style game called Galaxy Sleuth.
+ The game is Internet-based in that players can play each other from remote sites on the Internet.
+ This application will, therefore, take on a client/server structure where each client supports one player's view of the game.
+ In contrast, the server coordinates communication between players and orchestrates the sequence of events of the game.
+ 
+
+Scope 
+The objective of player movement throughout the universe is to investigate specific planets to determine if that was the murder site.
+ Part of the game, therefore, involves reaching suspicious locations quickly to investigate them.
+ This element is primarily dictated by luck since the wheel's spin determines the speed at which a player reaches a destination.
+ Players may also travel through a few strategically placed wormholes.
+ The wormholes connect certain planets.
+ The game's strategy is embodied in selecting questions to ask other players, selecting planet destinations, and efficiently deducing the correct murder scenario.
+ 
+ 
+Requirements 
+The game is an intergalactic murder mystery, which emulates a board game scenario in which players spin a wheel to determine a randomly selected number of moves by which they travel through space to various planets.
+ The game's objective is to gather clues while traveling about the universe.
+ Each player receives information concerning the murder, and no players receive the same information.
+ As the players travel through the universe, they are permitted to ask questions about what information their fellow players possess.
+ The questions form a hypothesis for the murder circumstance and perpetrator, which the remaining players are invited to disprove with their evidence.
+ The murder hypothesis is communicated to all players.
+ If a player can disprove the hypothesis, that information is communicated only to the inquiring player.
+ Other players are informed that the hypothesis was refuted but need to be shown the piece of evidence that refuted the hypothesis.
+ If the hypothesis cannot be denied, all players are informed of that fact.
+ After gathering a certain set of clues and applying deductive reasoning, players may deduce the perpetrator and circumstance of the murder.
+ The first player to accomplish this wins the game.
+ If a player draws an incorrect conclusion, they lose the game.
+ 
+ 
+Moving and Landing on Planets 
+To visit a planet, a player must enter the planet's atmosphere at one of the predefined entry points.
+ Each planet has between one and three predefined atmospheric entry points.
+ These entry points are graphically depicted on the game as a diagonal line off a square on the board leading into a planet's atmosphere.
+ A player visits a planet by making legal moves on the board until a cell adjacent to an atmosphere entry point is reached.
+ It costs the player a single move to enter the atmosphere from the adjacent cell.
+ The player is considered to be on the planet as soon as the planet's atmosphere has been entered.
+ The player can enter the planet's atmosphere in a different number of moves.
+ A player whose token resides on one of four planets having wormhole connections to other planets may choose not to spin the spinner and take the wormhole directly to the other planet.
+ The planets, Linuta and Verlute, have a wormhole connecting each other, as do Earth and Evilon.
+ A player may not re-visit the same planet on a single turn.
+ 
+ 
+A legal move consists of a player moving their token, the number of moves determined by the spinner, either horizontally or vertically, but not diagonally.
+ The player may change directions multiple times but cannot enter the same cell twice during a single turn.
+ Also, a player may not move into a cell occupied by another player's token.
+ 
+ 
+Winning the Game 
+A player wins the game by announcing their murder hypothesis, consisting of a planet, a perpetrator, and a murder weapon at any time during their turn, and having the server determine that the hypothesis is correct.
+ The solution is then broadcast to all players.
+ If an announced hypothesis is incorrect, the player loses the game and cannot pose hypotheses any longer or make moves on the board but must continue refuting the hypotheses of other players.
+ When the correct hypothesis is announced, all players are informed of the circumstances of the murder.
+
+目的
+课程项目的目标是实现一个基于互联网的、由谁来完成的游戏，名为《银河侦探》（Galaxy Sleuth）。这款游戏是基于互联网的，玩家可以在互联网上的远程站点进行游戏。因此，这个应用程序将采用客户端/服务器结构，其中每个客户端支持一个玩家的游戏视图。相比之下，服务器协调玩家之间的通信并协调游戏事件的顺序。
+
+范围
+玩家在宇宙中移动的目标是调查特定的行星，以确定那是否是谋杀地点。因此，游戏的一部分内容就是快速到达可疑地点进行调查。这个元素主要是由运气决定的，因为轮子的旋转决定了玩家到达目的地的速度。玩家也可以通过一些策略性放置的虫洞。虫洞连接着某些行星。游戏的策略体现在选择问题去问其他玩家，选择星球目的地，并有效地推断出正确的谋杀场景。
+ 
+需求
+这款游戏是一款星际谋杀之谜游戏，它模拟了一款桌面游戏的场景，玩家通过旋转一个轮子来随机选择移动的数量，通过这些移动他们可以穿越太空到达不同的行星。
+这款游戏的目标是在宇宙旅行的同时收集线索。
+每个玩家都会收到关于谋杀的信息，但没有玩家会收到相同的信息。
+当玩家穿越宇宙时，他们可以询问其他玩家拥有哪些信息。
+这些问题形成了一个关于谋杀情况和行凶者的假设，剩下的参与者被邀请用他们的证据来反驳这个假设。
+将谋杀假设传达给所有玩家。
+如果玩家能够推翻假设，那么该信息只会传达给询问的玩家。
+其他玩家被告知这个假设被推翻了，但需要向他们展示可以推翻这个假设的证据。
+如果假设不能被否定，那么所有玩家都被告知这一事实。
+在收集到一定的线索后，运用演绎推理，可以推断出谋杀的凶手和情节。
+第一个完成这个任务的玩家将赢得游戏。
+如果玩家得出错误的结论，他们就会输掉游戏。
+
+ 
+在行星上移动和着陆
+要访问一个行星，玩家必须进入该行星的大气中的一个预先定义的入口点。
+每颗行星都有一到三个预定义的大气入口点。
+这些入口点在游戏中被图形化地描述为棋盘上通往行星大气层的正方形对角线。
+玩家通过在棋盘上进行合法的移动来访问一个星球，直到到达大气入口点附近的一个格子。
+玩家只需一次移动就可以从相邻的格子进入大气层。
+当玩家进入这个星球的大气层时，就会被认为是在这个星球上。
+玩家可以通过不同数量的移动进入行星的大气层。
+如果玩家的代币驻留在与其他星球有虫洞连接的四个星球之一，可以选择不旋转旋转器，直接将虫洞带到另一个星球。
+行星Linuta和Verlute有一个相互连接的虫洞，就像地球和Evilon一样。
+玩家不能在一个回合中再次访问同一个星球。
+
+ 
+一个合法的移动包括一个玩家移动他们的token，移动的数量由旋转决定，水平或垂直，但不是对角线。
+玩家可以多次改变方向，但不能在一个回合内两次进入同一个格子。
+另外，一个玩家不能移动到另一个玩家的代币所占据的格子中。
+
+ 
+赢得比赛
+玩家通过宣布自己的谋杀假设（游戏邦注：包括行星、行凶者和杀人武器），并让服务器判断假设是否正确，从而赢得游戏。
+然后，解决方案会广播给所有玩家。
+如果宣布的假设是错误的，玩家就会输掉游戏，不能再提出假设或在棋盘上采取行动，但必须继续驳斥其他玩家的假设。
+当正确的假设被宣布时，所有玩家都被告知谋杀的情况。

@@ -19,17 +19,7 @@
 
 # educational management system
 
-description_list =[ """ 
-A simple educational management system that can implement the following functions:
-1) Manage student information, including student ID, name.
-2) Manage course information, including course ID, course name, course credits, and course description.
-3) Manage students' course enroll time and grades. The student can take the same course multiple times.
-4) Query all the unique courses taken by a student.
-5) Calculate a course grade, which is the highest score the student have earned.
-6) Calculate the credits earned by a student. The credit of a unique course is only counted toward the result if the course grade is 60 or above.
-""",]
-
-description = """
+descriptionList =[ """
 A simple educational management system that can implement the following functions:
 1) Record student details, encompassing student ID and name.
 2) Handle course specifics, which include course ID, course name, course credits, and course overview.
@@ -37,9 +27,23 @@ A simple educational management system that can implement the following function
 4) Retrieve all the distinct courses enrolled by a student.
 5) Canculate a unique course grade as the highest mark obtained by the student.
 6) Canculate the total credits accumulated by a student, where only the credit of a unique course counts if the course grade is 60 or more.
-"""
+""",
+""" 
+A simple educational management system that can implement the following functions:
+1) Manage student information, including student ID, name.
+2) Manage course information, including course ID, course name, course credits, and course description.
+3) Manage students' course enroll time and grades. The student can take the same course multiple times.
+4) Query all the unique courses taken by a student.
+5) Calculate a course grade, which is the highest score the student have earned.
+6) Calculate the credits earned by a student. The credit of a unique course is only counted toward the result if the course grade is 60 or above.
+""",
 
-uml = """
+]
+
+
+
+umlList = [
+    """
 ```plantuml
 @startuml
 note:  class diagram
@@ -71,9 +75,8 @@ Enrollment "*" --> "1" Course : enrolledCourse
 
 @enduml
 ```
+""",
 """
-
-uml_list = ["""
 ```plantuml
 @startuml
 note:  class diagram

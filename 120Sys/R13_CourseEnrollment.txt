@@ -5,3 +5,13 @@ The new online registration system will allow students to select four-course off
 Professors must be able to access the online system to indicate which courses they will be teaching. They will also need to see which students signed up for their course offerings.
 For each semester, there is a period that students can change their schedules. Students must be able to access the online system during this time to add or drop courses. The billing system will credit all students for courses dropped during this period.
 At the end of the semester, the student can access the system to view an electronic report card. Since student grades are sensitive information, the system must employ extra security measures to prevent unauthorized access.
+
+
+在每个学期开始时，学生可以要求提供包含课程列表的课程目录。关于每门课程的信息，如教授、系和先决条件，将被包括在内，以帮助学生做出明智的决定。
+
+新的在线注册系统将允许学生选择下个学期的四门课程。此外，如果课程被填满或取消，每个学生将指出两个选择。每门课程最多有10名学生。
+所有课程的学生人数都不会少于3人。少于3名学生的课程将被取消。学生的注册过程完成后，注册系统将信息发送到计费系统，以便该学生可以为该学期付费。
+
+教授必须能够访问在线系统，以表明他们将教授哪些课程。他们还需要查看哪些学生注册了他们提供的课程。
+每个学期，学生都有一段时间可以改变他们的课程表。在此期间，学生必须能够访问在线系统以添加或退出课程。计费系统将对所有在此期间放弃的课程的学生给予学分。
+在学期结束时，学生可以进入系统查看电子成绩单。由于学生成绩是敏感信息，系统必须采用额外的安全措施来防止未经授权的访问。

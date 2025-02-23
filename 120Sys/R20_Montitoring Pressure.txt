@@ -1,1 +1,45 @@
-The system monitors the pressure and sends the safety injection signal when the pressurizerís pres-sure falls below a ëëlowíí threshold. The human operator can override system actions by turning on a block button and resets the manual block by pushing on a reset button. A manual block is permitted if the pressure is below a permitted threshold. The system must automatically reset the manual block. A manual block is effective if and only if it is executed before the safety injection signal is sent. The reset button has higher priority than the block button.
+The system monitors the pressure and sends the safety injection signal when the pressure falls below a certain threshold.
+The human operator can override system actions by turning on a block button and resets the manual block by pushing on a reset button. 
+A manual block is permitted if the pressure is below a permitted threshold. 
+The system must automatically reset the manual block. 
+A manual block is effective if and only if it is executed before the safety injection signal is sent. 
+The reset button has higher priority than the block button.
+
+Press 
+
+一个系统压力监测系统，具体包含以下功能：
+1）查询当前压力值，当系统的压力低于压力阈值（0.8-1.6 MPa）时，发送安全注射信号。
+2）手动阻塞管理：系统提供两个控制按钮：'block' 和 'reset' 按钮。人类操作员可以通过按下 'block' 按钮来手动阻塞系统的安全注射信号发送。
+只有在当前压力值低于阈值时，才允许手动阻塞。手动阻塞仅在安全注射信号发送之前执行时才有效。'reset' 按钮：人类操作员可以通过按下 'reset' 按钮来复位手动阻塞状态。
+'reset' 按钮的优先级高于 'block' 按钮。按下 'reset' 按钮后，手动阻塞状态将被取消。
+3）自动复位：当压力恢复正常时，系统必须自动复位手动阻塞状态。
+
+
+uml = """
+class PressureMonitor {
+    - double currentPressure
+
+    + queryPressure()
+}
+
+
+
+class SafetySystem {
+    - boolean isBlockButtonEnabled
+    - boolean isInjectionEnabled
+    - boolean isBlocked
+
+    - double pressureThresholdForSafetyInjection
+    - double pressureThresholdForBlocking
+
+    + pressBlockButton()
+    + pressResetButton()
+    + sendSafetyInjectionSignal()
+    + monitor()
+    + unblock()
+}
+
+ 
+
+
+"""

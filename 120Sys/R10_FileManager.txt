@@ -1,1 +1,59 @@
-A file system contains information from multiple documents. The document can be added and removed from the file, and all the documents can be listed. Each document uses an editor suitable for creation. A document contains the document's name, creation date, author information, and size. The user determines the assignment of the editor to the documents. Each editor has a name and file management task. The system has three editors that allow you to manage documents: Text Editor, Image Editor, and Video Editor.
+A file system contains information from multiple documents.
+ The document can be added and removed from the file, and all the documents can be listed.
+ Each document uses an editor suitable for creation.
+ A document contains the document's name, creation date, author information, and size.
+ The user determines the assignment of the editor to the documents.
+ Each editor has a name and file management task.
+ The system has three editors that allow you to manage documents: Text Editor, Image Editor, and Video Editor.
+
+
+description = """
+文件系统，包括以下需求：
+1）一个文件系统包含来自多个文档的信息。文档包含文档的名称、创建日期、作者信息和大小。
+2）用户可以从文件中添加和删除文档，并且可以列出所有文档。
+3）每个文档都使用适合创建的编辑器。每个编辑器都有一个名称和文件管理任务。系统有三个编辑器允许用户管理文档：文本编辑器，图像编辑器和视频编辑器。
+4）用户决定文档编辑器的分配。
+用户可以创建新的编辑器，指定编辑器管理。
+保证编辑器里文档列表和文档的一致性。
+"""
+
+
+uml = """
+class User {
+    + assignEditorToDocument()
+}
+
+class Document {
+    - string name
+    - date creationDate 
+    - string author
+    - long size
+    
+}
+
+class FileSystem {
+    + addDocument()
+    + removeDocument()
+    + listDocuments()
+}
+
+abstract class Editor {
+}
+
+class TextEditor {
+    + editText()
+}
+
+class VideoEditor {
+    + editVideo()
+}
+
+class ImageEditor {
+    + editImage()
+}
+
+FileSystem "1" -- "*" Document : contains
+Document "1" -- "1" Editor : uses
+User "1" -- "*" Editor : decides
+User "1" -- "*" FileSystem : manages
+"""

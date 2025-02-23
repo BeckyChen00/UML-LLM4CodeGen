@@ -3,9 +3,10 @@ from openai import OpenAI
 import re
 import nltk.translate.bleu_score as bleu
 import numpy as np
-import data
-description = data.description
-uml = data.uml
+import problemSet
+
+ 
+# openai = OpenAI(base_url='https://api.siliconflow.cn/v1',    api_key='sk-apbldvpwfpikpvqryyvtxfpsmgkhtrsvwdzyyqmvwbbroafh')
 
 openai = OpenAI(base_url='https://www.DMXapi.com/v1/', api_key='sk-HXJ9ubNKq2k13zlfTzr1xsL35CSzXeaAxkHKE0O6jOgYZ2GO')
 # sk-apbldvpwfpikpvqryyvtxfpsmgkhtrsvwdzyyqmvwbbroafh
@@ -40,6 +41,7 @@ def codeBasedSysUml(description,UML,temperature=0,model="gpt-3.5-turbo-0125")->s
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
+        stream=False,
     ) 
     # print(f"AI output: {codeGen}")
     
@@ -64,6 +66,7 @@ def codeGenBasedSys(description,temperature=0,model="gpt-3.5-turbo-0125")->str:
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
+        stream=False,
     ) 
     
     codeGenAnswer, i_tokens, o_tokens, total_tokens = codeGen.choices[0].message.content,codeGen.usage.prompt_tokens,codeGen.usage.completion_tokens,codeGen.usage.total_tokens
