@@ -4,12 +4,14 @@ import problemSet
 import demo
 import importlib.util
 
-name = "R10_FileManager"
+name = "R9_BeWellApp"
 rawFilePath = f"problemSet/{name}.py"
 resultPath = f"problem/{name}_Result.md"
 
 temperatureList = [0]
-model ="gpt-3.5-turbo-0125"
+model = "gpt-3.5-turbo-0125"
+# "gpt-4o-mini"
+# "gpt-3.5-turbo-0125"
 # "deepseek-ai/DeepSeek-R1"
 # "gpt-4o-mini"
 # "gpt-3.5-turbo-0125"
@@ -25,13 +27,13 @@ spec.loader.exec_module(data)
 
 
 # for version1 in data.version1List[0]:
-for description in [data.descriptionList[1]]:
+for description in [data.descriptionList[3]]:
     for temperature in temperatureList:
-        # for version2 in data.version2List[0]:
         for uml in data.umlList:
             # uml = data.uml.replace("{version2}", version2)
             resultBasedSysUML = demo.codeBasedSysUml(description,uml,temperature,model)
 
+            
             with open(resultPath, 'a', encoding='utf-8') as f:
                 f.write(f"# Version(sys+uml) Model: {model} Temperature: {temperature}\n")
                 f.write(f"## Description:\n{description}\n")
@@ -40,6 +42,7 @@ for description in [data.descriptionList[1]]:
                 # f.write(f"## Temperature:\n{temperature}\n")
                 f.write(f"## Result:\n{resultBasedSysUML}\n")
                 f.write(f"\n{'-'*50}\n")
+                
         
         resultBasedSys = demo.codeGenBasedSys(description,temperature,model)
         with open(resultPath, 'a', encoding='utf-8') as f:
@@ -50,4 +53,6 @@ for description in [data.descriptionList[1]]:
             # f.write(f"## Temperature:\n{temperature}\n")
             f.write(f"## Result:\n{resultBasedSys}\n")
             f.write(f"\n{'-'*50}\n")
+
+
 

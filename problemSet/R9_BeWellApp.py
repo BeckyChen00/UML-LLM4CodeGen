@@ -46,20 +46,60 @@
 descriptionList = [
 """系统需求：
 1）管理用户信息（姓名、性别）。
-2）系统管理用户的跑步活动（速度、消耗的卡路里和距离）。
-3）系统记录用户的饮食，包括食物名称，重量(kg)。
-4）系统能够查询某种食物的单位重量（0.1kg）的卡路里。可以调用 calculate
-5）系统能够计算用户每日摄入的卡路里 = 摄入的卡路里 - 跑步消耗的卡路里。摄入的卡路里 = 每日摄入的食物重量 * 食物单位重量的卡路里。"""
+2）用户记录跑步活动数据（日期、跑步速度、消耗卡路里和跑步距离）。
+3）用户记录每日饮食信息（日期、食物名称、摄入重量（kg））。
+4）用户查询某种食物单位重量（0.1kg）的卡路里，可以使用标准接口 calculateFoodCaloriesPerUnit(foodName)。
+5）用户计算日净摄入卡路里量 = 每日摄入食物卡路里和 - 每日跑步消耗卡路里。 每日摄入食物卡路里和 = Σ（每日摄入的食物量 / 单位重量 * 单位重量的卡路里）。"""
 ,
-"""The system requirements are as follows:"""
+"""The system requirements are as follows:
+1) Manage the user's information including name and sex.
+2) The user can record running activities including date, speed, calories burnt, and distance.
+3) The user can record daily diets including date, food name and weight (kg). 
+4) The user can query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) The user can calculate the net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+,
+"""系统需求：
+1）管理用户信息（姓名、性别）。
+2）记录用户的跑步活动数据（跑步速度、消耗卡路里和跑步距离）。
+3）记录用户每日饮食信息（食物名称、摄入重量（kg））。
+4）查询某种食物单位重量（0.1kg）的卡路里。提供标准接口 calculateFoodCaloriesPerUnit(foodName)。
+5）计算用户某一天的日净摄入卡路里量 = 当日摄入食物卡路里和 - 当日跑步消耗卡路里。 当日摄入食物卡路里和 = Σ（当日摄入的食物量 / 单位重量 * 单位重量的卡路里）。"""
+,
+"""The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake for a specific date. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+
 ]
 
 umlList = [
 """
 ```plantuml
 @startuml
+class User {
+    - string name
+    - string sex
 
+    + double calculateNetDailyCalories(date)
+    }
 
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
 @enduml
 """
 ]

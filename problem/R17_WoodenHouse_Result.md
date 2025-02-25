@@ -3983,3 +3983,448 @@ public class WoodenHouseConstructionOrderManagementSystem {
 This code adheres to Java standards and best practices, ensuring clarity and maintainability.
 
 --------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Wooden House Construction Order Management System, with the following specific requirements:
+1) Manage customers information (name and address).
+2) Manage carpenters information (name and daily wage).
+3) Manage orders. Each order includes an order number, a list of building materials (amount of logs, amount of mud bricks, amount of nails), construction start and end times, and payment status.
+4) A customer can create/have/own multiple orders.
+5) An order can be assigned to multiple carpenters; each carpenter can participate in multiple orders. An order can be assigned to a carpenter only if there is no overlap of the construction time between this order and the orders this carpenter has already participated in.
+6) The payable fee for each order includes the cost of building materials and labor. The cost of building materials = amount of logs * $10 + amount of mud bricks * $10 + amount of nails * $1. Labor cost = carpenter's daily wage * order duration. The order duration can be calculated using the known function calculateDuration(startTime, endTime).
+7) Each customer can calculate the total unpaid order costs.
+
+## UML:
+
+```plantUML
+@startuml
+class Customer {
+    - string name
+    - string address
+
+    + double calculateTotalUnpaidOrderFee()
+}
+
+class Order {
+    - string oid
+    - int amountOfLogs
+    - int amountOfMudBricksNumber
+    - int amountOfNailsNumber
+    - boolean paymentStatus
+    - date startTime
+    - date endTime
+    
+    + double calculateOrderFee()
+}
+
+class Carpenter {
+    - string name
+    - double dailyWage
+}
+
+Customer "1" -- "0..*" Order: createdOrders
+Order "0..*" -- "1..*" Carpenter: assignedCarpenters
+@enduml
+```
+
+## Result:
+Here is the complete Java code based on the provided functional requirements and UML class diagram for the Wooden House Construction Order Management System.
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+// Class representing a Customer
+class Customer {
+    private String name;
+    private String address;
+    private List<Order> createdOrders;
+
+    // Constructor
+    public Customer(String name, String address) {
+        this.name = name;
+        this.address = address;
+        this.createdOrders = new ArrayList<>();
+    }
+
+    // Method to calculate total unpaid order fee
+    public double calculateTotalUnpaidOrderFee() {
+        double totalFee = 0.0;
+        for (Order order : createdOrders) {
+            if (!order.isPaymentStatus()) {
+                totalFee += order.calculateOrderFee();
+            }
+        }
+        return totalFee;
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public List<Order> getCreatedOrders() {
+        return createdOrders;
+    }
+
+    public void addOrder(Order order) {
+        createdOrders.add(order);
+    }
+}
+
+// Class representing an Order
+class Order {
+    private String oid;
+    private int amountOfLogs;
+    private int amountOfMudBricksNumber;
+    private int amountOfNailsNumber;
+    private boolean paymentStatus;
+    private Date startTime;
+    private Date endTime;
+    private List<Carpenter> assignedCarpenters;
+
+    // Constructor
+    public Order(String oid, int amountOfLogs, int amountOfMudBricksNumber, int amountOfNailsNumber, 
+                 Date startTime, Date endTime) {
+        this.oid = oid;
+        this.amountOfLogs = amountOfLogs;
+        this.amountOfMudBricksNumber = amountOfMudBricksNumber;
+        this.amountOfNailsNumber = amountOfNailsNumber;
+        this.paymentStatus = false; // Default payment status is unpaid
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.assignedCarpenters = new ArrayList<>();
+    }
+
+    // Method to calculate order fee
+    public double calculateOrderFee() {
+        double materialCost = (amountOfLogs * 10) + (amountOfMudBricksNumber * 10) + (amountOfNailsNumber * 1);
+        double laborCost = 0.0;
+
+        // Calculate labor cost based on assigned carpenters
+        for (Carpenter carpenter : assignedCarpenters) {
+            laborCost += carpenter.getDailyWage() * calculateDuration(startTime, endTime);
+        }
+
+        return materialCost + laborCost;
+    }
+
+    // Method to calculate duration in days
+    private long calculateDuration(Date startTime, Date endTime) {
+        long durationInMillis = endTime.getTime() - startTime.getTime();
+        return durationInMillis / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+    }
+
+    // Method to assign a carpenter to the order
+    public boolean assignCarpenter(Carpenter carpenter) {
+        for (Order order : carpenter.getAssignedOrders()) {
+            if (this.startTime.before(order.getEndTime()) && this.endTime.after(order.getStartTime())) {
+                return false; // Overlap detected
+            }
+        }
+        assignedCarpenters.add(carpenter);
+        carpenter.addOrder(this);
+        return true;
+    }
+
+    // Getters and Setters
+    public String getOid() {
+        return oid;
+    }
+
+    public boolean isPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public List<Carpenter> getAssignedCarpenters() {
+        return assignedCarpenters;
+    }
+}
+
+// Class representing a Carpenter
+class Carpenter {
+    private String name;
+    private double dailyWage;
+    private List<Order> assignedOrders;
+
+    // Constructor
+    public Carpenter(String name, double dailyWage) {
+        this.name = name;
+        this.dailyWage = dailyWage;
+        this.assignedOrders = new ArrayList<>();
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public double getDailyWage() {
+        return dailyWage;
+    }
+
+    public List<Order> getAssignedOrders() {
+        return assignedOrders;
+    }
+
+    public void addOrder(Order order) {
+        assignedOrders.add(order);
+    }
+}
+```
+
+### Explanation of the Code:
+1. **Customer Class**: Manages customer information and their orders. It includes a method to calculate the total unpaid order fees.
+2. **Order Class**: Represents an order with details about materials, payment status, and assigned carpenters. It includes methods to calculate the order fee and assign carpenters while checking for overlapping schedules.
+3. **Carpenter Class**: Manages carpenter information and the orders they are assigned to.
+
+### Key Features:
+- Each class has appropriate constructors and methods as per the requirements.
+- The `assignCarpenter` method in the `Order` class checks for overlapping time before assigning a carpenter.
+- The `calculateOrderFee` method computes the total cost based on materials and labor.
+- The `calculateTotalUnpaidOrderFee` method in the `Customer` class sums up the fees of unpaid orders.
+
+This code adheres to Java coding standards and best practices, ensuring clarity and maintainability.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Wooden House Construction Order Management System, with the following specific requirements:
+1) Manage customers information (name and address).
+2) Manage carpenters information (name and daily wage).
+3) Manage orders. Each order includes an order number, a list of building materials (amount of logs, amount of mud bricks, amount of nails), construction start and end times, and payment status.
+4) A customer can create/have/own multiple orders.
+5) An order can be assigned to multiple carpenters; each carpenter can participate in multiple orders. An order can be assigned to a carpenter only if there is no overlap of the construction time between this order and the orders this carpenter has already participated in.
+6) The payable fee for each order includes the cost of building materials and labor. The cost of building materials = amount of logs * $10 + amount of mud bricks * $10 + amount of nails * $1. Labor cost = carpenter's daily wage * order duration. The order duration can be calculated using the known function calculateDuration(startTime, endTime).
+7) Each customer can calculate the total unpaid order costs.
+
+## UML:
+
+```plantUML
+@startuml
+class Customer {
+    - string name
+    - string address
+
+    + double calculateTotalUnpaidOrderFee()
+}
+
+class Order {
+    - string oid
+    - int amountOfLogs
+    - int amountOfMudBricksNumber
+    - int amountOfNailsNumber
+    - boolean paymentStatus
+    - date startTime
+    - date endTime
+    
+    + double calculateOrderFee()
+    + void assignToCarpenter(Carpenter)
+}
+
+class Carpenter {
+    - string name
+    - double dailyWage
+}
+
+Customer "1" -- "0..*" Order: createdOrders
+Order "0..*" -- "1..*" Carpenter: assignedCarpenters
+@enduml
+```
+
+## Result:
+Here is the complete Java code based on the provided functional requirements and UML class diagram for the Wooden House Construction Order Management System.
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+// Class representing a Customer
+class Customer {
+    private String name;
+    private String address;
+    private List<Order> createdOrders;
+
+    public Customer(String name, String address) {
+        this.name = name;
+        this.address = address;
+        this.createdOrders = new ArrayList<>();
+    }
+
+    // Method to calculate total unpaid order fee
+    public double calculateTotalUnpaidOrderFee() {
+        double totalFee = 0.0;
+        for (Order order : createdOrders) {
+            if (!order.isPaymentStatus()) {
+                totalFee += order.calculateOrderFee();
+            }
+        }
+        return totalFee;
+    }
+
+    // Method to add an order to the customer's list
+    public void addOrder(Order order) {
+        createdOrders.add(order);
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public List<Order> getCreatedOrders() {
+        return createdOrders;
+    }
+}
+
+// Class representing an Order
+class Order {
+    private String oid;
+    private int amountOfLogs;
+    private int amountOfMudBricksNumber;
+    private int amountOfNailsNumber;
+    private boolean paymentStatus;
+    private Date startTime;
+    private Date endTime;
+    private List<Carpenter> assignedCarpenters;
+
+    public Order(String oid, int amountOfLogs, int amountOfMudBricksNumber, int amountOfNailsNumber, 
+                 Date startTime, Date endTime) {
+        this.oid = oid;
+        this.amountOfLogs = amountOfLogs;
+        this.amountOfMudBricksNumber = amountOfMudBricksNumber;
+        this.amountOfNailsNumber = amountOfNailsNumber;
+        this.paymentStatus = false; // Default to unpaid
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.assignedCarpenters = new ArrayList<>();
+    }
+
+    // Method to calculate order fee
+    public double calculateOrderFee() {
+        double materialCost = (amountOfLogs * 10) + (amountOfMudBricksNumber * 10) + (amountOfNailsNumber * 1);
+        double laborCost = 0.0;
+        for (Carpenter carpenter : assignedCarpenters) {
+            laborCost += carpenter.getDailyWage() * calculateDuration(startTime, endTime);
+        }
+        return materialCost + laborCost;
+    }
+
+    // Method to assign a carpenter to the order
+    public void assignToCarpenter(Carpenter carpenter) {
+        if (canAssignCarpenter(carpenter)) {
+            assignedCarpenters.add(carpenter);
+        } else {
+            throw new IllegalArgumentException("Carpenter is already assigned to another overlapping order.");
+        }
+    }
+
+    // Check if the carpenter can be assigned based on time overlap
+    private boolean canAssignCarpenter(Carpenter carpenter) {
+        for (Order order : carpenter.getAssignedOrders()) {
+            if (this.startTime.before(order.getEndTime()) && this.endTime.after(order.getStartTime())) {
+                return false; // Overlap detected
+            }
+        }
+        return true; // No overlap
+    }
+
+    // Method to calculate duration in days
+    public static long calculateDuration(Date startTime, Date endTime) {
+        long durationInMillis = endTime.getTime() - startTime.getTime();
+        return durationInMillis / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+    }
+
+    // Getters and Setters
+    public String getOid() {
+        return oid;
+    }
+
+    public boolean isPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public List<Carpenter> getAssignedCarpenters() {
+        return assignedCarpenters;
+    }
+}
+
+// Class representing a Carpenter
+class Carpenter {
+    private String name;
+    private double dailyWage;
+    private List<Order> assignedOrders;
+
+    public Carpenter(String name, double dailyWage) {
+        this.name = name;
+        this.dailyWage = dailyWage;
+        this.assignedOrders = new ArrayList<>();
+    }
+
+    // Method to add an order to the carpenter's list
+    public void addOrder(Order order) {
+        assignedOrders.add(order);
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public double getDailyWage() {
+        return dailyWage;
+    }
+
+    public List<Order> getAssignedOrders() {
+        return assignedOrders;
+    }
+}
+```
+
+### Explanation:
+1. **Customer Class**: Manages customer information and their orders. It includes a method to calculate the total unpaid order fees.
+2. **Order Class**: Manages order details, including materials, payment status, and assigned carpenters. It includes methods to calculate the order fee and assign carpenters while checking for time overlaps.
+3. **Carpenter Class**: Manages carpenter information and the orders they are assigned to.
+
+### Additional Notes:
+- The `calculateDuration` method calculates the duration in days between the start and end times.
+- The `assignToCarpenter` method checks for overlapping orders before assigning a carpenter.
+- Error handling is included to prevent assigning a carpenter to overlapping orders.
+
+--------------------------------------------------

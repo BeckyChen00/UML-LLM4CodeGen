@@ -22,7 +22,7 @@ Wooden House Construction Order Management System, with the following specific r
 2) Manage carpenters information (name and daily wage).
 3) Manage orders. Each order includes an order number, a list of building materials (amount of logs, amount of mud bricks, amount of nails), construction start and end times, and payment status.
 4) A customer can create/have/own multiple orders.
-5) An order can be assigned to multiple carpenters to complete; each carpenter can participate in multiple orders. An order can be assigned to a carpenter only if there is no overlap in the construction start and end times with the orders the carpenter is already involved in.
+5) An order can be assigned to multiple carpenters; each carpenter can participate in multiple orders. An order can be assigned to a carpenter only if there is no overlap of the construction time between this order and the orders this carpenter has already participated in.
 6) The payable fee for each order includes the cost of building materials and labor. The cost of building materials = amount of logs * $10 + amount of mud bricks * $10 + amount of nails * $1. Labor cost = carpenter's daily wage * order duration. The order duration can be calculated using the known function calculateDuration(startTime, endTime).
 7) Each customer can calculate the total unpaid order costs.
 """]
@@ -47,6 +47,7 @@ class Order {
     - date endTime
     
     + double calculateOrderFee()
+    + void assignToCarpenter(Carpenter)
 }
 
 class Carpenter {
@@ -57,6 +58,7 @@ class Carpenter {
 Customer "1" -- "0..*" Order: createdOrders
 Order "0..*" -- "1..*" Carpenter: assignedCarpenters
 @enduml
+```
 """]
 
 

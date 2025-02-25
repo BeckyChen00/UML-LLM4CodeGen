@@ -17,16 +17,22 @@ base_prompt = """Based on the <System functional requirements> and <UML class di
 """
 uml_prompt = """
 - UML class diagram (in plantuml format): {UML}
+#Note:
+...
+- You are encouraged to use the methods defined in the class diagram to implement the code.
 """
 note = """
 # Note:
-- Generate Java code, including classes, properties, methods, and business logic implementations.
-- Do not modify the method signatures defined in the class diagram. You are free to add any additional methods and fields in the code as needed.
+- Generate Java code, including classes, fields, and methods.
+- Do not modify the method signatures defined in the class diagram. You are free to add helper methods and fields in the code if needed.
 - Code should be as error-free as possible and conform to Java coding standards and best practices.
 - The code should include necessary comments."""
 
+uml_note = """- You are encouraged to use the methods defined in the class diagram to implement the code."""
+
+
 def codeBasedSysUml(description,UML,temperature=0,model="gpt-3.5-turbo-0125")->str:
-    prompt = base_prompt + uml_prompt + note
+    prompt = base_prompt + uml_prompt + note + uml_note
     
     message = [
         {"role":"system","content":"You are a professional software engineer with expertise in programming using UML and Java."},
