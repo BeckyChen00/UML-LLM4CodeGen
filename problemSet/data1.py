@@ -12,7 +12,7 @@
 description = """
 The teaching management system for college teachers can realize the following functions:
 1) Manage teacher data, which contains information such as teacher number, name, gender, professional title (full professor/associate professor/assistant professor), basic salary.
-{version1}
+2) Manage courses information many teacher teaches, including course number, course name, credit, class hours, course type (elective/compulsory) and other information.
 3) Calculate the teacher's salary. The salary calculation rule is as follows: salary = basic salary + course fee * billed hours.
 4) The class fee varies according to the teacher's professional title. It is $100 per class hour for full professors, $80 per class hour for associate professors and $50 per class hour for assistant professors.
 5) The charging hours are different according to the course type, 2 hours per class hour for compulsory courses and 1 hour per class hour for elective courses.

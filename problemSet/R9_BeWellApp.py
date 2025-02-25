@@ -44,6 +44,13 @@
 # 在计算时，将考虑用户所花费的时间和用户所行驶的距离。
 
 descriptionList = [
+    """The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+,
 """系统需求：
 1）管理用户信息（姓名、性别）。
 2）用户记录跑步活动数据（日期、跑步速度、消耗卡路里和跑步距离）。

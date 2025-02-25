@@ -11,6 +11,18 @@
 # 不能既是首发球员又是替补球员。
 
 descriptionList = [
+"""A football management system, with the following specific requirements:
+1) Manage player information, including name and age.
+2) Team have transfer operation. Allows football players to be transferred in or out of the football team. Supports selling football players to other football teams.
+3) Configure the starting lineup for each match. The starting lineup must include 11 players. Each start lineup player must be assigned a position, including forward, midfield, defender, and goalkeeper. There must be 1 and only 1 goalkeeper in the starting lineup.
+4) Configure the substitute lineup for each match. The substitute lineup includes up to 7 substitute players. A player cannot appear in the starting lineup at the same time.
+5) Only players who join the team can be added to the starting lineup and substitute lineup.
+6) Remove players from the starting/substitute lineup. Before removing a player from the lineup, validate whether the player is in the lineup.
+7) Remove players from the team. When a player is being removed from a team, the player must be removed from the lineup of a match that has not been performed.
+8) The team can participate in multiple matches, and the starting lineup and substitute lineup can be different in each match.
+"""
+,
+
 """足球管理系统，包含以下需求：
 1）管理球员信息，包括所属球队、姓名、年龄和球衣号码。
 2）转会操作。允许将足球运动员调入或调出足球队。支持将足球运动员卖给其他足球队的操作。
@@ -39,16 +51,7 @@ descriptionList = [
 7) 球队可以参与多场比赛，每场比赛的首发阵容和替补阵容可以不同。
 """
 ,
-"""A football management system, with the following specific requirements:
-1) Manage player information, including name and age.
-2) Team have transfer operation. Allows football players to be transferred in or out of the football team. Supports selling football players to other football teams.
-3) Configure the starting lineup for each match. The starting lineup must include 11 players. Each start lineup player must be assigned a position, including forward, midfield, defender, and goalkeeper. There must be 1 and only 1 goalkeeper in the starting lineup.
-4) Configure the substitute lineup for each match. The substitute lineup includes up to 7 substitute players. A player cannot appear in the starting lineup at the same time.
-5) Only players who join the team can be added to the starting lineup and substitute lineup.
-6) Remove players from the starting/substitute lineup. Before removing a player from the lineup, validate whether the player is in the lineup.
-7) Remove players from the team. When a player is being removed from a team, the player must be removed from the lineup of a match that has not been performed.
-8) The team can participate in multiple matches, and the starting lineup and substitute lineup can be different in each match.
-"""
+
 ]
 
 
