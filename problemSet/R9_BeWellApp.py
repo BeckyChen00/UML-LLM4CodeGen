@@ -65,12 +65,38 @@ descriptionList = [
 4）查询某种食物单位重量（0.1kg）的卡路里。提供标准接口 calculateFoodCaloriesPerUnit(foodName)。
 5）计算用户某一天的日净摄入卡路里量 = 当日摄入食物卡路里和 - 当日跑步消耗卡路里。 当日摄入食物卡路里和 = Σ（当日摄入的食物量 / 单位重量 * 单位重量的卡路里）。"""
 ,
+"""Here’s an English variation of the functional requirements:
+- User Information Management: The system should handle user details, including name and gender.
+- Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+- Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+- Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+- Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake for a specific date. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight)."""
+,
 """The system requirements are as follows:
 1) Manage the user's information, including name and sex.
 2) Manage the user's running activities, including date, speed, calories burnt, and distance.
 3) Record the user's daily diet, including date, food name, and weight (kg). 
 4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
-5) Calculate the user's net daily calorie intake for a specific date. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+
+
+,
+"""The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake, which is the total calories ingested from food minus the calories burned from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
+,
+"""The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight)."""
 
 ]
 

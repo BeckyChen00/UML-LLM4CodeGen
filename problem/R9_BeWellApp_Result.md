@@ -5835,3 +5835,3614 @@ public class Main {
 This code adheres to Java coding standards and best practices, including proper encapsulation, method naming conventions, and comments for clarity.
 
 --------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided system functional requirements and UML class diagram, here is the complete Java code that implements the specified functionality:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// User class to manage user information and activities
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories
+    public double calculateNetDailyCalories(String date) {
+        double totalCaloriesIntake = calculateDailyCalorieIntake(date);
+        double totalCaloriesBurnt = calculateDailyCaloriesBurnt(date);
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Helper method to calculate daily calorie intake from food
+    private double calculateDailyCalorieIntake(String date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCalories += (diet.getWeight() / 0.1) * caloriesPerUnit; // Weight in kg
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to calculate daily calories burnt from running
+    private double calculateDailyCaloriesBurnt(String date) {
+        double totalCaloriesBurnt = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurnt += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCaloriesBurnt;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    // Mock method to simulate querying calories of a unit weight of food
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // This is a mock implementation. In a real application, this would query a database or an API.
+        Map<String, Double> foodCaloriesMap = new HashMap<>();
+        foodCaloriesMap.put("apple", 52.0); // calories per 0.1 kg
+        foodCaloriesMap.put("banana", 89.0);
+        foodCaloriesMap.put("chicken", 165.0);
+        foodCaloriesMap.put("rice", 130.0);
+
+        return foodCaloriesMap.getOrDefault(foodName.toLowerCase(), 0.0);
+    }
+}
+
+// Class to represent a running activity
+class RunningActivity {
+    private String date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(String date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Class to represent a diet entry
+class Diet {
+    private String date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(String date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet("2023-10-01", "apple", 0.5f)); // 0.5 kg of apple
+        user.addDiet(new Diet("2023-10-01", "banana", 0.3f)); // 0.3 kg of banana
+
+        // Calculating net daily calories
+        double netCalories = user.calculateNetDailyCalories("2023-10-01");
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It includes methods to calculate net daily calories, daily calorie intake from food, and daily calories burnt from running.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **calculateFoodCaloriesPerUnit Method**: A mock implementation that returns the calories for a unit weight (0.1 kg) of various foods.
+5. **Main Class**: Demonstrates how to use the `User`, `RunningActivity`, and `Diet` classes to calculate net daily calories.
+
+This code adheres to Java coding standards and best practices, including encapsulation, meaningful method names, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+## Result:
+Based on the provided system functional requirements, I will create a Java implementation that includes classes for managing user information, running activities, and daily diet records. Additionally, I will implement the required methods to calculate calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to manage user information
+class User {
+    private String name;
+    private String sex;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+}
+
+// Class to manage running activities
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurnt; // in kcal
+    private double distance; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurnt, double distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class to manage daily diet
+class DailyDiet {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public DailyDiet(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Interface to calculate food calories per unit weight
+interface FoodCalorieCalculator {
+    double calculateFoodCaloriesPerUnit(String foodName);
+}
+
+// Class to manage the user and their activities
+class UserManager {
+    private User user;
+    private List<RunningActivity> runningActivities;
+    private List<DailyDiet> dailyDiets;
+    private FoodCalorieCalculator calorieCalculator;
+
+    public UserManager(User user, FoodCalorieCalculator calorieCalculator) {
+        this.user = user;
+        this.runningActivities = new ArrayList<>();
+        this.dailyDiets = new ArrayList<>();
+        this.calorieCalculator = calorieCalculator;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addDailyDiet(DailyDiet diet) {
+        dailyDiets.add(diet);
+    }
+
+    public double calculateNetDailyCalorieIntake(String date) {
+        double totalCaloriesIntake = 0.0;
+        double totalCaloriesBurnt = 0.0;
+
+        // Calculate total calorie intake from food
+        for (DailyDiet diet : dailyDiets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calorieCalculator.calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCaloriesIntake += (diet.getWeight() / 0.1) * caloriesPerUnit; // weight in units of 0.1kg
+            }
+        }
+
+        // Calculate total calories burnt from running
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurnt += activity.getCaloriesBurnt();
+            }
+        }
+
+        // Calculate net daily calorie intake
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+}
+
+// Example implementation of FoodCalorieCalculator
+class SimpleFoodCalorieCalculator implements FoodCalorieCalculator {
+    private Map<String, Double> foodCaloriesMap;
+
+    public SimpleFoodCalorieCalculator() {
+        foodCaloriesMap = new HashMap<>();
+        // Example food calorie data (calories per 0.1kg)
+        foodCaloriesMap.put("Apple", 52.0);
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 165.0);
+        // Add more food items as needed
+    }
+
+    @Override
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate functionality
+public class Main {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Create a calorie calculator
+        FoodCalorieCalculator calorieCalculator = new SimpleFoodCalorieCalculator();
+
+        // Create a user manager
+        UserManager userManager = new UserManager(user, calorieCalculator);
+
+        // Add running activities
+        userManager.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        userManager.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 250.0, 4.0));
+
+        // Add daily diets
+        userManager.addDailyDiet(new DailyDiet("2023-10-01", "Apple", 0.5));
+        userManager.addDailyDiet(new DailyDiet("2023-10-01", "Banana", 0.3));
+        userManager.addDailyDiet(new DailyDiet("2023-10-01", "Chicken", 0.2));
+
+        // Calculate net daily calorie intake
+        double netCalories = userManager.calculateNetDailyCalorieIntake("2023-10-01");
+        System.out.println("Net Daily Calorie Intake for 2023-10-01: " + netCalories + " kcal");
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information (name and sex).
+2. **RunningActivity Class**: Manages running activities (date, speed, calories burnt, and distance).
+3. **DailyDiet Class**: Manages daily diet records (date, food name, and weight).
+4. **FoodCalorieCalculator Interface**: Defines a method to calculate food calories per unit weight.
+5. **UserManager Class**: Manages the user, their running activities, and daily diets. It includes methods to add activities and diets, and to calculate net daily calorie intake.
+6. **SimpleFoodCalorieCalculator Class**: Implements the `FoodCalorieCalculator` interface and provides a simple way to get calorie information for different foods.
+7. **Main Class**: Demonstrates the functionality of the system by creating a user, adding activities and diets, and calculating the net daily calorie intake.
+
+This code is structured, follows Java best practices, and includes comments for clarity.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided system functional requirements and UML class diagram, here is the complete Java code that implements the specified functionality:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// User class to manage user information and activities
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories for a given date
+    public double calculateNetDailyCalories(String date) {
+        double totalCaloriesIntake = calculateDailyCaloriesIntake(date);
+        double totalCaloriesBurnt = calculateDailyCaloriesBurnt(date);
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Helper method to calculate daily calorie intake from food
+    private double calculateDailyCaloriesIntake(String date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCalories += (diet.getWeight() / 0.1) * caloriesPerUnit; // weight in kg
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to calculate daily calories burnt from running
+    private double calculateDailyCaloriesBurnt(String date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCalories += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCalories;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+}
+
+// Class to represent a running activity
+class RunningActivity {
+    private String date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(String date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Class to represent a diet entry
+class Diet {
+    private String date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(String date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Interface to provide a standard method for calculating food calories per unit weight
+interface FoodCalorieCalculator {
+    double calculateFoodCaloriesPerUnit(String foodName);
+}
+
+// Example implementation of FoodCalorieCalculator
+class FoodCalorieService implements FoodCalorieCalculator {
+    private Map<String, Double> foodCaloriesMap;
+
+    // Constructor to initialize food calorie data
+    public FoodCalorieService() {
+        foodCaloriesMap = new HashMap<>();
+        foodCaloriesMap.put("apple", 52.0); // calories per 0.1 kg
+        foodCaloriesMap.put("banana", 89.0);
+        foodCaloriesMap.put("chicken", 165.0);
+        // Add more food items as needed
+    }
+
+    @Override
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName.toLowerCase(), 0.0);
+    }
+}
+
+// Main class to demonstrate functionality
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+        FoodCalorieService calorieService = new FoodCalorieService();
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet("2023-10-01", "apple", 0.5f)); // 0.5 kg of apple
+        user.addDiet(new Diet("2023-10-01", "banana", 0.3f)); // 0.3 kg of banana
+
+        // Calculate net daily calories for a specific date
+        double netCalories = user.calculateNetDailyCalories("2023-10-01");
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It has methods to calculate net daily calories based on running activities and diet entries.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **FoodCalorieCalculator Interface**: Defines a method to calculate food calories per unit weight.
+5. **FoodCalorieService Class**: Implements the `FoodCalorieCalculator` interface and provides a mapping of food items to their calorie values.
+6. **Main Class**: Demonstrates the functionality by creating a user, adding running activities and diet entries, and calculating net daily calories.
+
+This code adheres to Java coding standards and best practices, including encapsulation, method organization, and clear naming conventions.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake. The net daily calorie intake = daily calorie intake from food - daily calorie burnt from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+## Result:
+Based on the provided system functional requirements, I will create a Java implementation that includes classes for managing user information, running activities, and daily diet records. Additionally, I will implement the required methods to calculate calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to manage user information
+class User {
+    private String name;
+    private String sex;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+}
+
+// Class to manage running activities
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurnt; // in kcal
+    private double distance; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurnt, double distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class to manage daily diet
+class DailyDiet {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public DailyDiet(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Interface to calculate food calories per unit weight
+interface FoodCalorieCalculator {
+    double calculateFoodCaloriesPerUnit(String foodName);
+}
+
+// Class to manage the overall system
+class CalorieManagementSystem implements FoodCalorieCalculator {
+    private User user;
+    private List<RunningActivity> runningActivities;
+    private List<DailyDiet> dailyDiets;
+    private Map<String, Double> foodCaloriesMap; // Food name to calories per 0.1kg
+
+    public CalorieManagementSystem(User user) {
+        this.user = user;
+        this.runningActivities = new ArrayList<>();
+        this.dailyDiets = new ArrayList<>();
+        this.foodCaloriesMap = new HashMap<>();
+        initializeFoodCalories(); // Initialize food calorie data
+    }
+
+    // Initialize food calorie data (example data)
+    private void initializeFoodCalories() {
+        foodCaloriesMap.put("Apple", 52.0); // kcal per 0.1kg
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 165.0);
+        // Add more food items as needed
+    }
+
+    @Override
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addDailyDiet(DailyDiet diet) {
+        dailyDiets.add(diet);
+    }
+
+    public double calculateNetDailyCalorieIntake(String date) {
+        double totalCaloriesIntake = 0.0;
+        double totalCaloriesBurnt = 0.0;
+
+        // Calculate total calorie intake from food
+        for (DailyDiet diet : dailyDiets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCaloriesIntake += (diet.getWeight() / 0.1) * caloriesPerUnit;
+            }
+        }
+
+        // Calculate total calories burnt from running
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurnt += activity.getCaloriesBurnt();
+            }
+        }
+
+        // Net daily calorie intake
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+}
+
+// Main class to demonstrate the functionality
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+        CalorieManagementSystem cms = new CalorieManagementSystem(user);
+
+        // Adding running activities
+        cms.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        cms.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 250.0, 4.0));
+
+        // Adding daily diets
+        cms.addDailyDiet(new DailyDiet("2023-10-01", "Apple", 0.5));
+        cms.addDailyDiet(new DailyDiet("2023-10-01", "Banana", 0.3));
+        cms.addDailyDiet(new DailyDiet("2023-10-01", "Chicken", 0.2));
+
+        // Calculate net daily calorie intake
+        double netCalories = cms.calculateNetDailyCalorieIntake("2023-10-01");
+        System.out.println("Net Daily Calorie Intake for 2023-10-01: " + netCalories + " kcal");
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information (name and sex).
+2. **RunningActivity Class**: Manages running activities, including date, speed, calories burnt, and distance.
+3. **DailyDiet Class**: Manages daily diet records, including date, food name, and weight.
+4. **FoodCalorieCalculator Interface**: Defines a method to calculate food calories per unit weight.
+5. **CalorieManagementSystem Class**: Implements the main functionality of the system, including methods to add running activities and daily diets, and to calculate net daily calorie intake.
+6. **Main Class**: Demonstrates the functionality of the system by creating a user, adding activities and diets, and calculating the net calorie intake.
+
+This code adheres to Java coding standards and best practices, including proper encapsulation, method naming conventions, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake, which is the total calories ingested from food minus the calories burned from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided system functional requirements and UML class diagram, here is the complete Java code that implements the specified functionality:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class representing a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories for a given date
+    public double calculateNetDailyCalories(String date) {
+        double totalCaloriesIngested = calculateTotalCaloriesIngested(date);
+        double totalCaloriesBurnt = calculateTotalCaloriesBurnt(date);
+        return totalCaloriesIngested - totalCaloriesBurnt;
+    }
+
+    // Helper method to calculate total calories ingested from food on a given date
+    private double calculateTotalCaloriesIngested(String date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCalories += (diet.getWeight() / 0.1) * caloriesPerUnit; // Weight in kg
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to calculate total calories burnt from running on a given date
+    private double calculateTotalCaloriesBurnt(String date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCalories += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCalories;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    // Mock method to simulate querying calories of a unit weight of food
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // In a real application, this would query a database or an API
+        // Here we provide a mock implementation
+        Map<String, Double> foodCaloriesMap = new HashMap<>();
+        foodCaloriesMap.put("apple", 52.0); // calories per 0.1 kg
+        foodCaloriesMap.put("banana", 89.0);
+        foodCaloriesMap.put("chicken", 165.0);
+        foodCaloriesMap.put("rice", 130.0);
+
+        return foodCaloriesMap.getOrDefault(foodName.toLowerCase(), 0.0);
+    }
+}
+
+// Class representing a running activity
+class RunningActivity {
+    private String date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(String date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Class representing a diet entry
+class Diet {
+    private String date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(String date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet("2023-10-01", "apple", 0.5f)); // 0.5 kg of apple
+        user.addDiet(new Diet("2023-10-01", "banana", 0.3f)); // 0.3 kg of banana
+
+        // Calculating net daily calories
+        double netCalories = user.calculateNetDailyCalories("2023-10-01");
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It contains methods to calculate net daily calories based on running activities and diet entries.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **calculateFoodCaloriesPerUnit Method**: A mock method that simulates querying the calories of a unit weight of food. In a real application, this would likely involve a database or an external API.
+5. **Main Class**: Demonstrates how to use the `User`, `RunningActivity`, and `Diet` classes to calculate net daily calories.
+
+This code adheres to Java coding standards and best practices, including encapsulation, meaningful method names, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake, which is the total calories ingested from food minus the calories burned from running. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+## Result:
+Based on the provided system functional requirements, I will create a Java implementation that includes classes for managing user information, running activities, and daily diet records. Additionally, I will implement the method to calculate the calories of food and the net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to manage user information
+class User {
+    private String name;
+    private String sex;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+}
+
+// Class to manage running activities
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurnt;
+    private double distance; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurnt, double distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class to manage daily diet
+class Diet {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public Diet(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Main class to manage the user, running activities, and diet
+class HealthTracker {
+    private User user;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+    private Map<String, Double> foodCaloriesMap; // Food name to calories per 0.1kg
+
+    public HealthTracker(User user) {
+        this.user = user;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+        this.foodCaloriesMap = new HashMap<>();
+        initializeFoodCalories(); // Initialize food calories data
+    }
+
+    // Method to initialize food calories data
+    private void initializeFoodCalories() {
+        foodCaloriesMap.put("apple", 52.0); // calories per 0.1kg
+        foodCaloriesMap.put("banana", 89.0);
+        foodCaloriesMap.put("chicken", 165.0);
+        // Add more food items as needed
+    }
+
+    // Method to calculate food calories per unit weight (0.1kg)
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName.toLowerCase(), 0.0);
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet record
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Method to calculate net daily calorie intake
+    public double calculateNetDailyCalorieIntake(String date) {
+        double totalCaloriesIngested = 0.0;
+        double totalCaloriesBurnt = 0.0;
+
+        // Calculate total calories ingested from food
+        for (Diet diet : diets) {
+            if (diet.getDate().equals(date)) {
+                double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+                totalCaloriesIngested += (diet.getWeight() / 0.1) * caloriesPerUnit;
+            }
+        }
+
+        // Calculate total calories burnt from running
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurnt += activity.getCaloriesBurnt();
+            }
+        }
+
+        // Net daily calorie intake
+        return totalCaloriesIngested - totalCaloriesBurnt;
+    }
+
+    // Getters for user information
+    public User getUser() {
+        return user;
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<Diet> getDiets() {
+        return diets;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+        HealthTracker tracker = new HealthTracker(user);
+
+        // Adding running activities
+        tracker.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        tracker.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 250.0, 4.0));
+
+        // Adding diet records
+        tracker.addDiet(new Diet("2023-10-01", "apple", 0.5));
+        tracker.addDiet(new Diet("2023-10-01", "banana", 0.3));
+        tracker.addDiet(new Diet("2023-10-01", "chicken", 0.2));
+
+        // Calculate net daily calorie intake
+        double netCalories = tracker.calculateNetDailyCalorieIntake("2023-10-01");
+        System.out.println("Net Daily Calorie Intake for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information (name and sex).
+2. **RunningActivity Class**: Manages running activities (date, speed, calories burnt, and distance).
+3. **Diet Class**: Manages daily diet records (date, food name, and weight).
+4. **HealthTracker Class**: Main class that manages users, running activities, and diets. It includes methods to calculate food calories and net daily calorie intake.
+5. **Food Calories Initialization**: A method to initialize a map of food items and their corresponding calories per 0.1 kg.
+6. **Main Class**: Demonstrates how to use the `HealthTracker` class by adding running activities and diet records, and calculating the net daily calorie intake.
+
+This code adheres to Java coding standards and best practices, including proper encapsulation, method naming conventions, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories()
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided system functional requirements and UML class diagram, here is the complete Java code that implements the specified classes and their relationships:
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+// User class to manage user's information and activities
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories
+    public double calculateNetDailyCalories() {
+        double totalCaloriesConsumed = 0.0;
+        double totalCaloriesBurnt = 0.0;
+
+        // Calculate total calories consumed from diet
+        for (Diet diet : diets) {
+            double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+            totalCaloriesConsumed += (diet.getWeight() / 0.1) * caloriesPerUnit; // Weight in kg
+        }
+
+        // Calculate total calories burnt from running activities
+        for (RunningActivity activity : runningActivities) {
+            totalCaloriesBurnt += activity.getCaloriesBurnt();
+        }
+
+        // Net daily calories = Total calories consumed - Total calories burnt
+        return totalCaloriesConsumed - totalCaloriesBurnt;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    // Placeholder for food calorie calculation
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // This method should connect to a database or API to get actual calorie values.
+        // For demonstration, we will return a fixed value for some food items.
+        switch (foodName.toLowerCase()) {
+            case "apple":
+                return 52.0; // calories per 0.1 kg
+            case "banana":
+                return 89.0; // calories per 0.1 kg
+            case "chicken":
+                return 165.0; // calories per 0.1 kg
+            default:
+                return 0.0; // Unknown food
+        }
+    }
+}
+
+// RunningActivity class to manage running activities
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Diet class to manage diet entries
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity(new Date(), 10.0f, 300.0f, 5.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet(new Date(), "Apple", 0.5f)); // 0.5 kg of apple
+        user.addDiet(new Diet(new Date(), "Banana", 0.3f)); // 0.3 kg of banana
+
+        // Calculate net daily calories
+        double netCalories = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calories: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It has methods to calculate net daily calories, add running activities, and add diet entries.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **calculateFoodCaloriesPerUnit Method**: This method simulates querying the calories for a unit weight of food. In a real application, this would likely connect to a database or an external service.
+5. **Main Class**: Demonstrates how to create a user, add activities and diet entries, and calculate net daily calories.
+
+This code adheres to Java coding standards and best practices, including encapsulation, meaningful method names, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+## Result:
+Based on the provided system functional requirements, I will create a Java implementation that includes classes for managing user information, running activities, and daily diet records. Additionally, I will implement the required methods to calculate calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to manage user information
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<DietRecord> dietRecords;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.dietRecords = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addDietRecord(DietRecord record) {
+        dietRecords.add(record);
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<DietRecord> getDietRecords() {
+        return dietRecords;
+    }
+
+    // Calculate net daily calorie intake
+    public double calculateNetDailyCalorieIntake(String date) {
+        double totalCaloriesConsumed = 0.0;
+        double totalCaloriesBurned = 0.0;
+
+        // Calculate total calories consumed from diet records
+        for (DietRecord record : dietRecords) {
+            if (record.getDate().equals(date)) {
+                double caloriesPerUnit = FoodCalorieDatabase.calculateFoodCaloriesPerUnit(record.getFoodName());
+                totalCaloriesConsumed += (record.getWeight() / 0.1) * caloriesPerUnit;
+            }
+        }
+
+        // Calculate total calories burned from running activities
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurned += activity.getCaloriesBurnt();
+            }
+        }
+
+        return totalCaloriesConsumed - totalCaloriesBurned;
+    }
+}
+
+// Class to manage running activities
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurnt; // in kcal
+    private double distance; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurnt, double distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+}
+
+// Class to manage daily diet records
+class DietRecord {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public DietRecord(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to simulate a food calorie database
+class FoodCalorieDatabase {
+    private static final Map<String, Double> foodCaloriesMap = new HashMap<>();
+
+    static {
+        // Sample data: food name and calories per 0.1 kg
+        foodCaloriesMap.put("Apple", 52.0);
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 165.0);
+        foodCaloriesMap.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate functionality
+public class CalorieManagementSystem {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Add running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 250.0, 4.0));
+
+        // Add diet records
+        user.addDietRecord(new DietRecord("2023-10-01", "Apple", 0.5));
+        user.addDietRecord(new DietRecord("2023-10-01", "Banana", 0.3));
+        user.addDietRecord(new DietRecord("2023-10-01", "Chicken", 0.2));
+
+        // Calculate net daily calorie intake for a specific date
+        double netCalories = user.calculateNetDailyCalorieIntake("2023-10-01");
+        System.out.println("Net Daily Calorie Intake for 2023-10-01: " + netCalories + " kcal");
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and diet records. It includes methods to add activities and records, as well as to calculate net daily calorie intake.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **DietRecord Class**: Represents a diet record with attributes for date, food name, and weight.
+4. **FoodCalorieDatabase Class**: Simulates a database for food items and their calorie values per 0.1 kg. It provides a method to query calories based on food name.
+5. **CalorieManagementSystem Class**: Contains the `main` method to demonstrate the functionality of the system by creating a user, adding activities and diet records, and calculating net calorie intake.
+
+This code adheres to Java coding standards and best practices, including proper encapsulation, meaningful method names, and comments for clarity.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories()
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided system functional requirements and UML class diagram, here is a complete Java implementation that adheres to the specifications:
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+// User class to manage user information and activities
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories
+    public double calculateNetDailyCalories() {
+        double totalCaloriesConsumed = 0.0;
+        double totalCaloriesBurnt = 0.0;
+
+        // Calculate total calories consumed from diet
+        for (Diet diet : diets) {
+            double caloriesPerUnit = calculateFoodCaloriesPerUnit(diet.getFoodName());
+            totalCaloriesConsumed += (diet.getWeight() / 0.1) * caloriesPerUnit;
+        }
+
+        // Calculate total calories burnt from running activities
+        for (RunningActivity activity : runningActivities) {
+            totalCaloriesBurnt += activity.getCaloriesBurnt();
+        }
+
+        // Net daily calories = total consumed - total burnt
+        return totalCaloriesConsumed - totalCaloriesBurnt;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Mock method to calculate food calories per unit weight (0.1kg)
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // In a real application, this would query a database or an API
+        // Here we return mock values for demonstration purposes
+        switch (foodName.toLowerCase()) {
+            case "apple":
+                return 52; // calories per 0.1kg
+            case "banana":
+                return 89; // calories per 0.1kg
+            case "chicken":
+                return 239; // calories per 0.1kg
+            default:
+                return 0; // Unknown food
+        }
+    }
+}
+
+// Class to represent a running activity
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Class to represent a diet entry
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Main class to demonstrate functionality
+public class CalorieTracker {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Add running activities
+        user.addRunningActivity(new RunningActivity(new Date(), 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity(new Date(), 8.0f, 250.0f, 4.0f));
+
+        // Add diet entries
+        user.addDiet(new Diet(new Date(), "Apple", 0.5f));
+        user.addDiet(new Diet(new Date(), "Banana", 0.3f));
+        user.addDiet(new Diet(new Date(), "Chicken", 0.2f));
+
+        // Calculate net daily calories
+        double netCalories = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calories: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It contains methods to calculate net daily calories, add running activities, and add diet entries.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **CalorieTracker Class**: Contains the `main` method to demonstrate the functionality of the system by creating a user, adding activities and diet entries, and calculating net daily calories.
+
+### Notes:
+- The `calculateFoodCaloriesPerUnit` method is a mock implementation that returns predefined calorie values for certain foods. In a real application, this would likely involve querying a database or an external service.
+- The code is structured to follow Java coding standards and includes comments for clarity.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+The system requirements are as follows:
+1) Manage the user's information, including name and sex.
+2) Manage the user's running activities, including date, speed, calories burnt, and distance.
+3) Record the user's daily diet, including date, food name, and weight (kg). 
+4) Query the calories of a unit weight (0.1kg) of a certain food. The system provide a standard interface calculateFoodCaloriesPerUnit(foodName) to query the calories of a unit weight (0.1kg) of a certain food.
+5) Calculate the user's net daily calorie intake by subtracting the calories burned through running from the total calories consumed from food. Daily calorie intake from food = Σ (daily intake weight of food / a unit weight * calories of a unit weight).
+## UML:
+## Result:
+Based on the provided system functional requirements, I will create a Java implementation that includes classes for managing user information, running activities, and daily diet records. Additionally, I will implement methods to calculate calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to represent a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<DietRecord> dietRecords;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.dietRecords = new ArrayList<>();
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<DietRecord> getDietRecords() {
+        return dietRecords;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet record
+    public void addDietRecord(DietRecord record) {
+        dietRecords.add(record);
+    }
+
+    // Method to calculate net daily calorie intake
+    public double calculateNetDailyCalorieIntake(String date) {
+        double totalCaloriesConsumed = 0.0;
+        double totalCaloriesBurned = 0.0;
+
+        // Calculate total calories consumed from diet records
+        for (DietRecord record : dietRecords) {
+            if (record.getDate().equals(date)) {
+                totalCaloriesConsumed += (record.getWeight() / 0.1) * FoodCaloriesDatabase.calculateFoodCaloriesPerUnit(record.getFoodName());
+            }
+        }
+
+        // Calculate total calories burned from running activities
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCaloriesBurned += activity.getCaloriesBurned();
+            }
+        }
+
+        // Net calorie intake
+        return totalCaloriesConsumed - totalCaloriesBurned;
+    }
+}
+
+// Class to represent a Running Activity
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurned;
+    private double distance; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurned, double distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurned = caloriesBurned;
+        this.distance = distance;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+}
+
+// Class to represent a Diet Record
+class DietRecord {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public DietRecord(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to simulate a food calories database
+class FoodCaloriesDatabase {
+    private static final Map<String, Double> foodCaloriesMap = new HashMap<>();
+
+    static {
+        // Sample data: food name and calories per 0.1 kg
+        foodCaloriesMap.put("Apple", 52.0);
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 165.0);
+        foodCaloriesMap.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    // Method to get calories per unit weight (0.1 kg) of a food
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate the functionality
+public class CalorieManagementSystem {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Add running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 250.0, 4.0));
+
+        // Add diet records
+        user.addDietRecord(new DietRecord("2023-10-01", "Apple", 0.5));
+        user.addDietRecord(new DietRecord("2023-10-01", "Banana", 0.3));
+        user.addDietRecord(new DietRecord("2023-10-01", "Chicken", 0.2));
+
+        // Calculate net daily calorie intake for a specific date
+        double netCalories = user.calculateNetDailyCalorieIntake("2023-10-01");
+        System.out.println("Net Daily Calorie Intake for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and diet records. It includes methods to add activities and records, as well as to calculate net daily calorie intake.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burned, and distance.
+3. **DietRecord Class**: Represents a diet record with attributes for date, food name, and weight.
+4. **FoodCaloriesDatabase Class**: Simulates a database for food items and their corresponding calories per 0.1 kg. It provides a method to query calories based on food name.
+5. **CalorieManagementSystem Class**: Contains the `main` method to demonstrate the functionality of the system by creating a user, adding activities and diet records, and calculating net calorie intake.
+
+This code is structured, follows Java best practices, and includes comments for clarity. You can expand the food database and add more functionalities as needed.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Here’s an English variation of the functional requirements while maintaining the same meaning:
+
+User Information Management: The system should handle user details, including name and gender.
+Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories()
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided functional requirements and UML class diagram, here is a complete Java implementation that adheres to the specifications:
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class representing a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories
+    public double calculateNetDailyCalories() {
+        double totalCaloriesIntake = calculateDailyCalorieIntake();
+        double totalCaloriesBurnt = calculateDailyCalorieExpenditure();
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Method to calculate daily calorie intake from food
+    private double calculateDailyCalorieIntake() {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            totalCalories += (diet.getWeight() / 0.1) * calculateFoodCaloriesPerUnit(diet.getFoodName());
+        }
+        return totalCalories;
+    }
+
+    // Method to calculate daily calorie expenditure from running
+    private double calculateDailyCalorieExpenditure() {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            totalCalories += activity.getCaloriesBurnt();
+        }
+        return totalCalories;
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Method to retrieve calorie value for a unit weight of a specific food item
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // Example calorie values for demonstration purposes
+        Map<String, Double> foodCalorieMap = new HashMap<>();
+        foodCalorieMap.put("Apple", 52.0); // calories per 100g
+        foodCalorieMap.put("Banana", 89.0); // calories per 100g
+        foodCalorieMap.put("Chicken", 239.0); // calories per 100g
+
+        return foodCalorieMap.getOrDefault(foodName, 0.0) / 10; // calories per 0.1 kg
+    }
+}
+
+// Class representing a Running Activity
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+}
+
+// Class representing a Diet entry
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity(new Date(), 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity(new Date(), 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet(new Date(), "Apple", 0.5f)); // 500g of Apple
+        user.addDiet(new Diet(new Date(), "Banana", 0.2f)); // 200g of Banana
+
+        // Calculating net daily calories
+        double netCalories = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calories: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information, running activities, and diet entries. It includes methods to calculate net daily calories, daily calorie intake, and daily calorie expenditure.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **Main Class**: Demonstrates how to create a user, add running activities and diet entries, and calculate net daily calories.
+
+### Notes:
+- The `calculateFoodCaloriesPerUnit` method uses a simple map to store calorie values for different food items. This can be expanded or modified as needed.
+- The code is structured to follow Java best practices, including encapsulation and method organization.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Here’s an English variation of the functional requirements while maintaining the same meaning:
+
+User Information Management: The system should handle user details, including name and gender.
+Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+## Result:
+Based on the provided functional requirements, I will create a Java application that includes classes for managing user information, running activities, and daily diet tracking. The application will also include methods for calculating food calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to represent a User
+class User {
+    private String name;
+    private String gender;
+    private List<RunningActivity> runningActivities;
+    private List<FoodIntake> foodIntakes;
+
+    public User(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+        this.runningActivities = new ArrayList<>();
+        this.foodIntakes = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addFoodIntake(FoodIntake foodIntake) {
+        foodIntakes.add(foodIntake);
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<FoodIntake> getFoodIntakes() {
+        return foodIntakes;
+    }
+
+    // Calculate net daily calorie intake
+    public double calculateNetDailyCalories() {
+        double totalCaloriesFromFood = calculateTotalCaloriesFromFood();
+        double totalCaloriesBurnedFromRunning = calculateTotalCaloriesBurnedFromRunning();
+        return totalCaloriesFromFood - totalCaloriesBurnedFromRunning;
+    }
+
+    private double calculateTotalCaloriesFromFood() {
+        double totalCalories = 0.0;
+        for (FoodIntake foodIntake : foodIntakes) {
+            totalCalories += (foodIntake.getWeight() / 0.1) * FoodCalorieDatabase.calculateFoodCaloriesPerUnit(foodIntake.getFoodName());
+        }
+        return totalCalories;
+    }
+
+    private double calculateTotalCaloriesBurnedFromRunning() {
+        double totalCaloriesBurned = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            totalCaloriesBurned += activity.getCaloriesBurned();
+        }
+        return totalCaloriesBurned;
+    }
+}
+
+// Class to represent a Running Activity
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurned;
+    private double distanceCovered; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurned, double distanceCovered) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurned = caloriesBurned;
+        this.distanceCovered = distanceCovered;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public double getDistanceCovered() {
+        return distanceCovered;
+    }
+}
+
+// Class to represent Food Intake
+class FoodIntake {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public FoodIntake(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to manage food calorie data
+class FoodCalorieDatabase {
+    private static final Map<String, Double> foodCaloriesMap = new HashMap<>();
+
+    static {
+        // Sample data: food item and its calorie value per 0.1 kg
+        foodCaloriesMap.put("Apple", 52.0);
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 239.0);
+        foodCaloriesMap.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate the functionality
+public class CalorieTrackerApp {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Log running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 500.0, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 300.0, 3.0));
+
+        // Log food intake
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Apple", 0.5));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Banana", 0.2));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Chicken", 0.3));
+
+        // Calculate net daily calories
+        double netCalories = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calorie Intake for " + user.getName() + ": " + netCalories);
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and food intakes. It includes methods to add activities and food, as well as to calculate net daily calories.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burned, and distance covered.
+3. **FoodIntake Class**: Represents a food intake record with attributes for date, food name, and weight.
+4. **FoodCalorieDatabase Class**: Contains a static map of food items and their calorie values per 0.1 kg. It provides a method to retrieve calorie values.
+5. **CalorieTrackerApp Class**: The main class that demonstrates the functionality of the application by creating a user, logging activities and food intake, and calculating net daily calories.
+
+This code is structured, follows Java best practices, and includes comments for clarity. You can expand the food database and add more functionalities as needed.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Here’s an English variation of the functional requirements while maintaining the same meaning:
+
+User Information Management: The system should handle user details, including name and gender.
+Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided functional requirements and UML class diagram, here is a complete Java implementation of the system. The code includes classes for `User`, `RunningActivity`, and `Diet`, along with methods to manage user information, running activities, diet tracking, and calorie calculations.
+
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class representing a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories for a given date
+    public double calculateNetDailyCalories(Date date) {
+        double totalCaloriesIntake = calculateDailyCalorieIntake(date);
+        double totalCaloriesBurnt = calculateDailyCaloriesBurnt(date);
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Method to calculate daily calorie intake from food
+    private double calculateDailyCalorieIntake(Date date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (isSameDate(diet.getDate(), date)) {
+                totalCalories += (diet.getWeight() / 0.1) * calculateFoodCaloriesPerUnit(diet.getFoodName());
+            }
+        }
+        return totalCalories;
+    }
+
+    // Method to calculate daily calories burnt from running activities
+    private double calculateDailyCaloriesBurnt(Date date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (isSameDate(activity.getDate(), date)) {
+                totalCalories += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to check if two dates are the same
+    private boolean isSameDate(Date date1, Date date2) {
+        return date1.getYear() == date2.getYear() && date1.getMonth() == date2.getMonth() && date1.getDate() == date2.getDate();
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Method to retrieve calorie value for a unit weight of a specific food item
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // This is a placeholder. In a real application, this data might come from a database or an API.
+        Map<String, Double> foodCalorieMap = new HashMap<>();
+        foodCalorieMap.put("apple", 52.0); // calories per 0.1 kg
+        foodCalorieMap.put("banana", 89.0);
+        foodCalorieMap.put("chicken", 239.0);
+        foodCalorieMap.put("rice", 130.0);
+
+        return foodCalorieMap.getOrDefault(foodName.toLowerCase(), 0.0);
+    }
+}
+
+// Class representing a Running Activity
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class representing a Diet entry
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet(new Date(2023, 10, 1), "apple", 0.5f));
+        user.addDiet(new Diet(new Date(2023, 10, 1), "banana", 0.2f));
+
+        // Calculate net daily calories for a specific date
+        double netCalories = user.calculateNetDailyCalories(new Date(2023, 10, 1));
+        System.out.println("Net Daily Calories: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information, running activities, and diet entries. It includes methods to calculate net daily calories, daily calorie intake, and daily calories burnt.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **Main Class**: Demonstrates how to use the `User`, `RunningActivity`, and `Diet` classes to track running and diet, and calculate net daily calories.
+
+### Notes:
+- The `calculateFoodCaloriesPerUnit` method uses a hardcoded map for food calorie values. In a real application, this could be replaced with a database or an external API.
+- The date handling in Java has evolved, and using `java.util.Date` is not recommended for new applications. Consider using `java.time.LocalDate` for better date handling in production code.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+
+Here’s an English variation of the functional requirements while maintaining the same meaning:
+
+User Information Management: The system should handle user details, including name and gender.
+Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+## Result:
+Based on the provided functional requirements, I will create a Java application that includes classes for managing user information, running activities, and daily diet tracking. Additionally, I will implement methods for calculating food calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to represent a User
+class User {
+    private String name;
+    private String gender;
+    private List<RunningActivity> runningActivities;
+    private List<FoodIntake> foodIntakes;
+
+    public User(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+        this.runningActivities = new ArrayList<>();
+        this.foodIntakes = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addFoodIntake(FoodIntake foodIntake) {
+        foodIntakes.add(foodIntake);
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<FoodIntake> getFoodIntakes() {
+        return foodIntakes;
+    }
+
+    // Calculate net daily calorie intake
+    public double calculateNetDailyCalories() {
+        double totalCaloriesFromFood = calculateTotalCaloriesFromFood();
+        double totalCaloriesFromRunning = calculateTotalCaloriesFromRunning();
+        return totalCaloriesFromFood - totalCaloriesFromRunning;
+    }
+
+    private double calculateTotalCaloriesFromFood() {
+        double totalCalories = 0.0;
+        for (FoodIntake foodIntake : foodIntakes) {
+            totalCalories += (foodIntake.getWeight() / 0.1) * FoodCalorieDatabase.calculateFoodCaloriesPerUnit(foodIntake.getFoodName());
+        }
+        return totalCalories;
+    }
+
+    private double calculateTotalCaloriesFromRunning() {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            totalCalories += activity.getCaloriesBurned();
+        }
+        return totalCalories;
+    }
+}
+
+// Class to represent a Running Activity
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurned;
+    private double distanceCovered; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurned, double distanceCovered) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurned = caloriesBurned;
+        this.distanceCovered = distanceCovered;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public double getDistanceCovered() {
+        return distanceCovered;
+    }
+}
+
+// Class to represent Food Intake
+class FoodIntake {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public FoodIntake(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to manage food calorie data
+class FoodCalorieDatabase {
+    private static final Map<String, Double> foodCaloriesPerUnit = new HashMap<>();
+
+    static {
+        // Sample data: food item and its calorie value per 0.1 kg
+        foodCaloriesPerUnit.put("Apple", 52.0);
+        foodCaloriesPerUnit.put("Banana", 89.0);
+        foodCaloriesPerUnit.put("Chicken", 165.0);
+        foodCaloriesPerUnit.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesPerUnit.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate functionality
+public class CalorieTrackerApp {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Log running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300.0, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-02", 8.0, 250.0, 4.0));
+
+        // Log food intake
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Apple", 0.5));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Chicken", 0.2));
+        user.addFoodIntake(new FoodIntake("2023-10-02", "Banana", 0.3));
+        user.addFoodIntake(new FoodIntake("2023-10-02", "Rice", 0.4));
+
+        // Calculate net daily calories for a specific date
+        double netCaloriesDay1 = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCaloriesDay1);
+        
+        // You can add more functionality and tests as needed
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and food intakes. It includes methods to add activities and food, as well as to calculate net daily calories.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burned, and distance covered.
+3. **FoodIntake Class**: Represents a food intake record with attributes for date, food name, and weight.
+4. **FoodCalorieDatabase Class**: Contains a static map of food items and their calorie values per 0.1 kg. It provides a method to retrieve calorie values.
+5. **CalorieTrackerApp Class**: The main class that demonstrates the functionality of the application by creating a user, logging activities and food, and calculating net daily calories.
+
+This code is structured, follows Java best practices, and includes comments for clarity. You can expand the food database and add more functionalities as needed.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+Here’s an English variation of the functional requirements:
+- User Information Management: The system should handle user details, including name and gender.
+- Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+- Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+- Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+- Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided functional requirements and UML class diagram, here is a complete Java implementation of the system. The code includes classes for `User`, `RunningActivity`, and `Diet`, along with methods to manage user information, running activities, and diet tracking.
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Date;
+
+// Class representing a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories for a given date
+    public double calculateNetDailyCalories(Date date) {
+        double totalCaloriesIntake = calculateDailyCaloriesIntake(date);
+        double totalCaloriesBurnt = calculateDailyCaloriesBurnt(date);
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Method to calculate daily calorie intake from food
+    private double calculateDailyCaloriesIntake(Date date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (isSameDate(diet.getDate(), date)) {
+                totalCalories += (diet.getWeight() / 0.1) * calculateFoodCaloriesPerUnit(diet.getFoodName());
+            }
+        }
+        return totalCalories;
+    }
+
+    // Method to calculate daily calorie expenditure from running
+    private double calculateDailyCaloriesBurnt(Date date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (isSameDate(activity.getDate(), date)) {
+                totalCalories += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to check if two dates are the same
+    private boolean isSameDate(Date date1, Date date2) {
+        return date1.getYear() == date2.getYear() && date1.getMonth() == date2.getMonth() && date1.getDate() == date2.getDate();
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Method to calculate food calories per unit weight
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // Example calorie values per 0.1 kg for some food items
+        Map<String, Double> foodCaloriesMap = new HashMap<>();
+        foodCaloriesMap.put("Apple", 52.0);
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 165.0);
+        foodCaloriesMap.put("Rice", 130.0);
+        
+        return foodCaloriesMap.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Class representing a Running Activity
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class representing a Diet entry
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet(new Date(2023, 10, 1), "Apple", 0.2f));
+        user.addDiet(new Diet(new Date(2023, 10, 1), "Banana", 0.15f));
+        user.addDiet(new Diet(new Date(2023, 10, 1), "Chicken", 0.3f));
+
+        // Calculate net daily calories for a specific date
+        double netCalories = user.calculateNetDailyCalories(new Date(2023, 10, 1));
+        System.out.println("Net Daily Calories: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and contains methods to calculate net daily calories, daily calorie intake, and daily calorie expenditure.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **Main Class**: Demonstrates how to create a user, add running activities and diet entries, and calculate net daily calories.
+
+### Notes:
+- The `calculateFoodCaloriesPerUnit` method uses a simple map to store calorie values for some food items. This can be expanded as needed.
+- The date handling in Java has evolved, and using `java.util.Date` is not recommended for new applications. Consider using `java.time.LocalDate` for better date management in a production environment.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+Here’s an English variation of the functional requirements:
+- User Information Management: The system should handle user details, including name and gender.
+- Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+- Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+- Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+- Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+## Result:
+Based on the provided functional requirements, I will create a Java application that includes classes for managing user information, running activities, and daily diet tracking. The application will also include methods for calculating food calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to represent a User
+class User {
+    private String name;
+    private String gender;
+    private List<RunningActivity> runningActivities;
+    private List<FoodIntake> foodIntakes;
+
+    public User(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+        this.runningActivities = new ArrayList<>();
+        this.foodIntakes = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addFoodIntake(FoodIntake foodIntake) {
+        foodIntakes.add(foodIntake);
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<FoodIntake> getFoodIntakes() {
+        return foodIntakes;
+    }
+
+    // Calculate net daily calorie intake
+    public double calculateNetDailyCalories() {
+        double totalCaloriesFromFood = calculateTotalCaloriesFromFood();
+        double totalCaloriesFromRunning = calculateTotalCaloriesFromRunning();
+        return totalCaloriesFromFood - totalCaloriesFromRunning;
+    }
+
+    private double calculateTotalCaloriesFromFood() {
+        double totalCalories = 0.0;
+        for (FoodIntake foodIntake : foodIntakes) {
+            totalCalories += (foodIntake.getWeight() / 0.1) * FoodCalorieDatabase.calculateFoodCaloriesPerUnit(foodIntake.getFoodName());
+        }
+        return totalCalories;
+    }
+
+    private double calculateTotalCaloriesFromRunning() {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            totalCalories += activity.getCaloriesBurned();
+        }
+        return totalCalories;
+    }
+}
+
+// Class to represent a Running Activity
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurned;
+    private double distanceCovered; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurned, double distanceCovered) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurned = caloriesBurned;
+        this.distanceCovered = distanceCovered;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public double getDistanceCovered() {
+        return distanceCovered;
+    }
+}
+
+// Class to represent Food Intake
+class FoodIntake {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public FoodIntake(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to manage food calorie data
+class FoodCalorieDatabase {
+    private static final Map<String, Double> foodCaloriesPerUnit = new HashMap<>();
+
+    static {
+        // Sample data: food item and its calorie value per 0.1 kg
+        foodCaloriesPerUnit.put("Apple", 52.0);
+        foodCaloriesPerUnit.put("Banana", 89.0);
+        foodCaloriesPerUnit.put("Chicken", 239.0);
+        foodCaloriesPerUnit.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesPerUnit.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate functionality
+public class CalorieTrackerApp {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Log running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 300, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-02", 8.0, 250, 4.0));
+
+        // Log food intakes
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Apple", 0.5));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Banana", 0.2));
+        user.addFoodIntake(new FoodIntake("2023-10-02", "Chicken", 0.3));
+        user.addFoodIntake(new FoodIntake("2023-10-02", "Rice", 0.4));
+
+        // Calculate net daily calories for a specific date
+        double netCaloriesDay1 = user.calculateNetDailyCalories();
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCaloriesDay1);
+        
+        // You can add more functionality as needed
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and food intakes. It includes methods to add activities and food, as well as to calculate net daily calories.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burned, and distance covered.
+3. **FoodIntake Class**: Represents a food intake record with attributes for date, food name, and weight.
+4. **FoodCalorieDatabase Class**: Contains a static map of food items and their calorie values per 0.1 kg. It provides a method to retrieve calorie values.
+5. **CalorieTrackerApp Class**: The main class that demonstrates the functionality of the application by creating a user, logging activities and food intakes, and calculating net daily calories.
+
+This code is structured, follows Java best practices, and includes comments for clarity. You can expand the food database and add more functionalities as needed.
+
+--------------------------------------------------
+# Version(sys+uml) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+Here’s an English variation of the functional requirements:
+- User Information Management: The system should handle user details, including name and gender.
+- Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+- Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+- Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+- Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake for a specific date. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+
+```plantuml
+@startuml
+class User {
+    - string name
+    - string sex
+
+    + double calculateNetDailyCalories(date)
+    }
+
+class RunningActivity {
+    - date date
+    - float speed
+    - float caloriesBurnt
+    - float distance
+    }
+
+class Diet {
+    - date date
+    - string foodName
+    - float weight
+    }
+
+User "1" -- "0..*" RunningActivity
+User "1" -- "0..*" Diet
+@enduml
+
+## Result:
+Based on the provided functional requirements and UML class diagram, here is a complete Java implementation of the system. The code includes classes for `User`, `RunningActivity`, and `Diet`, along with methods to manage user information, running activities, and diet tracking.
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Date;
+
+// Class representing a User
+class User {
+    private String name;
+    private String sex;
+    private List<RunningActivity> runningActivities;
+    private List<Diet> diets;
+
+    // Constructor
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+        this.runningActivities = new ArrayList<>();
+        this.diets = new ArrayList<>();
+    }
+
+    // Method to calculate net daily calories for a specific date
+    public double calculateNetDailyCalories(Date date) {
+        double totalCaloriesIntake = calculateDailyCaloriesIntake(date);
+        double totalCaloriesBurnt = calculateDailyCaloriesBurnt(date);
+        return totalCaloriesIntake - totalCaloriesBurnt;
+    }
+
+    // Helper method to calculate daily calories intake from food
+    private double calculateDailyCaloriesIntake(Date date) {
+        double totalCalories = 0.0;
+        for (Diet diet : diets) {
+            if (isSameDate(diet.getDate(), date)) {
+                totalCalories += (diet.getWeight() / 0.1) * calculateFoodCaloriesPerUnit(diet.getFoodName());
+            }
+        }
+        return totalCalories;
+    }
+
+    // Helper method to calculate daily calories burnt from running
+    private double calculateDailyCaloriesBurnt(Date date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (isSameDate(activity.getDate(), date)) {
+                totalCalories += activity.getCaloriesBurnt();
+            }
+        }
+        return totalCalories;
+    }
+
+    // Method to check if two dates are the same (ignoring time)
+    private boolean isSameDate(Date date1, Date date2) {
+        return date1.getYear() == date2.getYear() && date1.getMonth() == date2.getMonth() && date1.getDate() == date2.getDate();
+    }
+
+    // Method to add a running activity
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    // Method to add a diet entry
+    public void addDiet(Diet diet) {
+        diets.add(diet);
+    }
+
+    // Method to calculate food calories per unit weight (0.1 kg)
+    public double calculateFoodCaloriesPerUnit(String foodName) {
+        // Example calorie values for demonstration purposes
+        Map<String, Double> foodCaloriesMap = new HashMap<>();
+        foodCaloriesMap.put("Apple", 52.0); // calories per 100g
+        foodCaloriesMap.put("Banana", 89.0);
+        foodCaloriesMap.put("Chicken", 239.0);
+        foodCaloriesMap.put("Rice", 130.0);
+
+        return foodCaloriesMap.getOrDefault(foodName, 0.0) / 100.0; // return calories per 0.1 kg
+    }
+}
+
+// Class representing a Running Activity
+class RunningActivity {
+    private Date date;
+    private float speed;
+    private float caloriesBurnt;
+    private float distance;
+
+    // Constructor
+    public RunningActivity(Date date, float speed, float caloriesBurnt, float distance) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurnt = caloriesBurnt;
+        this.distance = distance;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public float getCaloriesBurnt() {
+        return caloriesBurnt;
+    }
+}
+
+// Class representing a Diet entry
+class Diet {
+    private Date date;
+    private String foodName;
+    private float weight;
+
+    // Constructor
+    public Diet(Date date, String foodName, float weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    // Getters
+    public Date getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "Male");
+
+        // Adding running activities
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 10.0f, 300.0f, 5.0f));
+        user.addRunningActivity(new RunningActivity(new Date(2023, 10, 1), 8.0f, 250.0f, 4.0f));
+
+        // Adding diet entries
+        user.addDiet(new Diet(new Date(2023, 10, 1), "Apple", 0.2f)); // 200g
+        user.addDiet(new Diet(new Date(2023, 10, 1), "Banana", 0.15f)); // 150g
+
+        // Calculate net daily calories for a specific date
+        double netCalories = user.calculateNetDailyCalories(new Date(2023, 10, 1));
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation:
+1. **User Class**: Manages user information and activities. It has methods to calculate net daily calories based on running activities and diet entries.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burnt, and distance.
+3. **Diet Class**: Represents a diet entry with attributes for date, food name, and weight.
+4. **Main Class**: Demonstrates how to use the `User`, `RunningActivity`, and `Diet` classes to track activities and calculate net calories.
+
+### Notes:
+- The `calculateFoodCaloriesPerUnit` method uses a hardcoded map of food items and their calorie values for demonstration. In a real application, this could be replaced with a database or an external service.
+- The date handling in Java has evolved, and using `java.util.Date` is not recommended for new applications. Consider using `java.time.LocalDate` for better date handling in production code.
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0
+## Description:
+Here’s an English variation of the functional requirements:
+- User Information Management: The system should handle user details, including name and gender.
+- Running Activity Management: The system should manage user’s running records, including date, speed, calories burned, and distance covered.
+- Daily Diet Tracking: The system should allow users to log their daily food intake, including date, food item, and consumed weight (in kilograms).
+- Food Calorie Query: The system must provide a standard interface, calculateFoodCaloriesPerUnit(foodName), to retrieve the calorie value for a unit weight (0.1 kg) of a specific food item.
+- Net Daily Calorie Calculation: The system should compute the user’s net daily calorie intake for a specific date. Net daily calorie intake is calculated as:
+Daily calorie intake from food - Daily calorie expenditure from running.
+Where:
+Daily calorie intake from food = Σ (daily consumed weight of food / unit weight * calories per unit weight).
+## UML:
+## Result:
+Based on the provided functional requirements, I will create a Java application that includes classes for managing user information, running activities, and daily diet tracking. The application will also include methods for calculating food calories and net daily calorie intake.
+
+Here is the complete Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Class to represent a User
+class User {
+    private String name;
+    private String gender;
+    private List<RunningActivity> runningActivities;
+    private List<FoodIntake> foodIntakes;
+
+    public User(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+        this.runningActivities = new ArrayList<>();
+        this.foodIntakes = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void addRunningActivity(RunningActivity activity) {
+        runningActivities.add(activity);
+    }
+
+    public void addFoodIntake(FoodIntake foodIntake) {
+        foodIntakes.add(foodIntake);
+    }
+
+    public List<RunningActivity> getRunningActivities() {
+        return runningActivities;
+    }
+
+    public List<FoodIntake> getFoodIntakes() {
+        return foodIntakes;
+    }
+
+    // Calculate net daily calorie intake for a specific date
+    public double calculateNetDailyCalories(String date) {
+        double totalCaloriesFromFood = calculateCaloriesFromFood(date);
+        double totalCaloriesFromRunning = calculateCaloriesFromRunning(date);
+        return totalCaloriesFromFood - totalCaloriesFromRunning;
+    }
+
+    private double calculateCaloriesFromFood(String date) {
+        double totalCalories = 0.0;
+        for (FoodIntake foodIntake : foodIntakes) {
+            if (foodIntake.getDate().equals(date)) {
+                totalCalories += (foodIntake.getWeight() / 0.1) * FoodCalorieDatabase.calculateFoodCaloriesPerUnit(foodIntake.getFoodName());
+            }
+        }
+        return totalCalories;
+    }
+
+    private double calculateCaloriesFromRunning(String date) {
+        double totalCalories = 0.0;
+        for (RunningActivity activity : runningActivities) {
+            if (activity.getDate().equals(date)) {
+                totalCalories += activity.getCaloriesBurned();
+            }
+        }
+        return totalCalories;
+    }
+}
+
+// Class to represent a Running Activity
+class RunningActivity {
+    private String date;
+    private double speed; // in km/h
+    private double caloriesBurned;
+    private double distanceCovered; // in km
+
+    public RunningActivity(String date, double speed, double caloriesBurned, double distanceCovered) {
+        this.date = date;
+        this.speed = speed;
+        this.caloriesBurned = caloriesBurned;
+        this.distanceCovered = distanceCovered;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public double getDistanceCovered() {
+        return distanceCovered;
+    }
+}
+
+// Class to represent Food Intake
+class FoodIntake {
+    private String date;
+    private String foodName;
+    private double weight; // in kg
+
+    public FoodIntake(String date, String foodName, double weight) {
+        this.date = date;
+        this.foodName = foodName;
+        this.weight = weight;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+
+// Class to manage food calorie data
+class FoodCalorieDatabase {
+    private static final Map<String, Double> foodCaloriesPerUnit = new HashMap<>();
+
+    static {
+        // Sample data: food item and its calorie value per 0.1 kg
+        foodCaloriesPerUnit.put("Apple", 52.0);
+        foodCaloriesPerUnit.put("Banana", 89.0);
+        foodCaloriesPerUnit.put("Chicken", 165.0);
+        foodCaloriesPerUnit.put("Rice", 130.0);
+        // Add more food items as needed
+    }
+
+    public static double calculateFoodCaloriesPerUnit(String foodName) {
+        return foodCaloriesPerUnit.getOrDefault(foodName, 0.0);
+    }
+}
+
+// Main class to demonstrate the functionality
+public class HealthTrackerApp {
+    public static void main(String[] args) {
+        // Create a user
+        User user = new User("John Doe", "Male");
+
+        // Log running activities
+        user.addRunningActivity(new RunningActivity("2023-10-01", 10.0, 500, 5.0));
+        user.addRunningActivity(new RunningActivity("2023-10-01", 8.0, 400, 4.0));
+
+        // Log food intake
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Apple", 0.5));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Banana", 0.3));
+        user.addFoodIntake(new FoodIntake("2023-10-01", "Chicken", 0.2));
+
+        // Calculate net daily calories for a specific date
+        double netCalories = user.calculateNetDailyCalories("2023-10-01");
+        System.out.println("Net Daily Calories for 2023-10-01: " + netCalories);
+    }
+}
+```
+
+### Explanation of the Code:
+1. **User Class**: Manages user information, running activities, and food intakes. It includes methods to add activities and food, as well as to calculate net daily calories.
+2. **RunningActivity Class**: Represents a running activity with attributes for date, speed, calories burned, and distance covered.
+3. **FoodIntake Class**: Represents a food intake record with attributes for date, food name, and weight.
+4. **FoodCalorieDatabase Class**: Contains a static map of food items and their calorie values per 0.1 kg. It provides a method to retrieve calorie values.
+5. **HealthTrackerApp Class**: The main class that demonstrates the functionality of the application by creating a user, logging activities and food, and calculating net daily calories.
+
+This code is structured, follows Java best practices, and includes comments for clarity. You can expand the food database and add more functionalities as needed.
+
+--------------------------------------------------

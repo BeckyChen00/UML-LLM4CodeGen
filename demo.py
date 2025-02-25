@@ -24,7 +24,7 @@ uml_prompt = """
 note = """
 # Note:
 - Generate Java code, including classes, fields, and methods.
-- Do not modify the method signatures defined in the class diagram. You are free to add helper methods and fields in the code if needed.
+- You are free to add helper methods and fields in the code if needed.
 - Code should be as error-free as possible and conform to Java coding standards and best practices.
 - The code should include necessary comments."""
 
