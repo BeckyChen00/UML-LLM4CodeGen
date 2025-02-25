@@ -14,30 +14,3 @@ Restaurant Inventory Management: Used to monitor current stock, the cost of the 
 Employee Scheduling: Check employee attendance, shifts, and time off.
 The restaurant has more than one employee. Each employee has a name, age, and gender information. The restaurant has more than one section. These sections are kitchen, service, and cash. Personnel works according to their sections. Personnel can be cooks, waiters, and cashiers. The cook stays in the kitchen and prepares the orders. The waiter in the service section serves the customer. The cashier prepares the check according to the order details in the system.
 Payroll and Accounting Service: Used to manage employee payroll and monitor the restaurant's cash flow.
-
-# 改写
-目的
-餐厅管理系统是一种餐厅管理软件，旨在协助完成与餐厅日常管理相关的任务。
-
-具体需求包括以下几个方面：
-销售点系统：用于输入订单和记录付款。系统捕获所有交易，包括收费、支付、无效、促销交易和费用。
-支付处理：这允许您接受各种支付选项，如信用卡或借记卡和移动支付。
-餐厅库存管理：用于监控当前库存，项目的成本等。当厨师准备订单时，系统会显示订单的详细信息和桌号。服务区的服务员为顾客服务。当服务员上菜时，系统会显示服务员的名字和桌号。
-员工排班：检查员工出勤、轮班和休息时间。
-这家餐厅有不止一名员工。每个员工都有姓名、年龄和性别信息。这家餐厅有多个区。这些部分是厨房，服务和现金。人事按部门办事。工作人员可以是厨师、服务员和收银员。厨师呆在厨房准备订单。服务区的服务员为顾客服务。出纳根据系统中的订单明细准备支票。
-工资和会计服务：用于管理员工工资和监控餐厅的现金流。
-
-
-1）管理部门员工，每个员工有唯一的员工编号、姓名、年龄、性别等信息。员工被分配到不同的部门（软件测试、算法研究、后端开发）。每个部门有部门编号和部门名称。
-2）项目管理：每个项目有有唯一的编号、项目名称、项目立项时间、项目开发时间、项目状态（未启动、进行、结束）。一个项目会分配多名员工不同任务。
-3）记录员工排班信息，每个排班有唯一的排班编号、员工编号、部门编号、排班日期。系统记录每个员工的出勤情况，包括迟到、早退、请假等。
-4）任务记录：
-
-
-计算员工工资：
-1）工资 = 基本工资 + 所有订单金额总和的30% - 缺勤天数*100。
-2）每位员工每月包含4天轮班，轮班期间不计入缺勤。
-
-计算部门总利润：
-1）利润 = 营业额之和 - 员工工资和 - 成本和
-
