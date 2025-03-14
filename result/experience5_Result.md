@@ -1785,7 +1785,7 @@ public class RobotSystem {
 This code snippet includes classes for Task, TaskExecution, and Robot as well as a main class to demonstrate the usage of the Robot system based on the provided system functional requirements. The code is structured, error-free, and follows Java coding standards. Let me know if you need any further modifications or additional functionalities.
 
 --------------------------------------------------
-# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0.7 类图结构不对
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0.7 类图结构不对，枚举和子类冲突
 ## Prompt: # Task: 
 Based on the <System functional requirements>  provided as input, generate a complete Java code.
 ## Input:
@@ -1909,6 +1909,174 @@ public class Main {
         System.out.println("Latest task executions for cleaning robot:");
         for (TaskExecution taskExecution : latestTaskExecutions) {
             System.out.println("Task ID: " + taskExecution.getId() + ", Start Time: " + taskExecution.getStartTime() + ", Location: " + taskExecution.getLocation());
+        }
+    }
+}
+```
+
+--------------------------------------------------
+# Version(sys) Model: gpt-3.5-turbo-0125 Temperature: 0.7 checkBatteryLevel 逻辑不对， 枚举和子类冲突
+## Prompt: # Task: 
+Based on the <System functional requirements>  provided as input, generate a complete Java code.
+## Input:
+- System functional requirements: 
+The system functional requirements are as follows:
++ There are robots that have an id. Robots can be of type cleaning robot and transport robot. The cleaning robot has a battery level. Each robot can perform multiple Task. Each task has an id.
++ When a robot performs a task, the robot must check if the location is valid (CORRIDOR or ROOM), and can throw an error for invalid locations. When the location is valid, the task execution is recorded. A task execution has an id, a start time and a location.
++ Each robot can retrieve the latest TaskExecution records for the robot.
++ Cleaning robots check battery levels before performing tasks and trigger low-battery notifications.
+
+## Note:
+- Generate Java code, including classes, fields, and implementation of methods.
+- You are free to add helper methods and fields in the code if needed.
+- Code should be as error-free as possible and conform to Java coding standards and best practices.
+- The code should include necessary comments.
+## Result:
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+// Enum for Location types
+enum LocationType {
+    CORRIDOR,
+    ROOM
+}
+
+// Enum for Robot types
+enum RobotType {
+    CLEANING,
+    TRANSPORT
+}
+
+// Task class
+class Task {
+    private int id;
+
+    public Task(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+}
+
+// TaskExecution class
+class TaskExecution {
+    private int id;
+    private long startTime;
+    private LocationType location;
+
+    public TaskExecution(int id, long startTime, LocationType location) {
+        this.id = id;
+        this.startTime = startTime;
+        this.location = location;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public LocationType getLocation() {
+        return location;
+    }
+}
+
+// Robot class
+abstract class Robot {
+    private int id;
+
+    public Robot(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public abstract List<TaskExecution> retrieveTaskExecutions();
+
+    public abstract void performTask(Task task, LocationType location) throws Exception;
+}
+
+// CleaningRobot class
+class CleaningRobot extends Robot {
+    private int batteryLevel;
+
+    public CleaningRobot(int id, int batteryLevel) {
+        super(id);
+        this.batteryLevel = batteryLevel;
+    }
+
+    public int getBatteryLevel() {
+        return batteryLevel;
+    }
+
+    @Override
+    public List<TaskExecution> retrieveTaskExecutions() {
+        // Implementation to retrieve task executions for cleaning robot
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void performTask(Task task, LocationType location) throws Exception {
+        if (location != LocationType.CORRIDOR && location != LocationType.ROOM) {
+            throw new Exception("Invalid location");
+        }
+
+        TaskExecution taskExecution = new TaskExecution(task.getId(), System.currentTimeMillis(), location);
+        // Record the task execution
+
+        if (batteryLevel < 20) {
+            // Trigger low-battery notification
+            System.out.println("Low battery notification triggered for Cleaning Robot " + getId());
+        }
+    }
+}
+
+// TransportRobot class
+class TransportRobot extends Robot {
+    public TransportRobot(int id) {
+        super(id);
+    }
+
+    @Override
+    public List<TaskExecution> retrieveTaskExecutions() {
+        // Implementation to retrieve task executions for transport robot
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void performTask(Task task, LocationType location) throws Exception {
+        if (location != LocationType.CORRIDOR && location != LocationType.ROOM) {
+            throw new Exception("Invalid location");
+        }
+
+        TaskExecution taskExecution = new TaskExecution(task.getId(), System.currentTimeMillis(), location);
+        // Record the task execution
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CleaningRobot cleaningRobot = new CleaningRobot(1, 50);
+        TransportRobot transportRobot = new TransportRobot(2);
+
+        Task task1 = new Task(101);
+        Task task2 = new Task(102);
+
+        try {
+            cleaningRobot.performTask(task1, LocationType.CORRIDOR);
+            cleaningRobot.performTask(task2, LocationType.ROOM);
+
+            transportRobot.performTask(task1, LocationType.CORRIDOR);
+            transportRobot.performTask(task2, LocationType.ROOM);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

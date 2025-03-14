@@ -1,6 +1,6 @@
 descriptionList = ["""
 The system functional requirements are as follows:
-+ There are robots that have an id. Robots can be of type cleaning robot and transport robot. Each robot can perform multiple Task. Each task has an id.
++ There are robots that have an id. Robots can be of type cleaning robot and transport robot. The cleaning robot has a battery level. Each robot can perform multiple Task. Each task has an id.
 + When a robot performs a task, the robot must check if the location is valid (CORRIDOR or ROOM), and can throw an error for invalid locations. When the location is valid, the task execution is recorded. A task execution has an id, a start time and a location.
 + Each robot can retrieve the latest TaskExecution records for the robot.
 + Cleaning robots check battery levels before performing tasks and trigger low-battery notifications."""
